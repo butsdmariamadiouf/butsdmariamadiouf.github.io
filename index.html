@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -206,69 +205,102 @@
             }
         }
 
-        .container-saes {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 50px;
-        }
-
-        .diamond {
-        width: 690px;
-        height: 690px;
-        background-color: rgba(139, 203, 186, 0.8);
-        transform: rotate(45deg);
+        .carousel-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin-bottom: 60px;
-        box-shadow: 0 0 15px #8bcbba;
-        overflow: hidden;
+        gap: 1rem;
         }
 
-        .diamond .content {
-        transform: rotate(-45deg);
-        width: 80%;
-        color: black;
-        font-size: 12px;
-        line-height: 1.6;
-        text-align: justify;
-        max-height: 100%;
-        overflow-y: auto;
+        .carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        gap: 1rem;
+        padding: 1rem 0;
+        flex: 1;
         }
 
-        .diamond .content h3 {
-        text-align: center;
-        margin-bottom: 10px;
-        font-size: 1.1rem;
-        font-weight: bold;
+        .carousel::-webkit-scrollbar {
+        display: none; /* cache la scrollbar */
         }
 
-
-        .diamond-left {
-        align-self: flex-start;  /* Losange à gauche */
+        .sae-btn {
+        min-width: 300px;
+        max-width: 400px;
+        flex-shrink: 0;
+        background-color: #8bcbba;
+        color: #222;
+        border: none;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        cursor: pointer;
+        text-align: left;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease;
         }
 
-        .diamond-right {
-        align-self: flex-end;    /* Losange à droite */
-        margin-top: 80px;        /* Pour espacer les deux verticalement */
+        .sae-btn:hover {
+        transform: scale(1.05);
+        background-color: #6fa89a;
         }
 
-        .trefle {
-        color: #8bcbba; /* la couleur que tu veux */
-        font-weight: bold;
-        margin-right: 6px; /* un petit espace après le trèfle */
+        .sae-btn h3 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        color: #222;
         }
 
-        .intro-text {
-        font-size: 1.5rem; /* Ajuste cette valeur selon la taille souhaitée */
+        .sae-btn p {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.3;
+        color: #222;
         }
 
+        .nav-btn {
+        background: #8bcbba;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        padding: 0.5rem 0.8rem;
+        border-radius: 50%;
+        cursor: pointer;
+        user-select: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: background-color 0.3s ease;
+        }
 
+        .nav-btn:hover {
+        background-color: #6fa89a;
+        }
 
+        .nav-btn.left {
+        margin-right: 0.5rem;
+        }
 
+        .nav-btn.right {
+        margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+        .sae-btn {
+            min-width: 280px;
+            max-width: 300px;
+            padding: 1rem;
+            font-size: 0.85rem;
+        }
+        .nav-btn {
+            font-size: 1.5rem;
+        }
+        }      
     </style>
 </head>
+
+
 <body>
     <header>
         <nav>
@@ -333,81 +365,97 @@
         </div>
     </section>
 
+
+
     <section id="sae">
         <h2>Mes SAÉs</h2>
-            <div class="container-saes">
-                <div class="diamond diamond-left">
-                    <div class="content">
-                    <h3>Semestre 1</h3>
-                    <ul>
-                        <li>SAÉ 1.01 : <strong>Création d’un reporting :</strong> 
-                            Dans cette SAÉ, j’ai conçu une application Excel de gestion des notes pour le BUT SD1, incluant la saisie, 
+        <div class="carousel-wrapper">
+            <button class="nav-btn left" onclick="scrollCarousel(-1)">
+            <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="carousel">
+            <button class="sae-btn">
+                <h3>SAÉ 1.01 : Création d’un reporting</h3>
+                <p>     Dans cette SAÉ, j’ai conçu une application Excel de gestion des notes pour le BUT SD1, incluant la saisie, 
                             modification et suivi des notes par semestre, compétence, module et SAÉ. L’outil intègre un tableau de bord 
                             dynamique avec graphiques et une décision automatique de passage en année supérieure selon des règles précises.
                             J’ai privilégié les fonctionnalités Excel natives et utilisé le VBA uniquement pour automatiser les tâches 
-                            complexes, en respectant les bonnes pratiques de développement.</li>
-
-                        <li>SAÉ 1.02 : Écriture et lecture de fichiers de données :</strong> 
-                            Dans cette SAÉ, j’ai développé un script Python pour transformer un fichier JSON en un 
-                            fichier CSV structuré avec des données nettoyées et formatées (dates au format français, extraction des heures, 
-                            gestion des accents). Ce travail m’a permis de maîtriser la manipulation de données semi-structurées, la 
-                            conversion de formats, et l’écriture de scripts optimisés et commentés.</li>
-
-                        <li>SAÉ 1.03 : <strong>Préparation et synthèse d’un tableau de données :</strong>
-                            Dans cette SAÉ, j'ai travaillé sur des données d'un questionnaire sur les pratiques sportives des étudiants 
-                            du campus de Niort avec une analyse des réponses, et restitution des résultats.</li>
-
-                        <li>SAÉ 1.04 : <strong>Apprendre en situation la production de données en entreprise :</strong> 
-                            Dans cette SAÉ, j'ai réalisé une analyse statistique des données de recensement 2021 fournies
-                            par l’INSEE, portant sur le département des Hautes-Alpes. L’objectif était d’étudier les dynamiques 
-                            démographiques, économiques et sociales du territoire.</li>
-                        <li>SAÉ 1.05 : <strong>Présentation en anglais d’un territoire :</strong> 
-                            Travail en groupe sur une présentation orale pour développer l’expression professionnelle et culturelle.</li>
-
-                        <li>SAÉ 1.06 : <strong>Mise en œuvre d’une enquête :</strong> 
-                            Constitution d'un organigramme d'un questionnaire avec l'utilisation de l'outil sphinx. </li>
-                    </ul>
-                    </div>
-                </div>
+                            complexes, en respectant les bonnes pratiques de développement.
+                        
+            </button>
+            <button class="sae-btn">
+                <h3>SAÉ 1.02 : Écriture et lecture de fichiers de données</h3>
+                <p>     Dans cette SAÉ, j’ai conçu une application Excel de gestion des notes pour le BUT SD1, incluant la saisie, 
+                            modification et suivi des notes par semestre, compétence, module et SAÉ. L’outil intègre un tableau de bord 
+                            dynamique avec graphiques et une décision automatique de passage en année supérieure selon des règles précises.
+                            J’ai privilégié les fonctionnalités Excel natives et utilisé le VBA uniquement pour automatiser les tâches 
+                            complexes, en respectant les bonnes pratiques de développement.
+            </button>
+            <button class="sae-btn">
+                <h3>SAÉ 1.03 : Préparation et synthèse d’un tableau de données</h3>
+                <p>        Dans cette SAÉ, j'ai travaillé sur des données d'un questionnaire sur les pratiques sportives des étudiants 
+                            du campus de Niort avec une analyse des réponses, et restitution des résultats.
+            </button>
             
+            <button class="sae-btn">
+                <h3>SAÉ 1.04 : Apprendre en situation la production de données en entreprise</h3>
+                <p>        Dans cette SAÉ, j'ai réalisé une analyse statistique des données de recensement 2021 fournies
+                            par l’INSEE, portant sur le département des Hautes-Alpes. L’objectif était d’étudier les dynamiques 
+                            démographiques, économiques et sociales du territoire.
+            </button>
 
-                <div class="diamond diamond-right">
-                    <div class="content">
-                    <h3>Semestre 2</h3>
-                    <ul>
-                        <li>SAÉ 2.01 : <strong>Conception et implémentation d’une base de données :</strong> 
-                            Pour cette SAÉ, j’ai conçu et implémenté une base de données MySQL pour gérer les approvisionnements et ventes 
+            <button class="sae-btn">
+                <h3>SAÉ 1.05 : Présentation en anglais d’un territoire</h3>
+                <p>        Travail en groupe sur une présentation orale pour développer l’expression professionnelle et culturelle.
+            </button>
+
+            <button class="sae-btn">
+                <h3>SAÉ 1.06 : Mise en œuvre d’une enquête</h3>
+                <p>        Constitution d'un organigramme d'un questionnaire avec l'utilisation de l'outil sphinx.
+            </button>
+
+            <button class="sae-btn">
+                <h3>SAÉ 2.01 : Conception et implémentation d’une base de données</h3>
+                <p>        Pour cette SAÉ, j’ai conçu et implémenté une base de données MySQL pour gérer les approvisionnements et ventes 
                             d’une coopérative de sel marin. J’ai modélisé les données, automatisé l’import avec Python, et développé une 
-                            interface graphique pour faciliter la gestion et l’analyse via des requêtes SQL avancées.</li>
+                            interface graphique pour faciliter la gestion et l’analyse via des requêtes SQL avancées.
+            </button>
 
-                        <li>SAÉ 2.02 : <strong>Estimation par échantillonnage :</strong> 
-                            L’objectif du projet était d’estimer la population d’une région française à partir d’un fichier recensant les 
-                            communes, en utilisant deux méthodes : le sondage aléatoire simple et le sondage stratifié.</li>
+            <button class="sae-btn">
+                <h3>SAÉ 2.02 : Estimation par échantillonnage</h3>
+                <p>        L’objectif du projet était d’estimer la population d’une région française à partir d’un fichier recensant les 
+                            communes, en utilisant deux méthodes : le sondage aléatoire simple et le sondage stratifié.
+            </button>
 
-                        <li>SAÉ 2.03 : <strong>Dataviz (concours) :</strong>
-                            Réalisation de visualisations percutantes à l’aide de R, Power BI ou Excel dans un cadre compétitif.</li>
+            <button class="sae-btn">
+                <h3>SAÉ 2.03 : Dataviz (concours)</h3>
+                <p>        Réalisation de visualisations percutantes à l’aide de R, Power BI ou Excel dans un cadre compétitif.
+            </button>
 
-                        <li>SAÉ 2.04 : <strong>Indicateurs de performance :</strong> 
-                            Lors de cette SAÉ, nous avons travaillé sur l’analyse économique et financière du groupe agroalimentaire
+            <button class="sae-btn">
+                <h3>SAÉ 2.04 : Indicateurs de performance </h3>
+                <p>        Lors de cette SAÉ, nous avons travaillé sur l’analyse économique et financière du groupe agroalimentaire
                             français Fleury Michon. L’objectif principal était de construire et interpréter des indicateurs clés de performance
                             (Chiffre d'affaires,valeur ajoutée, taux de profitabilité, EBE, CAF.....) afin d’évaluer la santé économique de 
-                            l’entreprise (Calcul, interprétation et présentation).</li>
+                            l’entreprise (Calcul, interprétation et présentation).
+            </button>
 
-                        <li>SAÉ 2.05 : <strong>Analyse de données, reporting et datavisualisation :</strong> 
-                            Dans le cadre de la SAÉ "Analyse de données, Reporting et Datavisualisation", nous avions pour mission de 
+            <button class="sae-btn">
+                <h3>SAÉ 2.05 : Analyse de données, reporting et datavisualisation</h3>
+                <p>        Dans le cadre de la SAÉ "Analyse de données, Reporting et Datavisualisation", nous avions pour mission de 
                             développer un outil dynamique visant à analyser les accidents de la vie courante (AcVC) à partir d’un jeu de 
                             données fourni par Calyxis. Notre groupe a choisi de combiner Python pour le nettoyage de données et 
                             Looker Studio pour la visualisation interactive. Une interface Tkinter a également été développée pour 
-                            automatiser l’ouverture et l’affichage des jeux de données nettoyés.</li>
+                            automatiser l’ouverture et l’affichage des jeux de données nettoyés.
+            </button>
 
-                        <li>SAÉ 2.06 : <strong>Portfolio :</strong> 
-                            Création d’un site web pour valoriser mes compétences, mes projets et mon identité professionnelle.</li>
-                    </ul>
-                    </div>
-                </div>
-            
+
             </div>
-    </section>
+            <button class="nav-btn right" onclick="scrollCarousel(1)">
+            <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        </section>
 
 
 
