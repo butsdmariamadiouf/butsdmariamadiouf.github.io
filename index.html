@@ -2,61 +2,457 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<meta charset="UTF-8">
-	<title>Équipe HTML5 : Page d'accueil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-image: url('imfond.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* pour que l’image reste fixe au scroll */
+           background-position: center;
+           color: #8bcbba; 
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .horizontal-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding-right: 7rem; /* espace à droite */
+            padding-left: 1rem;  /* espace à gauche */
+            flex-wrap: wrap;     /* retour à la ligne sur petits écrans */
+        }
+
+
+        .horizontal-menu li a {
+            text-decoration: none;
+            color:#8bcbba;
+            font-weight: 600;
+        }
+
+        section {
+            padding: 6rem 5% 4rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content, .hero-image {
+                padding: 0;
+            }
+
+            .hero-image img {
+                width: 250px;
+                height: auto;
+            }
+
+            .horizontal-menu {
+                justify-content: center;
+                padding-right: 0;
+            }
+        }
+
+        .hero {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero-content span {
+            color: #938484;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 400px;
+            height: 600px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color:#8bcbba;
+            color: #fff;
+             max-width: 160px;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: transform 0.8s;
+        }
+
+
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .socials a {
+            color: #8bcbba;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .staircase-section {
+            
+            padding: 60px 20px;
+        }
+
+        .staircase {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+        }
+
+        .step {
+            width: 80%;
+            padding: 20px;
+            border-radius: 20px;
+            background-color: rgba(139, 203, 186, 0.8);
+            color: #333;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.6s ease, opacity 0.6s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: appear 1s forwards;
+        }
+
+        /* Alternance gauche/droite avec animation */
+        .step1 {
+            align-self: flex-start;
+            animation-delay: 0.2s;
+        }
+        .step2 {
+            align-self: flex-end;
+            animation-delay: 0.4s;
+        }
+        .step3 {
+            align-self: flex-start;
+            animation-delay: 0.6s;
+        }
+        .step4 {
+            align-self: flex-end;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes appear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container-saes {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 50px;
+        }
+
+        .diamond {
+        width: 690px;
+        height: 690px;
+        background-color: rgba(139, 203, 186, 0.8);
+        transform: rotate(45deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 60px;
+        box-shadow: 0 0 15px #8bcbba;
+        overflow: hidden;
+        }
+
+        .diamond .content {
+        transform: rotate(-45deg);
+        width: 80%;
+        color: black;
+        font-size: 12px;
+        line-height: 1.6;
+        text-align: justify;
+        max-height: 100%;
+        overflow-y: auto;
+        }
+
+        .diamond .content h3 {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        }
+
+
+        .diamond-left {
+        align-self: flex-start;  /* Losange à gauche */
+        }
+
+        .diamond-right {
+        align-self: flex-end;    /* Losange à droite */
+        margin-top: 80px;        /* Pour espacer les deux verticalement */
+        }
+
+        .trefle {
+        color: #8bcbba; /* la couleur que tu veux */
+        font-weight: bold;
+        margin-right: 6px; /* un petit espace après le trèfle */
+        }
+
+        .intro-text {
+        font-size: 1.5rem; /* Ajuste cette valeur selon la taille souhaitée */
+        }
+
+
+
+
+    </style>
 </head>
 <body>
-	<header>
-		<img src="html5-logo.png" alt="" width = "5%"/>
-	</header>
-	<nav style="background: whitesmoke; float: left">
-		<ul style="list-style: none; padding: 30px">
-			<li>
-			<a href="accueil.html">Présentation</a>
-			</li>
-			<li>
-			<a href="news.html">Actualités</a>
-			</li>
-			<li>
-			<a href="equipe.html">Equipe</a>
-			</li>
-			<li>
-			<a href="encadrement.html">Encadrement</a>
-			</li>
-			<li>
-			<a href="contact.html">Contact</a>
-			</li>
-		</ul>
-	</nav>
-		<div>Mon contenu...</div>
-		<aside style="float: right; color: magenta; font-size: 1.2em; width: 150px; border: solid">
-			Bienvenue sur le site de l'équipe HTML5 ! </aside>
-		<footer style="clear: both; padding-top: 2em; background: dimgray; color: white">
-			DUT STID, certains droits réservés
-			<div style="float: right">
-				<a href="legal.html">Mentions légales</a>
-				<a href="map.html">Plan du site</a>
-			</div>
-		</footer>
+    <header>
+        <nav>
+            <div class="logo">Port<span>folio</span></div>
+            <ul class="horizontal-menu">
+                <li><a href="#parcours">A propos de moi</a></li>
+                <li><a href="#sae">Projets</a></li>
+                <li><a href="#Compétences">Compétences</a></li>
+                <li><a href="#Contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bonjour, moi c'est <br><span>MARIAMA DIOUF</span></h1>
+            <p class="intro-text">Étudiante en BUT Science des Données, passionnée par les maths, la data et l’analyse.</p>
+        </div>
+        <div class="hero-image">
+            <img src="Image4.jpg" alt="MARIAMA DIOUF">
+        </div>
+    </section>
+
+    <section id="parcours" class="staircase-section">
+        <h2>Mon Parcours</h2>
+        <div class="staircase">
+            <div class="step step1">
+                <p>
+                    Mon intérêt pour les mathématiques remonte à l’école primaire. Très tôt, j’étais attirée par les chiffres,
+                    les raisonnements logiques et la satisfaction de résoudre des problèmes. Au fil des années, cette passion s’est
+                    intensifiée, notamment au lycée, où j’ai pu approfondir ma compréhension des concepts mathématiques et développer
+                    une véritable rigueur dans l’analyse. C’est à ce moment-là que j’ai pris conscience de mon envie de faire 
+                    des mathématiques une composante centrale de mon avenir professionnel.
+                </p>
+            </div>
+            <div class="step step2">
+                <p>
+                    Animée par cette passion et désireuse de donner du sens à mes compétences, j’ai fait le choix d’intégrer 
+                    le BUT Science des Données. Cette formation m’a séduite par son approche pluridisciplinaire, combinant mathématiques 
+                    appliquées, statistiques, informatique et analyse concrète de données à travers des projets réels. 
+                    Elle me permet d’acquérir une base solide et polyvalente, tout en me confrontant à des problématiques actuelles et 
+                    complexes.
+                </p>
+            </div>
+            <div class="step step3">
+                <p>
+                    Je suis aujourd’hui en quête d’une alternance ou d’un stage pour mettre en pratique mes acquis dans des environnements
+                    professionnels stimulants, notamment en data science, data analyse ou actuariat. Ce sont des domaines où je peux 
+                    réellement m’épanouir en croisant rigueur mathématique, réflexion stratégique et utilité concrète.
+                </p>
+            </div>
+            <div class="step step4">
+                <p>
+                    Mon ambition à moyen terme est d’intégrer une école d’ingénieur afin d’approfondir mes compétences techniques 
+                    et de me spécialiser dans un domaine à fort enjeu (assurance, finance, intelligence artificielle) et continuer
+                    à me dépasser. Mon objectif est clair : devenir une experte des données, capable de mettre la puissance de 
+                    l’analyse au service de la décision, de l’innovation et de l’impact car étant convaincue que la maîtrise des 
+                    données est aujourd’hui un levier puissant pour comprendre, anticiper et améliorer le monde qui nous entoure.
+                    Et je veux en faire mon métier.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sae">
+        <h2>Mes SAÉs</h2>
+            <div class="container-saes">
+                <div class="diamond diamond-left">
+                    <div class="content">
+                    <h3>Semestre 1</h3>
+                    <ul>
+                        <li>SAÉ 1.01 : <strong>Création d’un reporting :</strong> 
+                            Dans cette SAÉ, j’ai conçu une application Excel de gestion des notes pour le BUT SD1, incluant la saisie, 
+                            modification et suivi des notes par semestre, compétence, module et SAÉ. L’outil intègre un tableau de bord 
+                            dynamique avec graphiques et une décision automatique de passage en année supérieure selon des règles précises.
+                            J’ai privilégié les fonctionnalités Excel natives et utilisé le VBA uniquement pour automatiser les tâches 
+                            complexes, en respectant les bonnes pratiques de développement.</li>
+
+                        <li>SAÉ 1.02 : Écriture et lecture de fichiers de données :</strong> 
+                            Dans cette SAÉ, j’ai développé un script Python pour transformer un fichier JSON en un 
+                            fichier CSV structuré avec des données nettoyées et formatées (dates au format français, extraction des heures, 
+                            gestion des accents). Ce travail m’a permis de maîtriser la manipulation de données semi-structurées, la 
+                            conversion de formats, et l’écriture de scripts optimisés et commentés.</li>
+
+                        <li>SAÉ 1.03 : <strong>Préparation et synthèse d’un tableau de données :</strong>
+                            Dans cette SAÉ, j'ai travaillé sur des données d'un questionnaire sur les pratiques sportives des étudiants 
+                            du campus de Niort avec une analyse des réponses, et restitution des résultats.</li>
+
+                        <li>SAÉ 1.04 : <strong>Apprendre en situation la production de données en entreprise :</strong> 
+                            Dans cette SAÉ, j'ai réalisé une analyse statistique des données de recensement 2021 fournies
+                            par l’INSEE, portant sur le département des Hautes-Alpes. L’objectif était d’étudier les dynamiques 
+                            démographiques, économiques et sociales du territoire.</li>
+                        <li>SAÉ 1.05 : <strong>Présentation en anglais d’un territoire :</strong> 
+                            Travail en groupe sur une présentation orale pour développer l’expression professionnelle et culturelle.</li>
+
+                        <li>SAÉ 1.06 : <strong>Mise en œuvre d’une enquête :</strong> 
+                            Constitution d'un organigramme d'un questionnaire avec l'utilisation de l'outil sphinx. </li>
+                    </ul>
+                    </div>
+                </div>
+            
+
+                <div class="diamond diamond-right">
+                    <div class="content">
+                    <h3>Semestre 2</h3>
+                    <ul>
+                        <li>SAÉ 2.01 : <strong>Conception et implémentation d’une base de données :</strong> 
+                            Pour cette SAÉ, j’ai conçu et implémenté une base de données MySQL pour gérer les approvisionnements et ventes 
+                            d’une coopérative de sel marin. J’ai modélisé les données, automatisé l’import avec Python, et développé une 
+                            interface graphique pour faciliter la gestion et l’analyse via des requêtes SQL avancées.</li>
+
+                        <li>SAÉ 2.02 : <strong>Estimation par échantillonnage :</strong> 
+                            L’objectif du projet était d’estimer la population d’une région française à partir d’un fichier recensant les 
+                            communes, en utilisant deux méthodes : le sondage aléatoire simple et le sondage stratifié.</li>
+
+                        <li>SAÉ 2.03 : <strong>Dataviz (concours) :</strong>
+                            Réalisation de visualisations percutantes à l’aide de R, Power BI ou Excel dans un cadre compétitif.</li>
+
+                        <li>SAÉ 2.04 : <strong>Indicateurs de performance :</strong> 
+                            Lors de cette SAÉ, nous avons travaillé sur l’analyse économique et financière du groupe agroalimentaire
+                            français Fleury Michon. L’objectif principal était de construire et interpréter des indicateurs clés de performance
+                            (Chiffre d'affaires,valeur ajoutée, taux de profitabilité, EBE, CAF.....) afin d’évaluer la santé économique de 
+                            l’entreprise (Calcul, interprétation et présentation).</li>
+
+                        <li>SAÉ 2.05 : <strong>Analyse de données, reporting et datavisualisation :</strong> 
+                            Dans le cadre de la SAÉ "Analyse de données, Reporting et Datavisualisation", nous avions pour mission de 
+                            développer un outil dynamique visant à analyser les accidents de la vie courante (AcVC) à partir d’un jeu de 
+                            données fourni par Calyxis. Notre groupe a choisi de combiner Python pour le nettoyage de données et 
+                            Looker Studio pour la visualisation interactive. Une interface Tkinter a également été développée pour 
+                            automatiser l’ouverture et l’affichage des jeux de données nettoyés.</li>
+
+                        <li>SAÉ 2.06 : <strong>Portfolio :</strong> 
+                            Création d’un site web pour valoriser mes compétences, mes projets et mon identité professionnelle.</li>
+                    </ul>
+                    </div>
+                </div>
+            
+            </div>
+    </section>
+
+
+
+    <section id="Compétences">
+        <h2>Mes apprentissages critiques</h2>
+
+        <p><span class="trefle">♣</span>
+            Cette année m’a permis de consolider des compétences clés en science des données, notamment en rigueur 
+            méthodologique, en modélisation statistique et en analyse critique des résultats. 
+            J’ai appris à analyser des jeux de données complexes en mobilisant les bons outils selon les objectifs 
+            (Python, SQL, R,Power BI,Excel), tout en prenant du recul sur les résultats pour en assurer la fiabilité et la pertinence.
+        </p>
+        <p><span class="trefle">♣</span>
+            J’ai notamment compris comment les indicateurs économiques peuvent révéler les dynamiques d’un territoire ou la 
+            santé financière d’une entreprise, et comment ces indicateurs orientent les décisions stratégiques.
+            Le travail sur les modèles de régression m’a appris à construire un modèle de A à Z, sans utiliser de fonctions 
+            toutes faites, ce qui m’a permis d’approfondir la compréhension des mécanismes mathématiques sous-jacents.
+        </p>
+        <p><span class="trefle">♣</span>
+            Les études d’échantillonnage m’ont sensibilisé à la notion d’incertitude et à l’importance des marges d’erreur 
+            dans les estimations. J’ai également appris à comparer différentes méthodes (échantillonnage aléatoire simple 
+            vs stratifié) et à interpréter des intervalles de confiance.
+        </p>
+        <p><span class="trefle">♣</span>
+            Les analyses de dépendance entre variables qualitatives m’ont permis de manipuler et d’interpréter les tests du 
+            khi-deux et les mesures d’association comme le V de Cramer, tout en développant une vision critique sur la 
+            signification statistique.
+        </p>
+        <p><span class="trefle">♣</span>
+            J'ai aussi appris à mettre en œuvre les principes fondamentaux de la data visualisation : choix 
+            pertinent de graphiques, clarté des présentations, et communication visuelle efficace. J’ai compris l’importance 
+            de rendre les résultats accessibles et parlants pour un public non-expert.
+        </p>
+    </section>
+
+    <section id="Contact">
+        <h2>Mes réseaux</h2>
+        <p> Tu peux me contacter par email à l’adresse  <strong>mariamadiouf22006@gmail.com</strong><br>
+        Ou via LinkedIn.</p>
+            <div class="socials">
+                <a href="https://www.linkedin.com/in/https://www.linkedin.com/in/mariama-diouf-35015b304?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <a href="CV.pdf" class="btn" download>Télécharger mon CV</a>
+    </section>
+
+    
 </body>
 </html>
-/* Styles pour l'en-tête à insérer */
-header {
-background: lightgray
-}
-/* Styles pour les liens de la zone de navigation */
-nav a {
-text-decoration: none;
-color: black
-}
-nav a:hover {
-color: magenta
-}
-/* Styles pour les liens du pied de page */
-footer a {
-text-decoration: none;
-color: gainsboro
-}
-footer a:hover {
-color: white
-}
