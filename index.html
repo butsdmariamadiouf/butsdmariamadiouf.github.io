@@ -300,6 +300,17 @@
     </style>
 </head>
 
+function scrollCarousel(direction) {
+  const carousel = document.querySelector('.carousel');
+  const scrollAmount = 350; // largeur approximative d’un bouton + marge
+
+  if (direction === 1) {
+    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  } else if (direction === -1) {
+    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  }
+}
+
 
 <body>
     <header>
