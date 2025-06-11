@@ -312,7 +312,111 @@
         .nav-btn {
             font-size: 1.5rem;
         }
-        }      
+        }  
+        
+       #parcours {
+        padding: 50px 20px;
+        }
+
+        .parcours-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 40px 0;
+        gap: 30px;
+        }
+
+        .parcours-img {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .parcours-texte {
+        background-color: #6fa89a;
+        color: black;
+        padding: 20px;
+        border-radius: 20px;
+        max-width: 600px;
+        line-height: 1.6;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Pour l’alternance gauche/droite */
+        .parcours-item.droite {
+        flex-direction: row-reverse;
+        text-align: right;
+        }
+
+        @media (max-width: 768px) {
+        .parcours-item {
+            flex-direction: column !important;
+            text-align: center;
+        }
+
+        .parcours-texte {
+            max-width: 90%;
+        }
+        }
+
+        .parcours-item-double {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin: 40px 0;
+        }
+
+        .parcours-img-double {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .parcours-texte {
+        background-color: #6fa89a;
+        color: white;
+        padding: 20px;
+        border-radius: 20px;
+        max-width: 600px;
+        line-height: 1.6;
+        flex: 1;
+        text-align: justify;
+        }
+        @media (max-width: 768px) {
+        .parcours-item-double {
+            flex-direction: column;
+        }
+
+        .parcours-img-double {
+            margin: 10px 0;
+        }
+        }
+
+        #bilan {
+        padding: 50px 20px;
+        }
+
+        .bilan-texte {
+        background-color: #6fa89a;
+        color: white;
+        padding: 30px;
+        border-radius: 20px;
+        line-height: 1.7;
+        max-width: 900px;
+        margin: auto;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+        text-align: justify;
+        }
+
+
+
     </style>
 </head>
 
@@ -323,8 +427,10 @@
             <div class="logo">Port<span>folio</span></div>
             <ul class="horizontal-menu">
                 <li><a href="#parcours">A propos de moi</a></li>
+                <li><a href="#Ma formation">Le choix </a></li>
                 <li><a href="#sae">Projets</a></li>
                 <li><a href="#Compétences">Compétences</a></li>
+                <li><a href="#bilan">Bilan de l'année</a></li>
                 <li><a href="#Contact">Contact</a></li>
             </ul>
         </nav>
@@ -340,18 +446,75 @@
         </div>
     </section>
 
-    <section id="parcours" class="staircase-section">
+
+
+    <section id="parcours">
+        <h2>Mon Parcours</h2>
+
+        <div class="parcours-item gauche">
+            <img src="Tof2.jpg" alt="Miss Mathématiques" class="parcours-img">
+            <div class="parcours-texte">
+            <p>
+            J'ai effectué ma scolarité au Sénégal, où j'ai développé très tôt un goût pour les sciences et les défis intellectuels. 
+            En classe de 4<sup>e</sup>, j'ai eu l'honneur de participer au <strong>concours Miss Mathématiques</strong>, une expérience 
+            qui a renforcé ma passion pour les mathématiques et m'a confortée dans mon envie d'intégrer, au lycée, la série S1 ou C, 
+            filière fortement axée sur les mathématiques et la physique.
+            </p>
+            </div>
+        </div>
+
+        <div class="parcours-item-double">
+            <img src="Tof4.jpg" alt="Image gauche" class="parcours-img-double gauche">
+            
+            <div class="parcours-texte">
+                <p>
+                Bien que j’aie choisi une série scientifique, j’ai toujours accordé de l’importance aux matières littéraires, convaincue de la richesse 
+                d’une formation équilibrée. En classe de Première, j'ai ainsi participé au <strong>Concours Général</strong> dans six matières : 
+                Mathématiques, SVT, Histoire, Géographie, Français et EPS. Cette expérience a été une véritable opportunité pour évaluer ma polyvalence. 
+                J’ai eu l’honneur d’obtenir le <strong>3<sup>e</sup> prix national en Éducation Physique et Sportive</strong>, 
+                une reconnaissance de mon engagement à la fois intellectuel et physique.
+                </p>
+            </div>
+
+            <img src="Tof3.jpg" alt="Image droite" class="parcours-img-double droite">
+        </div>
+
+        <div class="parcours-item gauche">
+            <img src="TofNiort.png" alt="Baccalauréat" class="parcours-img">
+            <div class="parcours-texte">
+            <p>
+            C'est après l'obtention de mon <strong>baccalauréat</strong> que j'ai décidé de poursuivre mes études en France, 
+            où je suis actuellement étudiante en <strong>BUT Science des Données</strong>. Ce choix est lié à une volonté personnelle 
+            d'élargir mes horizons. J'ai toujours été animée par le désir de découvrir de nouveaux environnements, de m’ouvrir à 
+            d’autres cultures et d’explorer le monde à travers mes études.
+            </p>
+            </div>
+        </div>
+
+        <div class="parcours-item gauche">
+            <div class="parcours-texte">
+            <p>
+            Étudier à l’étranger représente pour moi une opportunité d'enrichissement personnel et académique, et un moyen 
+            de me confronter à des défis nouveaux pour mieux grandir. Ce parcours m’a permis de renforcer mon autonomie, 
+            ma capacité d’adaptation et ma rigueur.
+            </p>
+        </div>
+    </section>
+
+
+    <section id="Ma formation" class="staircase-section">
         <h2>Pourquoi cette formation ?</h2>
         <div class="staircase">
             <div class="step step1">
                 <p>
-                    Mon intérêt pour les mathématiques remonte à l’école primaire. Très tôt, j’étais attirée par les chiffres,
-                    les raisonnements logiques et la satisfaction de résoudre des problèmes. Au fil des années, cette passion s’est
-                    intensifiée, notamment au lycée, où j’ai pu approfondir ma compréhension des concepts mathématiques et développer
-                    une véritable rigueur dans l’analyse. C’est à ce moment-là que j’ai pris conscience de mon envie de faire 
-                    des mathématiques une composante centrale de mon avenir professionnel.
+                    <p>
+                    À l’issue de mon parcours scolaire, j’ai ressenti le besoin de m’orienter vers une formation qui valorise la réflexion, 
+                    l’analyse rigoureuse et la résolution de problèmes concrets. J’avais envie de relever de nouveaux défis intellectuels, 
+                    d’approfondir mes compétences et de les appliquer à des situations réelles. Mon objectif était de trouver un cursus à la 
+                    croisée des mathématiques, de l’informatique et de la prise de décision basée sur les données.
                 </p>
             </div>
+
             <div class="step step2">
                 <p>
                     Animée par cette passion et désireuse de donner du sens à mes compétences, j’ai fait le choix d’intégrer 
@@ -361,6 +524,7 @@
                     complexes.
                 </p>
             </div>
+
             <div class="step step3">
                 <p>
                     Je suis aujourd’hui en quête d’une alternance ou d’un stage pour mettre en pratique mes acquis dans des environnements
@@ -368,6 +532,7 @@
                     réellement m’épanouir en croisant rigueur mathématique, réflexion stratégique et utilité concrète.
                 </p>
             </div>
+
             <div class="step step4">
                 <p>
                     Mon ambition à moyen terme est d’intégrer une école d’ingénieur afin d’approfondir mes compétences techniques 
@@ -524,6 +689,36 @@
         </p>
     </section>
 
+    <section id="bilan">
+    <h2>Mon Bilan de l'Année</h2>
+    <div class="bilan-texte">
+        <p>
+        Mon arrivée à Niort pour débuter cette formation a marqué le début d’une nouvelle étape, aussi enrichissante que stimulante.
+        Découvrir un nouvel environnement, une culture différente, et un système universitaire inédit a représenté un véritable défi. 
+        Arrivée avec un léger retard, j’ai dû rapidement m’adapter au rythme du BUT, rattraper les notions déjà abordées, et prendre 
+        mes repères dans ce nouvel univers. Grâce à ma motivation, à ma rigueur et au soutien bienveillant dont j’ai pu bénéficier, 
+        j’ai su combler mon retard et m’investir pleinement dans ma formation.
+       
+        Les mathématiques représentaient la matière dans laquelle je me sentais le plus à l’aise, car elles correspondaient à mes 
+        points forts. En revanche, l’informatique a été un vrai défi au début. Mais à force de pratique régulière et de persévérance,
+        j’ai réussi à m’améliorer progressivement et à prendre confiance.
+
+        Toutefois, ce rythme soutenu dès le départ a fini par m’épuiser. Vers la fin de l’année, j’ai ressenti une baisse d’énergie, notamment 
+        en informatique, où je me suis moins investie que lors de mes débuts. Même si ma volonté de bien faire est restée intacte, la fatigue 
+        accumulée m’a freinée. Je réalise aujourd’hui l’importance de prendre du recul et de me reposer pour repartir plus forte en deuxième année.
+
+        Malgré tout, je reste fière de mon parcours cette année. Les projets que j’ai réalisés m’ont beaucoup apporté, car ils ont donné 
+        une dimension concrète à mes apprentissages. C’est précisément cette approche pratique qui m’a motivée à choisir cette formation. 
+        Désormais, je ressens le besoin d’aller encore plus loin, en découvrant la réalité du terrain en entreprise, notamment à travers 
+        une alternance ou un stage. Certes, je n’en ai pas encore trouvé, mais je reste déterminée et active dans mes recherches, convaincue 
+        que cette opportunité finira par se présenter si je continue à persévérer.Cela me permettrait d’affiner mon projet professionnel, de 
+        mettre mes compétences au service de missions concrètes, et de mieux me préparer aux responsabilités du métier que je souhaite 
+        exercer plus tard.
+        </p>
+    </div>
+    </section>
+
+
     <section id="Contact">
         <h2>Mes réseaux</h2>
             <div class="contact-infos" style="text-align:left; color:#8bcbba;">
@@ -549,4 +744,5 @@
 <footer style="text-align:center; padding:2rem 1rem; background-color: rgba(0,0,0,0.3); color:#8bcbba;">
     <p>© 2025 Mariama Diouf — Portfolio personnel</p>
 </footer>
+
 
