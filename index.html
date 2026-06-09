@@ -533,6 +533,7 @@
         </div>
     </section>
 
+    
     <section id="competences">
         <h2>Mes Apprentissages Critiques</h2>
         <div class="competence-list">
@@ -548,13 +549,38 @@
         </div>
     </section>
 
+    
     <section id="bilan">
-        <h2>Mon Bilan de l'Année</h2>
-        <div class="bilan-texte">
-            <p>Mon arrivée à Niort pour débuter cette formation a marqué le début d’une nouvelle étape, aussi enrichissante que stimulante. Malgré les défis initiaux en informatique, ma régularité m'a permis de progresser. Je reste très fière des projets pratiques menés à bien, qui donnent tout leur sens à mes compétences théoriques en statistiques et traitement de la donnée.</p>
+         <div class="tabs-container">
+            <button class="tab-btn active" onclick="openYear(event, 'year_1')">1ere Année</button>
+            <button class="tab-btn" onclick="openYear(event, 'year_2')">2e Année</button>
+            <button class="tab-btn" onclick="openYear(event, 'year_3')">3e Année</button>
         </div>
+        
+        <div id="year_1" class="tab-content">
+            <h2>Mon Bilan de l'année 1 </h2>
+            <div class="bilan-texte">
+                <p>Mon arrivée à Niort pour débuter cette formation a marqué le début d’une nouvelle étape, aussi enrichissante que stimulante. Malgré les défis initiaux en informatique, ma régularité m'a permis de progresser. Je reste très fière des projets pratiques menés à bien, qui donnent tout leur sens à mes compétences théoriques en statistiques et traitement de la donnée.</p>
+            </div>
+        </div>
+        
+        <div id="year_1" class="tab-content">
+            <h2>Mon Bilan de l'année 2 </h2>
+            <div class="bilan-texte">
+                <p></p>
+            </div>
+        </div>
+
+         <div id="year_3" class="tab-content">
+            <h2>Mon Bilan de l'année 3 </h2>
+            <div class="bilan-texte">
+                <p></p>
+            </div>
+        </div>
+        
     </section>
 
+    
     <section id="contact" style="min-height: auto; padding-bottom: 5rem;">
         <h2>Mes Réseaux & Contact</h2>
         <!--<p>N'hésitez pas à me contacter pour échanger sur une opportunité de stage ou d'alternance :</p>-->
