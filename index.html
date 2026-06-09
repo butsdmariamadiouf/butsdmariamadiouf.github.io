@@ -63,15 +63,35 @@
         }
 
         /* --- SECTIONS --- */
-        section {
+        /*section {
             padding: 8rem 8% 5rem;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             box-sizing: border-box;
+        }*/
+
+        section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            padding: 8rem 8% 5rem;
+            background-color: #FAFAFB;
+        
+            transform: rotateY(90deg);
+            opacity: 0;
+            transition: all 0.6s ease;
         }
 
+        section.active {
+            transform: rotateY(0deg);
+            opacity: 1;
+            z-index: 1;
+        }
+            
         h2 {
             font-size: 2.5rem;
             color: #2D3142;
@@ -354,17 +374,18 @@
         <nav>
             <div class="logo">Port<span>folio</span></div>
             <ul class="horizontal-menu">
-                <li><a href="#parcours">À propos</a></li>
-                <li><a href="#formation">Mon Choix</a></li>
-                <li><a href="#projets">Projets</a></li>
-                <li><a href="#competences">Compétences</a></li>
-                <li><a href="#bilan">Bilan</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" onclick="openPage('home')">Accueil</a></li>
+                <li><a href="#" onclick="openPage('parcours')">À propos</a></li>
+                <li><a href="#" onclick="openPage('formation')">Mon Choix</a></li>
+                <li><a href="#" onclick="openPage('projets')">Projets</a></li>
+                <li><a href="#" onclick="openPage('competences')">Compétences</a></li>
+                <li><a href="#" onclick="openPage('bilan')">Bilan</a></li>
+                <li><a href="#" onclick="openPage('contact')">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home" class="hero">
+    <section id="home" class="hero active">
         <div class="hero-content">
             <h1>Bonjour, moi c'est <br><span>MARIAMA DIOUF</span></h1>
             <p class="intro-text">Étudiante en BUT Science des Données, passionnée par les maths, la data et l’analyse.</p>
@@ -566,6 +587,17 @@
             // 3. Afficher l'onglet actuel et ajouter la classe "active" au bouton cliqué
             document.getElementById(yearName).style.display = "block";
             evt.currentTarget.className += " active";
+        }
+
+        function openPage(pageId) {
+            // cacher toutes les sections
+            const sections = document.querySelectorAll("section");
+            sections.forEach(section => {
+                section.classList.remove("active");
+            });
+        
+            // afficher la sélection
+            document.getElementById(pageId).classList.add("active");
         }
     </script>
 </body>
