@@ -80,142 +80,125 @@
         <li>Créer des visualisations dynamiques (tableaux + graphiques)</li>
     </ul>
 
-    <h2> Méthodologie</h2>
+    <h2> ⚙️ Méthodologie et déroulement </h2>
+    <p> Le projet a été réalisé en plusieurs étapes structurées :</p>
+    <h3> 1. 📊 Analyse du jeu de données </h3>
     <p>
-        - Conception UML<br>
-        - Création base de données<br>
-        - Développement PHP<br>
-        - Visualisation JS (graphique)
+        - Exploration du dataset OpenData (format CSV)<br>
+        - Compréhension des variables :(espèce, station, date, densité, méthode de pêche, localisation, etc.)<br>
+        - Sélection des informations pertinentes pour notre application<br>
+        Cette phase nous a permis de définir le modèle de données.
     </p>
 
-⚙️ Méthodologie et déroulement
-Le projet a été réalisé en plusieurs étapes structurées :
-1. 📊 Analyse du jeu de données
-Nous avons commencé par :
+    <h3> 2. 🧩 Conception UML </h3>
+    <p>
+        Réalisation d'un diagramme de cas d’utilisation avec :
 
-explorer le dataset OpenData (format CSV)
-comprendre les variables :
-(espèce, station, date, densité, méthode de pêche, localisation, etc.)
-sélectionner les informations pertinentes pour notre application
+        un acteur principal : l’utilisateur
+        les fonctionnalités :
+        - consulter les données<br>
+        - ajouter / modifier / supprimer des enregistrements<br>
+        - visualiser les statistiques<br>
+        - importer un nouveau fichier<br>
+        Cela nous a servi de base pour structurer l’application.
+    </p>
+    
+    <h3> 3. 🗄️ Création de la base de données (MySQL) </h3>
+    <p>
+        Conception de la base relationnelle avec plusieurs tables, par exemple :
+        - stations (lieux de pêche)<br>
+        - communes<br>
+        - especes<br>
+        - methodes<br>
+        Puis :
+        import du dataset (CSV → MySQL)
+        organisation des relations (clés étrangères)
+        
+        Objectif : stocker efficacement les données OpenData
+    </p>
 
-👉 Cette phase nous a permis de définir le modèle de données.
+    <h3> 4. 💻 Développement du site web </h3>
+    <p>
+        🔹 Front-end (HTML / CSS)
+        - création d’un portail web<br>
+        - mise en place d’une charte graphique<br>
+        - pages explicatives (contexte, données, etc.)<br>
 
-2. 🧩 Conception UML
-Nous avons réalisé un diagramme de cas d’utilisation avec :
+        🔹 Back-end (PHP)
+        - affichage des données (requêtes SQL SELECT)<br>
+        - ajout de données (INSERT)<br>
+        - modification (UPDATE)<br>
+        - suppression (DELETE)<br>   
+    </p>
 
-un acteur principal : l’utilisateur
-les fonctionnalités :
+    <h3> 5. 📈 Visualisation des données (JavaScript / jQuery)</h3>
+    <p>
+        Création d’un tableau de bord interactif avec plusieurs indicateurs :
+        - nombre de pêches par espèce (diagramme en barres) <br>
+        - répartition des méthodes de prospection (camembert) <br>
+        - visualisation des stations sur une carte <br>
+        - 📅 évolution des pêches dans le temps <br>
+        - densité moyenne par espèce
 
-consulter les données
-ajouter / modifier / supprimer des enregistrements
-visualiser les statistiques
-importer un nouveau fichier
-
-
-
-👉 Cela nous a servi de base pour structurer l’application.
-
-3. 🗄️ Création de la base de données (MySQL)
-Nous avons conçu une base relationnelle avec plusieurs tables, par exemple :
-
-stations (lieux de pêche)
-communes
-especes
-peches
-methodes
-
-Puis :
-
-import du dataset (CSV → MySQL)
-organisation des relations (clés étrangères)
-
-👉 Objectif : stocker efficacement les données OpenData
-
-4. 💻 Développement du site web
-🔹 Front-end (HTML / CSS)
-
-création d’un portail web
-mise en place d’une charte graphique
-pages explicatives (contexte, données, etc.)
-
-🔹 Back-end (PHP)
-Implémentation de fonctionnalités dynamiques :
-
-✅ affichage des données (requêtes SQL SELECT)
-✅ ajout de données (INSERT)
-✅ modification (UPDATE)
-✅ suppression (DELETE)
-
-👉 Exemple : gestion des fiches de pêche ou des espèces.
-
-5. 📈 Visualisation des données (JavaScript / jQuery)
-Création d’un tableau de bord interactif avec plusieurs indicateurs :
-
-📊 nombre de pêches par espèce (diagramme en barres)
-🥧 répartition des méthodes de prospection (camembert)
-📍 visualisation des stations sur une carte
-📅 évolution des pêches dans le temps
-🐟 densité moyenne par espèce
-
-👉 Objectif : rendre les données lisibles et exploitables visuellement
-
+        Objectif : rendre les données lisibles et exploitables visuellement
+    </p>
 
 
     
-    <h2> Outils utilisés</h2>
+    <h2> ⚙️ Outils utilisés</h2>
     <p>
         HTML / CSS / PHP / MySQL / JavaScript / jQuery
     </p>
 
-    <h2> Résultats</h2>
+    <h2> 📊 Résultats</h2>
     <p>
-        L'application permet d’afficher des tableaux et des graphiques interactifs.
+        L’application finale permet :
+        Gestion des données
+        
+        consultation des données sous forme de tableau
+        modification en temps réel (CRUD)
+        intégration de nouveaux jeux de données
+        
+        Analyse et visualisation
+        
+        dashboard complet avec plusieurs graphiques
+        compréhension facilitée des données scientifiques
+        mise en évidence de tendances (espèces dominantes, zones actives…)
+        
+        Expérience utilisateur
+        
+        interface claire et moderne
+        navigation simple
+        accès sécurisé
+        
     </p>
 
+     <h2> Compétences développées</h2> 
+     <p>
+        Ce projet nous a permis de développer :
+        
+        développement web full-stack (HTML, CSS, PHP, JS)
+        gestion de base de données MySQL
+        manipulation de données OpenData
+        création de visualisations (dataviz)
+        travail en équipe (répartition des tâches)
+        Le tout dans une collaboration esssentielle pour intégrer toutes les fonctionnalités
+     </p>
 
-📊 Résultats obtenus
-L’application finale permet :
-✅ Gestion des données
+      <h2> Conclusion</h2>   
+      <p>
+        Ce projet constitue une application complète de data visualisation, basée sur un cas réel.
+        Il montre notre capacité à :
+        
+        transformer des données brutes en informations utiles
+        construire une application web structurée
+        répondre à un besoin d’analyse de données environnementales
+      </p>
 
-consultation des données sous forme de tableau
-modification en temps réel (CRUD)
-intégration de nouveaux jeux de données
-
-✅ Analyse et visualisation
-
-dashboard complet avec plusieurs graphiques
-compréhension facilitée des données scientifiques
-mise en évidence de tendances (espèces dominantes, zones actives…)
-
-✅ Expérience utilisateur
-
-interface claire et moderne
-navigation simple
-accès sécurisé
-
-
-🧠 Compétences développées
-Ce projet nous a permis de développer :
-
-développement web full-stack (HTML, CSS, PHP, JS)
-gestion de base de données MySQL
-manipulation de données OpenData
-création de visualisations (dataviz)
-travail en équipe (répartition des tâches)
-
-
+    
     <!-- Exemple image -->
     <img src="dashboard.png" class="image">
-    BInome
-👉 Collaboration essentielle pour intégrer toutes les fonctionnalités.
-    
-Conclusion
-Ce projet constitue une application complète de data visualisation, basée sur un cas réel.
-Il montre notre capacité à :
 
-transformer des données brutes en informations utiles
-construire une application web structurée
-répondre à un besoin d’analyse de données environnementales
 
     
     <h2>📄 Rapport</h2>
