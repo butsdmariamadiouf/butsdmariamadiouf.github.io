@@ -63,15 +63,21 @@
 
     <h2> Contexte</h2>
     <p>
-        Ce projet consiste à développer une application web permettant de gérer
-        et visualiser des données OpenData.
+        Dans le cadre de cette SAÉ, j'ai développé une application web dynamique permettant d’exploiter un jeu de données issu de l’OpenData.
+        Nous avons choisi de travailler sur les données de pêche électrique, disponibles sur data.gouv.fr.
+        Ces données scientifiques permettent d’étudier la biodiversité aquatique (espèces de poissons, densité, lieux de prélèvement, etc.).
+        Le projet a été réalisé en binôme, avec comme objectif principal de :
+        stocker
+        gérer
+        et visualiser des données environnementales réelles
     </p>
 
     <h2> Objectifs</h2>
     <ul>
-        <li>Créer un site web dynamique</li>
-        <li>Connecter une base de données MySQL</li>
-        <li>Afficher des données</li>
+        <li>Concevoir une application web complète (front + back)</li>
+        <li>Mettre en place une base de données relationnelle (MySQL)</li>
+        <li>Permettre une interaction utilisateur (ajout / modification de données)</li>
+        <li>Créer des visualisations dynamiques (tableaux + graphiques)</li>
     </ul>
 
     <h2> Méthodologie</h2>
@@ -82,6 +88,80 @@
         - Visualisation JS (graphique)
     </p>
 
+⚙️ Méthodologie et déroulement
+Le projet a été réalisé en plusieurs étapes structurées :
+1. 📊 Analyse du jeu de données
+Nous avons commencé par :
+
+explorer le dataset OpenData (format CSV)
+comprendre les variables :
+(espèce, station, date, densité, méthode de pêche, localisation, etc.)
+sélectionner les informations pertinentes pour notre application
+
+👉 Cette phase nous a permis de définir le modèle de données.
+
+2. 🧩 Conception UML
+Nous avons réalisé un diagramme de cas d’utilisation avec :
+
+un acteur principal : l’utilisateur
+les fonctionnalités :
+
+consulter les données
+ajouter / modifier / supprimer des enregistrements
+visualiser les statistiques
+importer un nouveau fichier
+
+
+
+👉 Cela nous a servi de base pour structurer l’application.
+
+3. 🗄️ Création de la base de données (MySQL)
+Nous avons conçu une base relationnelle avec plusieurs tables, par exemple :
+
+stations (lieux de pêche)
+communes
+especes
+peches
+methodes
+
+Puis :
+
+import du dataset (CSV → MySQL)
+organisation des relations (clés étrangères)
+
+👉 Objectif : stocker efficacement les données OpenData
+
+4. 💻 Développement du site web
+🔹 Front-end (HTML / CSS)
+
+création d’un portail web
+mise en place d’une charte graphique
+pages explicatives (contexte, données, etc.)
+
+🔹 Back-end (PHP)
+Implémentation de fonctionnalités dynamiques :
+
+✅ affichage des données (requêtes SQL SELECT)
+✅ ajout de données (INSERT)
+✅ modification (UPDATE)
+✅ suppression (DELETE)
+
+👉 Exemple : gestion des fiches de pêche ou des espèces.
+
+5. 📈 Visualisation des données (JavaScript / jQuery)
+Création d’un tableau de bord interactif avec plusieurs indicateurs :
+
+📊 nombre de pêches par espèce (diagramme en barres)
+🥧 répartition des méthodes de prospection (camembert)
+📍 visualisation des stations sur une carte
+📅 évolution des pêches dans le temps
+🐟 densité moyenne par espèce
+
+👉 Objectif : rendre les données lisibles et exploitables visuellement
+
+
+
+    
     <h2> Outils utilisés</h2>
     <p>
         HTML / CSS / PHP / MySQL / JavaScript / jQuery
@@ -92,9 +172,52 @@
         L'application permet d’afficher des tableaux et des graphiques interactifs.
     </p>
 
+
+📊 Résultats obtenus
+L’application finale permet :
+✅ Gestion des données
+
+consultation des données sous forme de tableau
+modification en temps réel (CRUD)
+intégration de nouveaux jeux de données
+
+✅ Analyse et visualisation
+
+dashboard complet avec plusieurs graphiques
+compréhension facilitée des données scientifiques
+mise en évidence de tendances (espèces dominantes, zones actives…)
+
+✅ Expérience utilisateur
+
+interface claire et moderne
+navigation simple
+accès sécurisé
+
+
+🧠 Compétences développées
+Ce projet nous a permis de développer :
+
+développement web full-stack (HTML, CSS, PHP, JS)
+gestion de base de données MySQL
+manipulation de données OpenData
+création de visualisations (dataviz)
+travail en équipe (répartition des tâches)
+
+
     <!-- Exemple image -->
     <img src="dashboard.png" class="image">
+    BInome
+👉 Collaboration essentielle pour intégrer toutes les fonctionnalités.
+    
+Conclusion
+Ce projet constitue une application complète de data visualisation, basée sur un cas réel.
+Il montre notre capacité à :
 
+transformer des données brutes en informations utiles
+construire une application web structurée
+répondre à un besoin d’analyse de données environnementales
+
+    
     <h2>📄 Rapport</h2>
     <a href="rapport_sae3-01.pdf" class="btn" target="_blank">
         Voir le rapport PDF
