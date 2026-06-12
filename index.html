@@ -804,7 +804,7 @@
     
 
     <script>
-         /*function openYear(evt, yearName) {
+         function openYear(evt, yearName) {
             // 1. Cacher tous les onglets de projets
             var tabcontent = document.getElementsByClassName("tab-content");
             for (var i = 0; i < tabcontent.length; i++) {
@@ -820,8 +820,9 @@
             // 3. Afficher l'onglet actuel et ajouter la classe "active" au bouton cliqué
             document.getElementById(yearName).style.display = "block";
             evt.currentTarget.className += " active";
-        } */
-        function openYear(evt, yearName) {
+        } 
+        
+        /*function openYear(evt, yearName) {
             const parent = evt.currentTarget.closest("section");
         
             const tabcontent = parent.querySelectorAll(".tab-content");
@@ -832,7 +833,7 @@
         
             parent.querySelector("#" + yearName).style.display = "block";
             evt.currentTarget.classList.add("active");
-        }
+        }*/
 
         function openPage(pageId) {
             // cacher toutes les sections
