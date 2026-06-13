@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 4.02 : Intégration de données dans un Datawarehouse (SportOne)</title>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFB;
+            color: #2D3142;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 3rem;
+        }
+
+        h1 {
+            color: #6E44FF;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            margin-top: 2.5rem;
+            color: #6E44FF;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            color: #2D3142;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            border-left: 3px solid #B57EDC;
+            padding-left: 0.5rem;
+        }
+        
+        p {
+            line-height: 1.7;
+            color: #5C6175;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            color: #5C6175;
+        }
+
+        strong {
+            color: #2D3142;
+        }
+
+        .highlight-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #6E44FF;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            background: #6E44FF;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(110, 68, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8B5CF6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 68, 255, 0.3);
+        }
+
+        .code-block {
+            background-color: #2D3142;
+            color: #F8F8F2;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .image-container {
+            background-color: #FFFFFF;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin: 1.5rem 0;
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: transparent;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+        }
+
+        .back-link:hover {
+            background: #FAFAFB;
+            color: #6E44FF;
+            border-color: #6E44FF;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SAÉ 4.02 : Intégration de données dans un Datawarehouse</h1>
+
+    <h2>Contexte</h2>
+    <p>
+        <strong>SportOne</strong> est une entreprise internationale de vente au détail d’articles de sport et de plein air, s'appuyant à la fois sur un réseau de magasins physiques mondiaux et sur un site e-commerce. Face à la multiplication de ses canaux, l'entreprise accumule un volume massif de données de production hétérogènes (période 2017-2022).
+    </p>
+    <p>
+        L'objectif de cette SAÉ était de concevoir, d'alimenter et d'exploiter un <strong>entrepôt de données (Data Warehouse) complet</strong> à l'aide d'une architecture en étoile, pour centraliser ces informations silotées et en extraire des insights décisionnels actionnables à forte valeur ajoutée.
+    </p>
+
+    <h2>Objectifs et Organisation de l'Équipe</h2>
+    <p> Pour mener à bien ce projet d'envergure, notre groupe s'est structuré avec une répartition rigoureuse via un suivi de projet sous <strong>Trello</strong> :</p>
+    <ul>
+        <li><strong>Paul (Talend ETL) :</strong> Extraction, nettoyage, jointures complexes et chargement des données sources vers les dimensions cibles.</li>
+        <li><strong>Abderrahman (Python & Time Dimension) :</strong> Génération par script de la dimension temporelle, création des séquences de dates et des dictionnaires de traduction.</li>
+        <li><strong>Marzouk (SQL & Injection) :</strong> Création de l'infrastructure relationnelle sur Oracle SQL Developer et validation de l'intégrité de la base.</li>
+        <li><strong>Mariama (Scrum Master & Power BI) :</strong> Gestion des livrables, coordination de l'équipe, rédaction et modélisation de la suite complète de tableaux de bord.</li>
+    </ul>
+
+    <h2>Démarche Technique et Pipeline de Données</h2>
+
+    <h3>1. Modélisation et Processus ETL sous Talend Open Studio</h3>
+    <p>
+        Le premier grand défi résidait dans l'hétérogénéité des formats sources : fichiers <code>.mdb</code> (Access), tables <code>.csv</code>, classeurs Excel et fichiers plats <code>.txt</code>. Nous avons modélisé manuellement un <strong>Schéma en Étoile</strong> structuré autour d'une table centrale <code>FAIT_Ventes</code> et de 5 dimensions clés :
+    </p>
+    
+    <ul>
+        <li><strong>DIM_Client :</strong> Fusion des données clients, types de clients (MDB) et noms de pays. Utilisation d'un composant <code>tMap</code> avec une variable personnalisée <code>DatePropre</code> pour homogénéiser les formats de dates altérés (mix de tirets et doubles slashes) afin de calculer l'âge exact de chaque individu.</li>
+        <li><strong>DIM_Employe :</strong> Jointure complexe au niveau de l'ID employé pour croiser la structure organisationnelle, l'unique fichier Excel RH et les niveaux d'organisation issus du fichier MDB.</li>
+        <li><strong>DIM_Geographie :</strong> Consolidation des fichiers textuels (1, 2, 3, 6 et 8.txt) en prenant le fichier 8 comme table principale pour recréer une hiérarchie géographique propre (Continent, Pays, Ville).</li>
+        <li><strong>DIM_Produit :</strong> Traitement du catalogue <code>product_list.csv</code> et des fournisseurs. Pour isoler les catégories et sous-catégories, la source a été injectée quatre fois en entrée du <code>tMap</code> pour contourner le formatage scientifique erroné des ID (ex: <code>1,01E+11</code>).</li>
+        <li><strong>FAIT_Ventes :</strong> Centralisation des mesures quantitatives (quantités, prix unitaires, remises) à partir de la liaison croisée entre commandes et lignes de paniers.</li>
+    </ul>
+
+    <h3>2. Scripting Python et Ingestion Oracle SQL</h3>
+    <p>
+        Les données nettoyées exportées par Talend ne pouvaient pas être digérées directement par le serveur Oracle universitaire. Pour contourner les limites d'importation graphique et les coupures de connexion (timeouts) dues à la forte volumétrie de la table de faits, nous avons développé une suite d'automatisation en <strong>Python</strong> :
+    </p>
+    
+    <div class="code-block">
+# Extrait conceptuel de la moulinette de segmentation Python
+import pandas as pd
+
+def segmenter_et_generer_sql(csv_path, table_name, chunk_size=50000):
+    # Lit et découpe le fichier volumineux issu de Talend
+    for i, chunk in enumerate(pd.read_csv(csv_path, chunksize=chunk_size)):
+        with open(f"artifacts_{table_name}_part{i}.sql", "w") as f:
+            for index, row in chunk.iterrows():
+                f.write(f"INSERT INTO {table_name} VALUES ({row['id']}, ...);\n")
+    print(f"Segmentation de {table_name} terminée avec succès.")
+    </div>
+
+    <p>
+        Le script découpait automatiquement le bloc monolithique en fichiers plus légers et générait dynamiquement un script maître d'orchestration baptisé <code>LANCER_TOUT.sql</code>. 
+    </p>
+    <div class="highlight-box">
+        <strong>Analyse Critique et Perspective :</strong> Bien que robuste, cette approche basée sur des fichiers physiques intermédiaires ajoutait une latence d'écriture sur disque. Une optimisation future consisterait à passer sur une injection directe <em>"In-Memory"</em> via une connexion native au serveur, permettant également de logger les lignes erronées dans un fichier de rejets sans bloquer le pipeline d'intégration.
+    </div>
+
+    <h2>Restitution Décisionnelle sous Power BI</h2>
+    <p>
+        Après l'enrichissement des données dans Power Query (création des segments de clientèle, des tranches d'âge et calcul du délai logistique), nous avons structuré notre analyse interactive autour de <strong>5 thématiques stratégiques majeures</strong> :
+    </p>
+
+    <h3>1. Stratégie Client et Fidélisation</h3>
+    <p>
+        Mise en évidence d'une base consolidée de 89,75 K clients à l'équilibre parfait entre genres (55,21 % d'hommes, 44,79 % de femmes). La segmentation montre un cœur de cible adulte (36-60 ans) totalisant plus de 41 000 clients à fort pouvoir d'achat. L'analyse révèle également que les membres "Gold" et actifs génèrent le plus fort volume de commandes, confirmant l'importance de renforcer les programmes de fidélité.
+    </p>
+
+    <h3>2. Performance Commerciale et Synergie RH</h3>
+    <p>
+        SportOne affiche un chiffre d’affaires global de <strong>59,26 M€</strong>. L'analyse croisée révèle que l’Europe est le principal moteur commercial (plus de 40 M€) mais concentre la masse salariale la plus lourde. Les canaux numériques (Internet/Catalog Sales) se détachent comme les plus rentables (17,23 M€), suivis des Sales Rep I (15,77 M€), tandis que la rentabilité des stagiaires ou intérimaires reste marginale.
+    </p>
+
+    <h3>3. Analyse Produit-Panier (Cross-Selling)</h3>
+    <p>
+        Sur un volume massif de 416,99 K commandes, le socle des ventes repose sur trois catégories reines : les vêtements (Clothes - 79 K), les articles de sport divers (Assorted Sports - 60 K) et les chaussures (Shoes - 59 K). Le Canada se positionne comme le pays affichant le panier moyen de commandes le plus engagé par client.
+    </p>
+
+    <h3>4. Logistique et Implantation Géographique</h3>
+    <p>
+        La chaîne logistique montre une réactivité remarquable avec des délais d'expédition moyens très courts, oscillant entre 0,89 jour (Canada) et 1,51 jour (Danemark). Cependant, la domination de l'axe franco-allemand s'accompagne d'une politique de démarque agressive (taux de remise grimpant jusqu'à 60 %), alertant sur une possible érosion des marges nettes.
+    </p>
+
+    <h3>5. Analyses Avancées & Forecasting (IA)</h3>
+    <p>
+        En exploitant l'arbre de décomposition de Power BI, nous avons prouvé que la catégorie "Shoes" commandée par le segment "Gold Active" en Allemagne constituait la niche de rentabilité absolue de l'entreprise. Enfin, l'intégration d'un modèle prédictif (Forecasting) sur le chiffre d'affaires projette une tendance globalement stable pour les deux années à venir (2023-2024), tout en alertant sur l'élargissement des intervalles de confiance en fin de période.
+    </p>
+
+    <!-- Remplacement par le conteneur d'image réel du projet -->
+    <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Dashboard Décisionnel Power BI" class="image">
+        <div class="image-caption"><i class="fas fa-chart-line"></i> Figure 1 : Modélisation des performances mondiales et prévisions de ventes SportOne sous Power BI</div>
+    </div>
+
+    <h2>Conclusion et Perspectives Stratégiques</h2>
+    <p>
+        Ce projet démontre qu'une intégration de données rigoureuse est le socle indispensable à tout déploiement de Business Intelligence fiable. L'infrastructure mise en place a permis de transformer un ensemble de fichiers disparates et mal organisés en un outil d'aide à la décision robuste. Pour soutenir sa croissance future, SportOne devrait réduire sa dépendance aux remises agressives et piloter ses stocks en temps réel en couplant ce modèle à des données externes, comme les tendances climatiques locales ou les flux des réseaux sociaux.
+    </p>
+
+    <br>
+
+    <!-- Boutons de retour et accès aux livrables -->
+    <a href="#" class="btn" target="_blank"><i class="fas fa-database"></i> Consulter les scripts SQL & Python</a>
+    <br><br>
+    <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
+
+</div>
+
+</body>
+</html>
