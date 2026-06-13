@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 4.03 : SIG — Étude Géographique du Réseau McDonald's</title>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFB;
+            color: #2D3142;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 3rem;
+        }
+
+        h1 {
+            color: #6E44FF;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            margin-top: 2.5rem;
+            color: #6E44FF;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            color: #2D3142;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            border-left: 3px solid #B57EDC;
+            padding-left: 0.5rem;
+        }
+        
+        p {
+            line-height: 1.7;
+            color: #5C6175;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            color: #5C6175;
+        }
+
+        strong {
+            color: #2D3142;
+        }
+
+        .highlight-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #6E44FF;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            background: #6E44FF;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(110, 68, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8B5CF6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 68, 255, 0.3);
+        }
+
+        .grid-tables {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .table-container {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: #FAFAFB;
+            color: #6E44FF;
+            text-align: left;
+            padding: 0.5rem;
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        td {
+            padding: 0.5rem;
+            border-bottom: 1px solid #EEEFF2;
+            color: #5C6175;
+        }
+
+        .image-container {
+            background-color: #FFFFFF;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin: 1.5rem 0;
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: transparent;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+        }
+
+        .back-link:hover {
+            background: #FAFAFB;
+            color: #6E44FF;
+            border-color: #6E44FF;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SAÉ 4.03 : Système d'Information Géographique (SIG)</h1>
+
+    <h2>Contexte Stratégique</h2>
+    <p>
+        Dans le cadre du développement du réseau de franchise <strong>McDonald's France</strong>, la direction générale (représentée par MM. GARNIER François et BUREAU Laurent) a sollicité une étude géomatique approfondie du territoire de la France Métropolitaine. L'objectif consiste à modéliser et analyser les structures d'implantation existantes afin de minimiser le risque financier des nouveaux investisseurs et de détecter de nouvelles opportunités de marché.
+    </p>
+    <p>
+        Ce projet s'appuie sur l'exploitation d'une base de données spatiale géoréférencée au format Geopackage (<code>EVALUATION.gpkg</code>) contenant les découpages administratifs des communes, des départements et l'ensemble des points d'accès aux mobilités urbaines.
+    </p>
+
+    <h2>Pourquoi le SIG plutôt qu'un outil statistique froid ?</h2>
+    <p>
+        Là où un logiciel statistique classique traite des lignes de données indépendantes et des moyennes déconnectées du terrain, le <strong>SIG (QGIS)</strong> intègre la notion fondamentale de <strong>topologie et de géométrie</strong>.
+    </p>
+    <ul>
+        <li><strong>Avantages clés :</strong> Le SIG comprend les notions de contiguïté (la commune A touche la commune B), permet la visualisation immédiate des flux de chalandise d'un coup d'œil, et réalise des jointures spatiales complexes permettant de calculer des zones tampons et d'identifier les "zones blanches" (fortes populations isolées des transports).</li>
+        <li><strong>Rigueur géométrique :</strong> Le SIG exige une maîtrise stricte des projections. L'ensemble de l'étude a été paramétré sous le système de projection national officiel <strong>RGF93 / Lambert 93 (EPSG:2154)</strong> pour garantir des calculs de distances métriques rigoureusement exacts.</li>
+    </ul>
+
+    <h2>Analyses et Traitements de Données Spatiales</h2>
+
+    <h3>1. Implantation Nationale et Top Villes</h3>
+    <p>
+        En important la couche de points après conversion de coordonnées (WGS 84 vers Lambert 93), l'extension <code>Group Stats</code> sous QGIS a permis de quantifier l'implantation par commune en comptant le volume d'adresses uniques. Un export vers Excel a mis en lumière un Top des villes les plus équipées, caractérisé par une égalité parfaite en fin de classement (générant un Top 16 ex-æquo).
+    </p>
+
+    <div class="grid-tables">
+        <div class="table-container">
+            <strong>Top Métropoles (Extrait)</strong>
+            <table>
+                <thead>
+                    <tr><th>Rang</th><th>Ville</th><th>Restaurants</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Paris</td><td>Niveau Maximal</td></tr>
+                    <tr><td>2</td><td>Marseille</td><td>Forte Densité</td></tr>
+                    <tr><td>3</td><td>Lyon</td><td>Forte Densité</td></tr>
+                    <tr><td>...</td><td>...</td><td>...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-container">
+            <strong>Analyse Temporelle</strong>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+                Le croisement des années d'ouverture par région via des graphiques croisés dynamiques montre une expansion continue depuis les années 1980, avec une accélération marquée en Île-de-France et dans le Sud-Est.
+            </p>
+        </div>
+    </div>
+
+    <h3>2. Analyse de Densité Départementale</h3>
+    <p>
+        Afin de repérer les départements les mieux lotis, nous avons calculé la densité de restaurants ramenée à la population globale. Pour obtenir un indicateur lisible et standardisé, la formule suivante a été appliquée :
+        $$\text{Densité} = \left( \frac{\text{Nombre de McDonald's}}{\text{Population du Département}} \right) \times 100\,000$$
+    </p>
+    <p>
+        La table attributaire résultant de la jointure avec le code <code>insee_dep</code> a été représentée via une <strong>symbologie graduée en 8 classes cohérentes</strong> pour cartographier précisément la saturation du marché français.
+    </p>
+
+    <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80" alt="Carte de densité McDonald's France" class="image">
+        <div class="image-caption"><i class="fas fa-map-marked-alt"></i> Carte 1 : Distribution spatiale et densité des franchises McDonald's par 100 000 habitants</div>
+    </div>
+
+    <h3>3. Proximité et Intermodalité Ferroviaire</h3>
+    <p>
+        Le critère d'accessibilité étant un pilier de la stratégie de l'enseigne ("célérité et commodité"), nous avons appliqué des <strong>zones tampons (Buffers) de 500 mètres</strong> autour des couches de transport avec regroupement des résultats géométriques superposés. Les requêtes spatiales révèlent :
+    </p>
+    <ul>
+        <li><strong>149 restaurants</strong> situés à moins de 500m d'une gare SNCF nationale (ciblage tactique des hubs à fort trafic).</li>
+        <li><strong>342 restaurants</strong> à proximité immédiate d'une station de Métro (RATP), confirmant l'ultra-densification urbaine.</li>
+        <li>Un focus filtré sur la région <strong>Île-de-France (Code INSEE REG 11)</strong> dénombre précisément 57 établissements connectés aux gares du réseau IDFM.</li>
+    </ul>
+
+    <h2>Focus Régional : L'Ex Poitou-Charentes (Départements 16, 17, 79, 86)</h2>
+    <p>
+        Pour l'étude locale du bassin de consommation des quatre départements cibles, travailler à l'échelon des polygones départementaux bruts aurait faussé l'analyse. Une <strong>zone de chalandise de 15 km</strong> étant une entité infra-départementale, nous avons extrait les <strong>centroïdes des communes</strong> (centres administratifs de population).
+    </p>
+    <p>
+        En générant des tampons de 15 km autour de chaque restaurant et en réalisant une <em>jointure spatiale par localisation résumée</em>, nous avons calculé la somme réelle de la population contenue dans chaque rayon d'action.
+    </p>
+
+    <div class="highlight-box">
+        <strong>Gestion de la Cannibalisation et Choix Méthodologique :</strong><br>
+        Pour éviter le chevauchement et la double comptabilisation des populations situées entre deux établissements proches, il aurait été possible de modéliser des <strong>Polygones de Voronoï</strong> afin de définir des frontières géométriques d'exclusivité absolue. Cependant, nous avons volontairement conservé les intersections pour évaluer le bassin de vie théorique de chaque point de vente et identifier visuellement les zones de forte concurrence interne.
+    </div>
+
+    <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1524661135339-9140b00787e3?auto=format&fit=crop&w=900&q=80" alt="Cercles proportionnels Poitou-Charentes" class="image">
+        <div class="image-caption"><i class="fas fa-bullseye"></i> Carte 2 : Analyse des zones de chalandise par cercles proportionnels en ex Poitou-Charentes</div>
+    </div>
+
+    <h2>Perspectives Stratégiques pour la Direction</h2>
+    <p>
+        Cette étude démontre la puissance du couplage entre géomatique et décisionnel. Pour optimiser les futures implantations des franchisés, nous suggérons deux axes complémentaires :
+    </p>
+    <ul>
+        <li><strong>Analyse concurrentielle :</strong> Intégrer les couches spatiales de la concurrence directe (Burger King, Quick) pour mesurer les parts de marché capturées au sein des zones d'exclusivité.</li>
+        <li><strong>Géomarketing prédictif :</strong> Croiser ces périmètres avec les flux routiers et de transport en temps réel pour affiner les performances prévisibles des canaux "Drive" et de livraison à domicile.</li>
+    </ul>
+
+    <br>
+
+    <a href="#" class="btn" target="_blank"><i class="fas fa-download"></i> Télécharger le rapport SIG complet</a>
+    <br><br>
+    <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
+
+</div>
+
+</body>
+</html>
