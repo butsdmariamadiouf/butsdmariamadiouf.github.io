@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio — Mariama Diouf </title>
+    <title>Portfolio — Mariama Diouf</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ---- THÈME GLOBAL BLANC & BLEUE --- */
+        /* ---- THÈME GLOBAL BLANC & BLEU --- */
         html, body {
             margin: 0;
             padding: 0;
             font-family: 'Inter', 'Segoe UI', sans-serif;
-            background-color: #FAFAFB; /*Fond blanc très légèrement grisé pour le relief */
-            /*color: #067b8e; /* Texte sombre pour un super contraste *
-            scroll-behavior: smooth;
+            background-color: #FAFAFB; 
+            height: 100vh;
+            overflow: hidden; /* Désactive complètement le scroll global du site */
         }
 
         /* --- NAVIGATION --- */
@@ -36,11 +36,11 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #6E44FF; /* Violet Principal */
+            color: #6E44FF; 
         }
 
         .logo span {
-            color: #B57EDC; /* Mauve secondaire */
+            color: #B57EDC; 
         }
 
         .horizontal-menu {
@@ -58,47 +58,47 @@
             transition: color 0.3s;
         }
 
-        .horizontal-menu li a:hover {
+        .horizontal-menu li a:hover,
+        .horizontal-menu li a.active-menu {
             color: #6E44FF;
         }
 
-        /* --- SECTIONS --- */
-        
+        /* --- SECTIONS (Système de pages fixes) --- */
         section {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            min-height: 100vh;
-            padding: 8rem 8% 5rem;
+            height: 100vh;
+            padding: 7rem 8% 2rem;
             background-color: #FAFAFB;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-        
-            /*transform: rotateY(90deg);
-            opacity: 0;
-            transition: all 0.6s ease;*/
-        }
-
-        /*section:not(.active) {
-            display: none;
-        }*/
-
-        /*section {
-            transition: transform 0.6s ease, opacity 0.6s ease;
-        }*/
+            justify-content: flex-start;
+            box-sizing: border-box;
             
-        section.active {
-            transform: rotateY(0deg);
-            opacity: 1;
+            /* Gestion de l'affichage par défaut : masqué */
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+            overflow-y: auto; /* Permet le scroll UNIQUEMENT à l'intérieur d'une page si son contenu est trop long */
+            transition: opacity 0.4s ease, visibility 0.4s ease;
             z-index: 1;
         }
             
+        /* Quand la section reçoit la classe .active, elle apparaît */
+        section.active {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+            z-index: 10;
+        }
+
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #2D3142;
-            margin-bottom: 2rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
             position: relative;
         }
 
@@ -117,6 +117,7 @@
             flex-direction: row;
             align-items: center;
             gap: 4rem;
+            justify-content: center;
         }
 
         .hero-content {
@@ -149,14 +150,6 @@
             justify-content: center;
         }
 
-        .hero-image img {
-            max-width: 80%;
-            height: auto;
-            border-radius: 30px; /* Coins arrondis modernes au lieu du cercle */
-            box-shadow: 0 20px 40px rgba(110, 68, 255, 0.15);
-            border: 4px solid #FFFFFF;
-        }
-
         /* --- BOUTONS --- */
         .btn {
             display: inline-block;
@@ -180,22 +173,14 @@
         .parcours-item {
             display: flex;
             align-items: center;
-            margin: 40px 0;
+            margin: 20px 0;
             gap: 40px;
-        }
-
-        .parcours-img {
-            width: 220px;
-            height: 220px;
-            border-radius: 20px;
-            object-fit: cover;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
         .parcours-texte {
             background-color: #FFFFFF;
             color: #2D3142;
-            padding: 30px;
+            padding: 25px;
             border-radius: 20px;
             flex: 1;
             line-height: 1.7;
@@ -207,15 +192,7 @@
             display: flex;
             align-items: center;
             gap: 30px;
-            margin: 40px 0;
-        }
-
-        .parcours-img-double {
-            width: 200px;
-            height: 200px;
-            border-radius: 20px;
-            object-fit: cover;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin: 20px 0;
         }
 
         /* --- SYSTEME D'ONGLETS (PROJETS) --- */
@@ -223,11 +200,11 @@
             display: flex;
             justify-content: center;
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .tab-btn {
-            padding: 0.8rem 2.5rem;
+            padding: 0.6rem 2rem;
             font-size: 1rem;
             font-weight: 600;
             border: 2px solid #E2E8F0;
@@ -251,32 +228,26 @@
         }
 
         .tab-content {
-            display: none; /* Caché par défaut */
-            animation: fadeIn 0.5s ease-in-out forwards;
+            display: none; 
         }
 
         .tab-content.active {
-            display: block;  /* Visible quand actif */
+            display: block;  
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- GRILLE DES CADRANS DE PROJETS --- */
+        /* --- GRILLE DES PROJETS --- */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding-bottom: 2rem;
         }
 
-        /* LE CADRAN DE CHAQUE PROJET */
         .project-card {
             background-color: #FFFFFF;
             border: 1px solid #EEEFF2;
             border-radius: 20px;
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
             transition: all 0.3s ease;
             display: flex;
@@ -293,7 +264,7 @@
         .project-card h3 {
             color: #6E44FF;
             margin-top: 0;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
         }
 
@@ -301,15 +272,13 @@
             color: #5C6175;
             font-size: 0.95rem;
             line-height: 1.6;
-            text-align: justify;
         }
 
-        /* Badge ou zone future pour la dataviz */
         .project-visual-placeholder {
             margin-top: 1rem;
             background-color: #FAFAFB;
             border: 1px dashed #B57EDC;
-            padding: 1rem;
+            padding: 0.8rem;
             border-radius: 12px;
             text-align: center;
             font-size: 0.85rem;
@@ -317,38 +286,26 @@
             font-weight: 600;
         }
 
-        /* --- APPRENTISSAGES CRITIQUES --- */
+        /* --- FORMATION & COMPÉTENCES --- */
         .competence-list {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
         .competence-item {
             background-color: #FFFFFF;
             border-left: 5px solid #6E44FF;
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 2rem;
             border-radius: 0 20px 20px 0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.01);
-        }
-
-        /* --- BILAN --- */
-        .bilan-texte {
-            background-color: #FFFFFF;
-            color: #2D3142;
-            padding: 40px;
-            border-radius: 25px;
-            line-height: 1.8;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-            border: 1px solid #EEEFF2;
-            text-align: justify;
         }
 
         /* --- SOCIALS & CONTACT --- */
         .socials {
             display: flex;
             gap: 1.5rem;
-            margin-top: 1rem;
+            margin: 1rem 0;
         }
 
         .socials a {
@@ -364,10 +321,10 @@
         /* --- RESPONSIVE --- */
         @media screen and (max-width: 768px) {
             .hero { flex-direction: column; text-align: center; }
-            .hero-image img { max-width: 60%; }
-            .horizontal-menu { display: none; } /* On pourra ajouter un menu burger plus tard */
+            .horizontal-menu { display: none; } 
             .parcours-item, .parcours-item-double { flex-direction: column; text-align: center; }
             .tabs-container { flex-direction: column; gap: 0.5rem; }
+            section { padding-top: 6rem; }
         }
     </style>
 </head>
@@ -377,26 +334,23 @@
         <nav>
             <div class="logo">Port<span>folio</span></div>
             <ul class="horizontal-menu">
-                <li><a href="#" onclick="openPage('home')"> Accueil</a></li>
-                <li><a href="#" onclick="openPage('parcours')">À propos</a></li>
-                <li><a href="#" onclick="openPage('formation')">Mon Choix</a></li>
-                <li><a href="#" onclick="openPage('projets')">Projets</a></li>
-                <li><a href="#" onclick="openPage('competences')">Compétences</a></li>
-                <li><a href="#" onclick="openPage('bilan')">Bilan</a></li>
-                <li><a href="#" onclick="openPage('contact')">Contact</a></li>
+                <li><a href="#" class="active-menu" onclick="openPage('home', event)">Accueil</a></li>
+                <li><a href="#" onclick="openPage('parcours', event)">À propos</a></li>
+                <li><a href="#" onclick="openPage('formation', event)">Mon Choix</a></li>
+                <li><a href="#" onclick="openPage('projets', event)">Projets</a></li>
+                <li><a href="#" onclick="openPage('competences', event)">Compétences</a></li>
+                <li><a href="#" onclick="openPage('contact', event)">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home" class="hero active">
+    <!-- ACCUEIL -->
+    <section id="home" class="active">
         <div class="hero-content">
             <h1>Bonjour, moi c'est <br><span>MARIAMA DIOUF</span></h1>
             <p class="intro-text">Étudiante en BUT Science des Données, passionnée par les maths, la data et l’analyse.</p>
-            <!--<a href="#contact" class="btn">Me contacter</a>-->
         </div>
-        <div class="hero-image">
-            <!--<img src="Image4.jpg" alt="MARIAMA DIOUF">-->
-        </div>
+        <div class="hero-image"></div>
     </section>
 
     <!-----------------------   A propos de moi ---------------->
