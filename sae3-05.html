@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 3.05 : Étude par Sondage — Assistance Panne 0 km</title>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFB;
+            color: #2D3142;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 3rem;
+        }
+
+        h1 {
+            color: #6E44FF;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            margin-top: 2.5rem;
+            color: #6E44FF;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            color: #2D3142;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        p {
+            line-height: 1.7;
+            color: #5C6175;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            color: #5C6175;
+        }
+
+        strong {
+            color: #2D3142;
+        }
+
+        .highlight-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #6E44FF;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            background: #6E44FF;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(110, 68, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8B5CF6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 68, 255, 0.3);
+        }
+
+        .image-container {
+            background-color: #FFFFFF;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin: 1.5rem 0;
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: transparent;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+        }
+
+        .back-link:hover {
+            background: #FAFAFB;
+            color: #6E44FF;
+            border-color: #6E44FF;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SAÉ 3.05 : Étude par Sondage</h1>
+
+    <h2>Contexte</h2>
+    <p>
+        Dans le cadre de cette SAÉ, j'ai accompagné la société d’assurance <strong>ASSURTOUT</strong> dans l'analyse de faisabilité commerciale d’une nouvelle offre : l’option d'assurance auto <strong>« Assistance Panne 0 km »</strong> (supprimant la franchise kilométrique actuelle de 50 km). 
+    </p>
+    <p>
+        L'objectif était d'analyser le portefeuille client global à l'aide de techniques d'échantillonnage, puis de traiter les données d'une enquête de terrain afin d'estimer précisément le <strong>taux d'intention d'achat</strong> de l'option ainsi que la <strong>distance moyenne domicile-travail</strong> des assurés. Ce projet a été entièrement réalisé sur <strong>Microsoft Excel</strong> à partir de deux fichiers de données distincts.
+    </p>
+
+    <h2>Objectifs</h2>
+    <ul>
+        <li><strong>Maîtriser les plans de sondage :</strong> Réaliser et comparer un sondage aléatoire simple et un tirage empirique.</li>
+        <li><strong>Évaluer la précision :</strong> Calculer la marge d'erreur maximale et les intervalles de confiance (au risque $\alpha = 5\%$).</li>
+        <li><strong>Vérifier la représentativité :</strong> Comparer la structure de la population de l'enquête à celle de la population de référence.</li>
+        <li><strong>Redresser un échantillon biaisé :</strong> Mettre en œuvre une méthode de post-stratification par calcul de coefficients de pondération.</li>
+    </ul>
+
+    <h2>Méthodologie et démarche sur Excel</h2>
+
+    <h3>1. Échantillonnage sur le portefeuille global (base1_client_auto_init)</h3>
+    <p>
+        À partir du fichier initial contenant l'ensemble du portefeuille d'assurés (10 000 lignes), nous avons extrait deux échantillons distincts pour étudier l'impact de la taille de l'échantillon sur la précision :
+    </p>
+    <ul>
+        <li>
+            <strong>Échantillon 1 — Tirage Aléatoire Simple ($f = 2\%$ soit $n = 2000$) :</strong> Pour éviter tout biais de sélection, nous avons utilisé la méthode d'attribution de poids aléatoires. J'ai ajouté une colonne dédiée en appliquant la formule Excel <code>=ALEA()</code> sur chaque ligne. Ensuite, j'ai trié le tableau par ordre décroissant sur cette colonne afin de sélectionner les 2 000 lignes ayant obtenu le "poids aléatoire" le plus fort.
+        </li>
+        <li>
+            <strong>Échantillon 2 — Tirage empirique de commodité ($n = 500$) :</strong> J'ai extrait directement les 500 premières lignes brutes du fichier de départ, sans processus de randomisation (sans formule ALEA).
+        </li>
+    </ul>
+
+    <div class="highlight-box">
+        <strong>Analyse comparative de la précision :</strong> <br>
+        Pour chaque échantillon, l'analyse de la distribution a été effectuée à l'aide de Tableaux Croisés Dynamiques (TCD). Afin de mesurer la précision la plus défavorable dans l'estimation de l'intention d'achat, nous avons fixé le paramètre de proportion au cas le plus pénalisant ($p = 0,5$). 
+    </div>
+
+    <div class="image-container">
+        <img src="AdobeExpressPhotos_86ba1396db3b4e26976900b4a16c1055_CopyEdited.png" alt="Analyse des échantillons de sondage et calculs des marges d'erreur" class="image">
+        <div class="image-caption"><i class="fas fa-calculator"></i> Figure 1 : Calcul des marges d'erreur ($e$) et Intervalles de Confiance sur Excel</div>
+    </div>
+
+    <p>
+        <strong>Conclusion de l'échantillonnage :</strong> Comme le montrent nos résultats, la marge d'erreur de l'Échantillon 2 ($e_2 = 0,022$) est le double de celle de l'Échantillon 1 ($e_1 = 0,011$). L'Échantillon 1 est 4 fois plus grand en taille, ce qui confirme mathématiquement que <strong>plus la taille de l'échantillon est élevée, plus la marge d'erreur diminue et plus l'estimation gagne en précision</strong>.
+    </p>
+
+    <h3>2. Analyse des répondants et Redressement (base2_repondant_enquete_panne0km)</h3>
+    <p>
+        Dans la deuxième phase, nous avons analysé le fichier des répondants réels à l'enquête. L'objectif était de s'assurer que cet échantillon de répondants reflétait fidèlement la population globale des assurés sur plusieurs variables clés (tranche d'âge, zone de circulation, etc.).
+    </p>
+    <ul>
+        <li>
+            <strong>Mise en évidence du biais :</strong> À l'aide de TCD, j'ai extrait les structures de l'échantillon de l'enquête pour les comparer avec celles de la population globale. En observant la variable <em>Zone de circulation</em>, nous avons constaté un écart majeur supérieur au seuil critique des 5 points.
+        </li>
+    </ul>
+
+    <div class="image-container">
+        <img src="AdobeExpressPhotos_f0afab6300e04785a7055be65dfd5a15_CopyEdited.png" alt="Comparaison des populations d'enquête et ensemble et calcul des coefficients de pondération" class="image">
+        <div class="image-caption"><i class="fas fa-balance-scale"></i> Figure 2 : Calcul des coefficients de redressement (Pondération)</div>
+    </div>
+
+    <ul>
+        <li>
+            <strong>Calcul des coefficients de redressement :</strong> Les ruraux ("Campagne") étant fortement sous-représentés dans l'enquête ($18,95\%$) par rapport à la réalité de l'ensemble du portefeuille ($8,00\%$), et inversement pour les citadins ("Ville"), un redressement par post-stratification a été indispensable. J'ai calculé le coefficient multiplicateur pour chaque strate via le rapport : <br>
+            $$\text{Coeff} = \frac{\% \text{ Population Ensemble}}{\% \text{ Population Enquête}}$$
+            Les coefficients obtenus (ex: $1,36$ pour la Ville, $0,42$ pour la Campagne) ont été appliqués à une colonne "Poids" dans le fichier Excel pour rééquilibrer la voix de chaque répondant.
+        </li>
+    </ul>
+
+    <h2>Résultats globaux après redressement</h2>
+    <p>
+        Une fois la structure redressée et recalée sur la population de référence grâce à l'application des coefficients de poids dans nos TCD, nous avons pu générer les indicateurs finaux fiables.
+    </p>
+
+    <div class="image-container">
+        <img src="image_e1c53f.png" alt="Tableaux Croisés Dynamiques finaux redressés et calcul de la distance moyenne" class="image">
+        <div class="image-caption"><i class="fas fa-chart-pie"></i> Figure 3 : Statistiques descriptives finales de l'enquête redressée</div>
+    </div>
+
+    <ul>
+        <li><strong>Taux de souscription final de l'option :</strong> Détermination des parts de marché potentielles réajustées selon le profil type de l'assuré et sa zone géographique.</li>
+        <li><strong>Distance moyenne domicile-travail :</strong> Après pondération des profils, la distance moyenne calculée au sein du portefeuille s'établit précisément à <strong>19,99 km</strong> (voir Figure 3).</li>
+        <li><strong>Profils croisés :</strong> Identification des marques de véhicules les plus représentées (Peugeot en tête avec $38,49\%$) et segmentation par tranches d'âge des conducteurs pour affiner le ciblage marketing de l'offre.</li>
+    </ul>
+
+    <h2>Compétences développées</h2> 
+    <ul>
+        <li><strong>Maîtrise avancée d'Excel :</strong> Utilisation poussée des Tableaux Croisés Dynamiques (TCD) intégrant des champs pondérés par colonne de poids, formules logiques, aléatoires et de tri.</li>
+        <li><strong>Rigueur statistique :</strong> Application concrète des formules théoriques d'intervalles de confiance et compréhension de la notion de variance maximale ($p=0,5$).</li>
+        <li><strong>Esprit critique face aux données :</strong> Capacité à détecter un biais de représentativité au sein d'une enquête terrain et à mettre en place une méthodologie scientifique de redressement.</li>
+    </ul>
+    
+    <h2>Conclusion</h2>  
+    <p>
+        Ce projet a mis en évidence toute l'importance de l'échantillonnage et de la post-stratification. Sans le redressement par pondération que nous avons effectué sur Excel, les décisions stratégiques de la compagnie <em>ASSURTOUT</em> auraient été basées sur un échantillon biaisé, faussant l'évaluation de l'intérêt pour l'Assistance Panne 0 km. 
+    </p>
+
+    <br>
+
+    <a href="#" class="btn" target="_blank">📄 Voir la note de synthèse Excel</a>
+    <br><br>
+    <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
+
+</div>
+
+</body>
+</html>
