@@ -748,38 +748,52 @@
     <script>
         // Fonction pour changer de page principale (onglets du menu)
         function openPage(pageId, event) {
-            event.preventDefault(); // Empêche le comportement par défaut des liens '#'
+            event.preventDefault();
 
-            // 1. Cacher toutes les sections principales
             var sections = document.querySelectorAll("section");
             sections.forEach(function(sec) {
                 sec.classList.remove("active");
             });
 
-            // 2. Désactiver le style "actif" sur les liens du menu
             var menuLinks = document.querySelectorAll(".horizontal-menu li a");
             menuLinks.forEach(function(link) {
                 link.classList.remove("active-menu");
             });
 
-            // 3. Afficher la section demandée et colorer le lien du menu cliqué
             document.getElementById(pageId).classList.add("active");
             event.currentTarget.classList.add("active-menu");
         }
 
-        // Fonction secondaire pour changer d'année à l'intérieur de la page Projets
+        // Fonction secondaire pour changer d'année à l'intérieur de la page PROJETS uniquement
         function openYear(evt, yearName) {
             var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tab-content");
+            // On cible uniquement les sous-onglets de la section #projets
+            tabcontent = document.querySelectorAll("#projets .tab-content");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
-            tablinks = document.getElementsByClassName("tab-btn");
+            tablinks = document.querySelectorAll("#projets .tab-btn");
             for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                tablinks[i].classList.remove("active");
             }
             document.getElementById(yearName).style.display = "block";
-            evt.currentTarget.className += " active";
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Fonction secondaire pour changer d'année à l'intérieur de la page BILAN uniquement
+        function openBilanYear(evt, yearBilanName) {
+            var i, tabcontent, tablinks;
+            // On cible uniquement les sous-onglets de la section #bilan
+            tabcontent = document.querySelectorAll("#bilan .tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.querySelectorAll("#bilan .tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(yearBilanName).style.display = "block";
+            evt.currentTarget.classList.add("active");
         }
     </script>
 </body>
