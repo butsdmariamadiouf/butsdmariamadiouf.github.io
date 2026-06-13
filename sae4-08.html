@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 4.09 : Reporting d'une Analyse Multivariée — RShiny & Flexdashboard</title>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFB;
+            color: #2D3142;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 3rem;
+        }
+
+        h1 {
+            color: #6E44FF;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            margin-top: 2.5rem;
+            color: #6E44FF;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            color: #2D3142;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            border-left: 3px solid #B57EDC;
+            padding-left: 0.5rem;
+        }
+        
+        p {
+            line-height: 1.7;
+            color: #5C6175;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            color: #5C6175;
+        }
+
+        strong {
+            color: #2D3142;
+        }
+
+        .highlight-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #6E44FF;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: #6E44FF;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(110, 68, 255, 0.2);
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+        }
+
+        .btn:hover {
+            background: #8B5CF6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 68, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: #2D3142;
+            box-shadow: 0 5px 15px rgba(45, 49, 66, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: #41465C;
+            box-shadow: 0 8px 20px rgba(45, 49, 66, 0.3);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #6E44FF;
+            margin-bottom: 0.2rem;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #5C6175;
+            font-weight: 500;
+        }
+
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .arch-card {
+            background: #FFFFFF;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+            border-top: 4px solid #6E44FF;
+        }
+
+        .arch-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .image-container {
+            background-color: #FFFFFF;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin: 1.5rem 0;
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: transparent;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+            box-shadow: none;
+        }
+
+        .back-link:hover {
+            background: #FAFAFB;
+            color: #6E44FF;
+            border-color: #6E44FF;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .badge-group {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SAÉ 4.09 : Reporting d'une Analyse Multivariée via RShiny</h1>
+    <div class="badge-group">
+        <i class="fas fa-users"></i> Projet en groupe : Antonin VION, Nathan PUAUD, Mariama DIOUF & Clara DECROS
+    </div>
+
+    <h2>Contexte & Problématique Décisionnelle</h2>
+    <p>
+        En 2021, la France métropolitaine comptait <strong>9,1 millions de personnes</strong> vivant sous le seuil de pauvreté monétaire, soit <strong>14&nbsp;% de la population</strong>. L'analyse des données met en lumière un fait structurel majeur : sans l'impact stabilisateur des transferts fiscaux et sociaux (minima sociaux, allocations logement, prestations familiales), ce taux grimperait à <strong>21&nbsp;%</strong> (soit près de 14 millions de citoyens). 
+    </p>
+    <p>
+        Mandaté par l'État au niveau central, l'objectif de ce projet consistait à bâtir une <strong>solution décisionnelle automatisée, visuelle et interactive</strong> permettant de cartographier, suivre et évaluer la pauvreté à l'échelle départementale et régionale pour accroître l'efficacité des politiques publiques de ciblage.
+    </p>
+
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-value">14 %</div>
+            <div class="metric-label">Taux de pauvreté observé (2021)</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value">21 %</div>
+            <div class="metric-label">Taux de pauvreté sans prestations</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value">9,1 M</div>
+            <div class="metric-label">Individus sous le seuil monétaire</div>
+        </div>
+    </div>
+
+    <h2>Données Multi-sources & Périmètre d'Étude</h2>
+    <p>
+        Afin d'apporter une vision holistique (sociale, économique et infrastructurelle) aux décideurs, nous avons extrait, nettoyé et fusionné un volume conséquent d'indicateurs géographiques issus de <strong>l'INSEE (Statistiques Locales)</strong> sur un périmètre temporel et spatial axé sur la France métropolitaine :
+    </p>
+    <ul>
+        <li><strong>Données de cadrage (2021) :</strong> Taux de pauvreté globaux, poids des prestations sociales et structures familiales (familles monoparentales).</li>
+        <li><strong>Indicateurs Démographiques et Logement (2022) :</strong> Tranches d'âge, statuts d'occupation (locataires, part de HLM), taux de vacance et typologies de logements.</li>
+        <li><strong>Secteurs Économiques (2023) :</strong> Répartition des entreprises (agriculture, industrie, tertiaire) et effectifs de la fonction publique (santé, enseignement, action sociale).</li>
+        <li><strong>Infrastructures de Proximité (2024) :</strong> Densité médicale (urgences, généralistes, pharmaciens), services (banques, commerces) et équipements sportifs ou scolaires.</li>
+    </ul>
+
+    <h2>Architecture & Organisation de l'Application Web</h2>
+    <p>
+        Développée sous l'environnement <strong>R (Shiny / Flexdashboard)</strong>, l'interface ergonomique a été compartimentée en trois grands piliers analytiques pour guider naturellement l'utilisateur dans l'exploration :
+    </p>
+
+    <div class="architecture-grid">
+        <div class="arch-card">
+            <h4>1. Vue d'Ensemble</h4>
+            <p>Onglet unique faisant office d'introduction macroéconomique globale. Il expose la répartition géographique et l'état des lieux des taux de pauvreté en métropole selon les classes d'âges.</p>
+        </div>
+        <div class="arch-card">
+            <h4>2. Analyse Descriptive</h4>
+            <p>Découpée en <strong>7 onglets thématiques</strong> interactifs répondant précisément aux exigences de l'État : Démographie, Économie/Revenus, Éducation/Loisirs, Secteurs d'activité, Santé/Services, Logement, et focus sur les populations vulnérables (monoparentalité, locataires).</p>
+        </div>
+        <div class="arch-card">
+            <h4>3. Analyse Topologique</h4>
+            <p>Le cœur mathématique du projet décliné sur <strong>5 onglets dédiés</strong>. Il intègre le moteur d'analyse multivariée pour regrouper et segmenter les départements selon leurs profils de précarité.</p>
+        </div>
+    </div>
+
+    <h2>Moteur d'Analyse Statistique Multivariée (Clustering)</h2>
+    <p>
+        Pour dépasser les simples constats descriptifs et identifier les départements qui se ressemblent ou s'opposent, nous avons mis en place une chaîne algorithmique avancée :
+    </p>
+    <ul>
+        <li><strong>Analyse en Composantes Principales (ACP) :</strong> Réduction de la dimensionnalité de nos dizaines de variables d'infrastructures et de revenus pour projeter les départements sur les axes factoriels de la richesse et de la ruralité, évitant ainsi la colinéarité.</li>
+        <li><strong>Clustering Multi-approches :</strong> Implémentation et comparaison croisée de plusieurs algorithmes de classification automatique pour isoler des typologies de territoires stables :
+            <ul>
+                <li><strong>K-Means & CAH (Classification Ascendante Hiérarchique) :</strong> Idéaux pour scinder les structures régionales classiques et identifier des grappes homogènes.</li>
+                <li><strong>DBSCAN :</strong> Exploité pour filtrer le bruit et repérer les profils départementaux atypiques ou marginaux.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Dashboard RShiny Analyse Multivariée" class="image">
+        <div class="image-caption"><i class="fas fa-map-marked-alt"></i> Graphique d'illustration : Cartographie interactive des clusters départementaux issue de notre segmentation multivariée</div>
+    </div>
+
+    <h2>Compétences Techniques Démontrées</h2>
+    <div class="highlight-box">
+        <ul>
+            <li><strong>Data Engineering & Fusion :</strong> Jointure de tables multi-annuelles (2021 à 2024) de l'INSEE sur le code officiel géographique (COG).</li>
+            <li><strong>Modélisation Multivariée :</strong> Maîtrise opérationnelle des algorithmes non supervisés (ACP, CAH, K-Means, DBSCAN) via les packages <code>FactoMineR</code> et <code>cluster</code>.</li>
+            <li><strong>Développement Web Réactif :</strong> Programmation de tableaux de bord dynamiques (R Shiny / Flexdashboard) intégrant des composants fluides pour l'aide à la décision publique.</li>
+        </ul>
+    </div>
+
+    <br>
+
+    <a href="#" class="btn" target="_blank"><i class="fas fa-external-link-alt"></i> Accéder à l'Application Web RShiny</a>
+    <a href="#" class="btn btn-secondary" target="_blank"><i class="fas fa-file-powerpoint"></i> Consulter la Présentation (PPT)</a>
+    <br><br>
+    <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
+
+</div>
+
+</body>
+</html>
