@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>SAE : Mise en plkace d'un site web dynamique </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 3.03 : Conformité Réglementaire de Traitement des Données</title>
 
     <style>
         body {
@@ -21,36 +22,146 @@
 
         h1 {
             color: #6E44FF;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
 
         h2 {
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             color: #6E44FF;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            color: #2D3142;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            border-left: 3px solid #B57EDC;
+            padding-left: 0.5rem;
         }
         
         p {
+            line-height: 1.7;
+            color: #5C6175;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
             line-height: 1.6;
             color: #5C6175;
         }
 
+        strong {
+            color: #2D3142;
+        }
+
+        .alert-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #E53E3E;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .compliance-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #38A169;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
         .btn {
             display: inline-block;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             background: #6E44FF;
             color: white;
             padding: 0.7rem 1.5rem;
             border-radius: 10px;
             text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(110, 68, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
         .btn:hover {
             background: #8B5CF6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 68, 255, 0.3);
         }
 
-        .image {
-            width: 100%;
-            margin-top: 1rem;
+        .table-container {
+            background: white;
+            padding: 1.2rem;
             border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #FAFAFB;
+            color: #6E44FF;
+            text-align: left;
+            padding: 0.7rem;
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        td {
+            padding: 0.7rem;
+            border-bottom: 1px solid #EEEFF2;
+            color: #5C6175;
+        }
+
+        .team-badge {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            background: #F3E8FF;
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: transparent;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+            box-shadow: none;
+        }
+
+        .back-link:hover {
+            background: #FAFAFB;
+            color: #6E44FF;
+            border-color: #6E44FF;
+            box-shadow: none;
+            transform: none;
         }
     </style>
 </head>
@@ -59,167 +170,158 @@
 
 <div class="container">
 
-    <h1>SAÉ 3.01 : Site web dynamique</h1>
+    <h1>SAÉ 3.03 : Conformité Réglementaire & RGPD</h1>
+    
+    <div class="team-badge">
+        <i class="fas fa-users"></i> Université de Poitiers — Groupe : M. DIOUF, P. CARNOVALI, A. RAVONNEAUX, A. JENFI, M. SABI
+    </div>
 
-    <h2> Contexte</h2>
+    <h2>Contexte & Problématique</h2>
     <p>
-        Dans le cadre de cette SAÉ, j'ai développé une application web dynamique permettant d’exploiter un jeu de données issu de l’OpenData.
-        Le choix du thème portait sur les données de pêche électrique en Alsace, disponibles sur data.gouv.fr.
-        Ces données scientifiques permettent d’étudier la biodiversité aquatique (espèces de poissons, densité, lieux de prélèvement).
-        Le projet a été réalisé en binôme, avec comme objectif principal de :
-        stocker
-        gérer
-        et visualiser des données environnementales réelles
+        Le <strong>Règlement Général sur la Protection des Données (RGPD)</strong> imposes des obligations strictes aux structures manipulant des données citoyennes. Dans le cadre de ce projet, notre équipe s'est positionnée comme consultante auprès d'une <strong>entreprise industrielle d'une centaine de salariés</strong> dont le service des Ressources Humaines n'avait encore initié aucune démarche de mise en conformité.
+    </p>
+    <p>
+        L'urgence d'agir était immédiate : la manipulation non encadrée de données critiques (santé, syndicalisme) expose l'organisation à des risques juridiques majeurs et des amendes de la CNIL pouvant atteindre <strong>4 % du chiffre d'affaires annuel mondial</strong>. Notre mission a consisté à concevoir un plan d'action pragmatique, structuré et transparent pour la direction.
     </p>
 
-    <h2> Objectifs</h2>
-    <ul>
-        <li>Concevoir une application web complète (front + back)</li>
-        <li>Mettre en place une base de données relationnelle (MySQL)</li>
-        <li>Permettre une interaction utilisateur (ajout / modification de données)</li>
-        <li>Créer des visualisations dynamiques (tableaux + graphiques)</li>
-    </ul>
-
-    <h2>  Méthodologie et déroulement </h2>
-    <ul>
-        <p> Le projet a été réalisé en plusieurs étapes structurées :</p>
-        <h3> 1.  Analyse du jeu de données </h3>
-        <p>
-            - Exploration du dataset OpenData (format CSV)<br>
-            - Compréhension des variables :(espèce, station, date, densité, méthode de pêche, localisation, etc.)<br>
-            - Sélection des informations pertinentes pour notre application<br>
-            Cette phase nous a permis de définir le modèle de données.
-        </p>
-    </ul>
-
-    <ul>
-        <h3> 2.  Conception UML </h3>
-        <p>
-            Réalisation d'un diagramme de cas d’utilisation avec :
-    
-            un acteur principal : l’utilisateur
-            les fonctionnalités : <br>
-            - consulter les données<br>
-            - ajouter / modifier / supprimer des enregistrements<br>
-            - visualiser les statistiques<br>
-            - importer un nouveau fichier<br>
-            Cela nous a servi de base pour structurer l’application.
-        </p>
-    </ul>
-
-    <ul>
-        <h3> 3.  Création de la base de données (MySQL) </h3>
-        <p>
-            Conception de la base relationnelle avec plusieurs tables, par exemple :
-            - stations (lieux de pêche)<br>
-            - communes<br>
-            - especes<br>
-            - methodes<br>
-            Puis : <br>
-            import du dataset (CSV → MySQL) <br>
-            organisation des relations (clés étrangères) <br>
-            
-            Objectif : stocker efficacement les données OpenData
-        </p>
-    </ul>
-
-    <ul>
-        <h3> 4.  Développement du site web </h3>
-        <p>
-            🔹 Front-end (HTML / CSS) <br>
-            - création d’un portail web<br>
-            - mise en place d’une charte graphique<br>
-            - pages explicatives (contexte, données, etc.)<br>
-    
-            🔹 Back-end (PHP) <br>
-            - affichage des données (requêtes SQL SELECT)<br>
-            - ajout de données (INSERT)<br>
-            - modification (UPDATE)<br>
-            - suppression (DELETE)<br>   
-        </p>
-    </ul>
-
-    <ul>
-        <h3> 5.  Visualisation des données (JavaScript / jQuery)</h3>
-        <p>
-            Création d’un tableau de bord interactif avec plusieurs indicateurs : <br>
-            - nombre de pêches par espèce (diagramme en barres) <br>
-            - répartition des méthodes de prospection (camembert) <br>
-            - visualisation des stations sur une carte <br>
-            - évolution des pêches dans le temps <br>
-            - densité moyenne par espèce <br>
-    
-            Objectif : rendre les données lisibles et exploitables visuellement
-        </p>
-    </ul>
-
-    
-    <h2>  Outils utilisés</h2>
+    <h2>1. Cartographie & Registre des Activités</h2>
     <p>
-        HTML / CSS / PHP / MySQL / JavaScript / jQuery
+        La première étape indispensable a été d'initier la création du <strong>registre des activités de traitement</strong>. Ce document opposable doit refléter fidèlement la réalité des processus RH. Pour piloter cette gouvernance, nous avons préconisé la désignation d'un membre formé ou d'un expert externe agissant en tant que <strong>Délégué à la Protection des Données (DPO)</strong>, qui sera l'interlocuteur officiel auprès de la CNIL.
     </p>
 
-    <h2>  Résultats</h2>
+    <h2>2. Identification des Parties Prenantes</h2>
+    <p>
+        Le registre identifie rigoureusement l'ensemble des acteurs internes et externes gravitant autour de la donnée :
+    </p>
     <ul>
-        <p>
-          L’application finale permet :
-            <li> La gestion des données </li> 
-            - consultation des données sous forme de tableau <br>
-            - modification en temps réel <br>
-            - intégration de nouveaux jeux de données <br>
-          
-            <br> <li> L'analyse et visualisation </li>
-            -dashboard complet avec plusieurs graphiques <br>
-            -compréhension facilitée des données scientifiques <br>
-            -mise en évidence de tendances (espèces dominantes, zones actives) <br>
-
-            <br> <li>L'expérience utilisateur </li>
-            - interface claire et moderne <br>
-            - navigation simple <br>
-            - accès sécurisé <br>
-        </p>
+        <li><strong>Responsable du traitement :</strong> L'entreprise industrielle, qui fixe les finalités et les moyens.</li>
+        <li><strong>Sous-traitants :</strong> Prestataires externes clés (cabinet comptable, éditeur du logiciel de paie, hébergeur Cloud).</li>
+        <li><strong>Destinataires internes :</strong> Services restreints habilités (Ressources Humaines, Comptabilité, Direction).</li>
+        <li><strong>Destinataires externes :</strong> Organismes légaux obligatoires (URSSAF, mutuelles, médecine du travail).</li>
     </ul>
 
-    <h2> Compétences développées</h2> 
+    <h2>3. Cycle de Vie & Rétention des Données</h2>
+    <p>
+        En application des principes de proportionnalité, les données personnelles ne peuvent être conservées indéfiniment. Nous avons formalisé le calendrier de rétention suivant :
+    </p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Catégorie de Données</th>
+                    <th>Durée de Conservation</th>
+                    <th>Règle de Fin de Cycle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Dossier collaborateur (Administratif)</strong></td>
+                    <td>Durée du contrat + 5 ans</td>
+                    <td>Archivage intermédiaire (Contentieux).</td>
+                </tr>
+                <tr>
+                    <td><strong>Bulletins de paie & Cotisations</strong></td>
+                    <td>5 ans</td>
+                    <td>Obligation légale de conservation.</td>
+                </tr>
+                <tr>
+                    <td><strong>Évaluations & Historique de formation</strong></td>
+                    <td>Durée du contrat + 5 ans</td>
+                    <td>Suppression définitive.</td>
+                </tr>
+                <tr>
+                    <td><strong>Données de santé (Aptitudes, RQTH)</strong></td>
+                    <td>1 an maximum après le départ</td>
+                    <td>Destruction sécurisée.</td>
+                </tr>
+                <tr>
+                    <td><strong>Sanctions disciplinaires</strong></td>
+                    <td>3 ans maximum</td>
+                    <td>Effacement automatique du dossier.</td>
+                </tr>
+                <tr>
+                    <td><strong>Candidatures non retenues</strong></td>
+                    <td>2 ans après le dernier contact</td>
+                    <td>Purge (sauf accord explicite).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>4. Minimisation : Suppression des Données Hors-Cadre</h2>
+    <p>
+        Le RGPD impose de ne collecter que le strict nécessaire. Notre audit a révélé la présence d'informations superflues ou interdites qui ont fait l'objet d'une demande de <strong>suppression immédiate</strong> :
+    </p>
+
+    <div class="alert-box">
+        <strong>⚠️ Données identifiées comme illégales ou non pertinentes :</strong>
+        <ul>
+            <li><strong>Sphère privée & familiale :</strong> La profession des parents, le détail des études des enfants ou la situation matrimoniale ultra-détaillée (sauf cas unique d'avantages sociaux ciblés).</li>
+            <li><strong>Opinions & Faits de grève :</strong> L'appartenance syndicale et le décompte des jours de grève sur 10 ans sont interdits car discriminatoires.</li>
+            <li><strong>Pathologies médicales :</strong> Le diagnostic exact d'une maladie ne doit jamais être connu des RH. Seule l'aptitude ou l'inaptitude émise par le médecin du travail est conservée.</li>
+        </ul>
+    </div>
+
+    <h2>5. Sécurisation Technique & Organisationnelle</h2>
+    <p>
+        Pour garantir la confidentialité et l'intégrité du système d'information, deux axes de chantiers ont été définis :
+    </p>
+    <div class="compliance-box">
+        <strong>🔒 Mesures de sécurité déployées :</strong>
+        <ul>
+            <li><strong>Volet Technique :</strong> Authentification individuelle par mots de passe forts (MFA conseillé), chiffrement des données sensibles en base, serveurs derrière pare-feu et antivirus avec mises à jour automatisées.</li>
+            <li><strong>Volet Organisationnel :</strong> Sensibilisation du personnel RH aux clauses de confidentialité, audits annuels de sécurité et tenue rigoureuse d'un registre des incidents (en cas de fuite, notification à la CNIL sous 72h par le DPO).</li>
+        </ul>
+    </div>
+
+    <h2>6. Plan d'Action & Feuille de Route</h2>
+    <p>
+        La conformité s'inscrit dans une logique d'amélioration continue. Nous avons soumis la feuille de route suivante à la direction générale :
+    </p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Horizon</th>
+                    <th>Actions Clés</th>
+                    <th>Délai</th>
+                    <th>Responsables</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Court terme</strong></td>
+                    <td>Nomination du DPO, ouverture du registre et purge des données sensibles.</td>
+                    <td>1 mois.</td>
+                    <td>Direction / RH.</td>
+                </tr>
+                <tr>
+                    <td><strong>Moyen terme</strong></td>
+                    <td>Sécurisation des accès serveurs, avenants sous-traitants, process droits des salariés.</td>
+                    <td>3 mois.</td>
+                    <td>DPO / Informatique.</td>
+                </tr>
+                <tr>
+                    <td><strong>Long terme</strong></td>
+                    <td>Audit RGPD annuel complet et mise à jour des traitements automatisés.</td>
+                    <td>6-12 mois.</td>
+                    <td>DPO / Direction.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Compétences Métiers Validées</h2>
     <ul>
-        <p>
-            Ce projet nous a permis de développer : <br>
-            - développement web full-stack (HTML, CSS, PHP, JS) <br>
-            - gestion de base de données MySQL <br>
-            - manipulation de données OpenData <br>
-            - création de visualisations (dataviz) <br>
-            - travail en équipe (répartition des tâches) <br>
-                
-            Le tout dans une collaboration esssentielle pour intégrer toutes les fonctionnalités 
-        </p>
-    </ul>
-    
-    <h2> Conclusion</h2>  
-    <ul>
-        <p>
-            Ce projet constitue une application complète de data visualisation, basée sur un cas réel.
-            Il montre notre capacité à : <br>
-            - transformer des données brutes en informations utiles <br>
-            - construire une application web structurée <br>
-            - répondre à un besoin d’analyse de données environnementales <br>
-        </p>
+        <li><strong>Gouvernance de la Data :</strong> Maîtrise des concepts juridico-techniques liés au cycle de vie de la donnée et à sa sécurité applicative.</li>
+        <li><strong>Audit de Risques :</strong> Analyse d'écarts de conformité sur des volumes de données d'entreprise et propositions correctives concrètes.</li>
+        <li><strong>Esprit d'Équipe & Conseil :</strong> Collaboration en synergie de groupe pour restituer un livrable d'ingénierie clair, accessible et directement exploitable par des décideurs.</li>
     </ul>
 
-    
-    <!-- Exemple image -->
-    <img src="dashboard.png" class="image">
-
-
-    
-    <h2>📄 Rapport</h2>
-    <a href="rapport_sae3-01.pdf" class="btn" target="_blank">
-        Voir le rapport PDF
-    </a>
-
-    <br><br>
-
-    <!-- Retour -->
-    <a href="index.html" class="btn">⬅ Retour au portfolio</a>
+    <br>
+    <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
 
 </div>
 
