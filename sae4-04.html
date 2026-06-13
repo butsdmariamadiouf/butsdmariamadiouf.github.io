@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ : Data Science — Modèle de Scoring & Campagne Marketing Épargne</title>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFB;
+            color: #2D3142;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 3rem;
+        }
+
+        h1 {
+            color: #6E44FF;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            margin-top: 2.5rem;
+            color: #6E44FF;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            color: #2D3142;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            border-left: 3px solid #B57EDC;
+            padding-left: 0.5rem;
+        }
+        
+        p {
+            line-height: 1.7;
+            color: #5C6175;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            color: #5C6175;
+        }
+
+        strong {
+            color: #2D3142;
+        }
+
+        .highlight-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #6E44FF;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            background: #6E44FF;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(110, 68, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8B5CF6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 68, 255, 0.3);
+        }
+
+        .code-block {
+            background-color: #2D3142;
+            color: #F8F8F2;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #6E44FF;
+            margin-bottom: 0.2rem;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #5C6175;
+            font-weight: 500;
+        }
+
+        .image-container {
+            background-color: #FFFFFF;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin: 1.5rem 0;
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: transparent;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+        }
+
+        .back-link:hover {
+            background: #FAFAFB;
+            color: #6E44FF;
+            border-color: #6E44FF;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Projet d'Appétence : Modèle de Scoring Épargne</h1>
+
+    <h2>Contexte & Enjeux Business</h2>
+    <p>
+        Au sein d'une assurance de la branche crédit et épargne, les campagnes d'appels téléphoniques destinées à proposer des produits financiers se heurtent à de fortes <strong>contraintes opérationnelles</strong> : capacité d'appel limitée des forces de vente, coût humain horaire élevé et risque de saturation ou d'irritation de la base clientèle en cas de sollicitations excessives.
+    </p>
+    <p>
+        Notre mission en tant que Data Scientists a été de basculer d'une logique de volume (contacter l'ensemble de la base au hasard) à une <strong>logique de valeur</strong>. Pour cela, nous avons développé un modèle prédictif capable de calculer la probabilité d'appétence de chaque client afin de prioriser le ciblage commercial et maximiser le retour sur investissement (ROI).
+    </p>
+
+    <h2>Méthodologie Data Science : De la Donnée brute au Score</h2>
+
+    <h3>1. Préparation et Assainissement des Données</h3>
+    <p>
+        Afin de garantir la stabilité du modèle de régression logistique, un pipeline de nettoyage rigoureux a été implémenté en Python :
+    </p>
+    <ul>
+        <li><strong>Normalisation :</strong> Harmonisation des genres et imputation sémantique des valeurs manquantes (les labels <code>unknown</code> ont été convertis de façon transparente en <code>inconnu</code>).</li>
+        <li><strong>Correction sémantique et numérique :</strong> Conversion des encodages de variables macro-économiques (remplacement des virgules par des points) pour stabiliser le traitement de l'Indice des Prix à la Consommation (IPC) ou du taux de croissance de l'emploi.</li>
+        <li><strong>Gestion des Outliers (Clipping) :</strong> Bornage de la variable âge entre 15 et 80 ans. Ce choix stratégique permet d'englober tous les cycles de vie financière (du premier livret jeune à l'épargne de fin de carrière) sans que les profils extrêmes ne biaisent les coefficients.</li>
+    </ul>
+
+    <h3>2. Traitement des Corrélations et Discrétisation (Binning)</h3>
+    <p>
+        Le comportement des épargnants étant intrinsèquement non linéaire, nous avons segmenté les variables numériques en classes métiers (tranches d'âge de vie active, paliers de pression commerciale basés sur le nombre de contacts passés, et cycles économiques positifs/négatifs).
+    </p>
+    <div class="code-block">
+# Extrait du protocole de filtrage et de protection des variables métiers
+import pandas as pd
+
+# Élimination des doublons à l'aide d'un seuil de corrélation strict
+corr_matrix = df.corr().abs()
+seuil_correlation = 0.85
+
+# Liste de protection des variables "Pépites" construites manuellement
+pepites_a_garder = ['score_eco_social_1', 'zero_dette_total', 'client_gold_moment']
+    </div>
+    <p>
+        Ce seuil de 0.85 élimine le bruit mathématique induit par la multi-colinéarité (les variables redondantes), tout en protégeant les indicateurs clés développés à la main pour l'expertise métier.
+    </p>
+
+    <h3>3. Feature Engineering : La création de « Pépites » Métier</h3>
+    <p>
+        En l'absence de données géographiques fines impossibilitant une jointure externe sécurisée, nous avons valorisé notre compréhension du domaine bancaire en synthétisant quatre nouvelles variables hautement discriminantes :
+    </p>
+    <ul>
+        <li><code>zero_dette_total</code> : Isole les profils n'ayant aucun crédit immobilier, aucun crédit à la consommation, ni aucun historique de défaut. Il s'agit du cœur de cible disposant de la meilleure capacité d'épargne.</li>
+        <li><code>potentiel_geo_financier</code> : Score pondéré croisant le niveau socio-professionnel (type d'emploi) et l'écosystème d'habitation (Urbain / Rural).</li>
+        <li><code>potentiel_neuf</code> : Identifie les prospects jamais contactés, détectés au sein d'un contexte macro-économique de croissance d'emploi positive.</li>
+        <li><code>client_gold_moment</code> : Repère les clients historiques ayant déjà souscrit par le passé, ciblés lors des mois affichant les plus forts taux de transformation saisonniers (Juin, Juillet, Octobre).</li>
+    </ul>
+
+    <div class="highlight-box">
+        <strong>Garantie d'Éthique et de Robustesse :</strong> Toutes les variables dites "Post-Appel", telles que la durée des conversations téléphoniques, ont été systématiquement exclues en amont de l'apprentissage. Intégrer une donnée connue uniquement après la finalisation de l'appel aurait généré un modèle "tricheur" (Data Leakage) et totalement inutilisable en conditions réelles de production.
+    </div>
+
+    <h2>Analyse des Facteurs Clés d'Appétence</h2>
+    <p>
+        Pour compenser le fort déséquilibre de la base initiale (contenant plus de 70 % de non-souscriptions), nous avons appliqué le paramètre <code>class_weight='balanced'</code>. L'interprétation des coefficients de notre régression logistique met en évidence les leviers de souscription :
+    </p>
+    <ul>
+        <li><strong>Leviers Positifs :</strong> Le modèle révèle un fort comportement d'<em>épargne de précaution</em>. Lorsque le marché de l'emploi montre des signes d'incertitude ou de décroissance, les clients cherchent à sécuriser leur avenir financier. Les périodes de milieu d'année (Juin/Juillet) et le statut urbain agissent également comme des catalyseurs de conversion.</li>
+        <li><strong>Freins Majeurs :</strong> Un pessimisme économique marqué (Indice de confiance des consommateurs inférieur à -40) ainsi que la pression commerciale excessive (le harcèlement téléphonique au-delà de 15 contacts) coupent net toute intention d'achat.</li>
+    </ul>
+
+    <h2>Performances et Stratégie de Ciblage Commercial</h2>
+
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-value">62 %</div>
+            <div class="metric-label">Précision du Modèle (Seuil 0.9)</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value">x 2,2</div>
+            <div class="metric-label">Taux de Transformation Gagné</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value">30 %</div>
+            <div class="metric-label">De la Base Client Appelée</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value">68,1 %</div>
+            <div class="metric-label">Des Souscriptions Captées</div>
+        </div>
+    </div>
+
+    <h3>L'Arbitrage Précision / Recall au service du ROI</h3>
+    <p>
+        Pour répondre aux contraintes budgétaires serrées des directions d'appels, nous avons volontairement calibré le curseur de décision sur un **seuil de probabilité élevé (0.9)**, favorisant la <strong>Précision (0.62)</strong> au détriment du Recall (0.23) :
+    </p>
+    <ul>
+        <li><strong>Une rentabilité chirurgicale :</strong> 6 appels sur 10 passés se soldent désormais par une souscription effective, limitant les coûts d'appels inutiles et réduisant la fatigue des équipes commerciales de terrain.</li>
+        <li><strong>La règle des 30/70 validée :</strong> En ciblant uniquement le **Top 30 % des profils les mieux scorés**, l'entreprise capte **68,1 % du volume d'affaires total**.</li>
+        <li><strong>Optimisation de la conversion :</strong> Le taux de transformation au sein de ce segment ciblé bondit à <strong>22,41 %</strong>, contre un taux d'appétence naturel de seulement 10 % sur l'ensemble de la base non triée.</li>
+    </ul>
+
+    <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Graphique de performance du modèle de scoring" class="image">
+        <div class="image-caption"><i class="fas fa-chart-pie"></i> Figure 1 : Analyse des gains cumulés (Lift Chart) et concentration du ROI sur les déciles supérieurs</div>
+    </div>
+
+    <h2>Recommandations Opérationnelles pour le Déploiement</h2>
+    <p>
+        Le modèle mathématique est immédiatement industrialisable en conditions réelles. Avant chaque lancement de campagne, la direction marketing peut exécuter le script de scoring sur l'ensemble de sa base de données client. 
+    </p>
+    <p>
+        Nous recommandons de concentrer exclusivement l'effort de prospection sur le premier tiers qualifié (les profils urbains, actifs, sans dettes actuelles), tout en gelant les appels sur les segments saturés afin de préserver l'image de marque et la relation client de l'assurance.
+    </p>
+
+    <br>
+
+    <a href="#" class="btn" target="_blank"><i class="fab fa-python"></i> Accéder au Notebook Python (Scikit-Learn)</a>
+    <br><br>
+    <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
+
+</div>
+
+</body>
+</html>
