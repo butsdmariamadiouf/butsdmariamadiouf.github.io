@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 4.06 : Machine Learning — Régression Linéaire Multiple & Prédiction Médicale</title>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFB;
+            color: #2D3142;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 3rem;
+        }
+
+        h1 {
+            color: #6E44FF;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            margin-top: 2.5rem;
+            color: #6E44FF;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            color: #2D3142;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            border-left: 3px solid #B57EDC;
+            padding-left: 0.5rem;
+        }
+        
+        p {
+            line-height: 1.7;
+            color: #5C6175;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            color: #5C6175;
+        }
+
+        strong {
+            color: #2D3142;
+        }
+
+        .highlight-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #6E44FF;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            background: #6E44FF;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(110, 68, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8B5CF6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 68, 255, 0.3);
+        }
+
+        .code-block {
+            background-color: #2D3142;
+            color: #F8F8F2;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #6E44FF;
+            margin-bottom: 0.2rem;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #5C6175;
+            font-weight: 500;
+        }
+
+        .table-container {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #FAFAFB;
+            color: #6E44FF;
+            text-align: left;
+            padding: 0.7rem;
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        td {
+            padding: 0.7rem;
+            border-bottom: 1px solid #EEEFF2;
+            color: #5C6175;
+        }
+
+        .image-container {
+            background-color: #FFFFFF;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin: 1.5rem 0;
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: transparent;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+        }
+
+        .back-link:hover {
+            background: #FAFAFB;
+            color: #6E44FF;
+            border-color: #6E44FF;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SAÉ 4.06 : Prédiction par Régression Linéaire Multiple</h1>
+
+    <h2>Contexte & Démarche Machine Learning</h2>
+    <p>
+        À l'ère du Big Data et de l'intelligence artificielle inductive, le rôle du statisticien a profondément évolué : nous ne nous contentons plus d'ajuster un modèle préconçu à des données restreintes, mais nous entraînons des algorithmes adaptatifs sur de grands volumes d'informations pour maximiser le pouvoir prédictif par généralisation.
+    </p>
+    <p>
+        Dans le cadre de cette SAÉ, l'objectif est d'implémenter un pipeline complet de <strong>Machine Learning (Scikit-Learn)</strong> afin de prédire une variable clinique continue : le <strong>diamètre d'une tumeur ($Y$)</strong>, à l'aide de 10 indicateurs et tests médicaux ($X_1$ à $X_{10}$). L'enjeu majeur de cette modélisation réside dans la transition réussie d'une base de données brute de 20&nbsp;000 observations vers une procédure décisionnelle stable, capable d'éviter le sous-ajustement (<em>underfitting</em>) et le surapprentissage (<em>overfitting</em>).
+    </p>
+
+    <h2>Nettoyage des Données & Analyse des Valeurs Atypiques</h2>
+
+    <h3>1. Gestion des Valeurs Manquantes</h3>
+    <p>
+        La base initiale présentait de rares valeurs manquantes localisées sur les variables $X_1$, $X_3$ et $X_7$. Face à un volume conséquent de 20&nbsp;000 lignes, ces anomalies ne représentaient que 0,02&nbsp;% de l'échantillon. Plutôt que d'introduire un biais artificiel via une imputation arbitraire (médiane ou moyenne), le choix d'une exclusion stricte a été privilégié, garantissant que le modèle n'apprenne que sur des mesures cliniques réelles.
+    </p>
+
+    <h3>2. Le Protocole Statistique d'Élimination des Points Aberrants</h3>
+    <p>
+        Pour assainir le jeu de données, un filtrage par le <strong>Z-score</strong> a été configuré avec un seuil critique fixé à $3\sigma$ (trois écarts-types). En vertu du <strong>Théorème Central Limite (TCL)</strong> appliqué à notre grand échantillon, la distribution des moyennes tend naturellement vers une Loi Normale, selon laquelle $99,7\ \text{\%}$ des observations doivent être confinées dans cet intervalle. 
+    </p>
+    <p>
+        Toute mesure affichant un score supérieur à 3 possède une probabilité mathématique d'occurrence marginale ($< 0,3\ \text{\%}$). Identifier et traiter ces points extrêmes élimine les "effets de levier" néfastes, qui ont tendance à dévier la ligne de régression et à dégrader la justesse globale du modèle pour la majorité des patients.
+    </p>
+
+    <h2>Benchmark des Scénarios & Validation Croisée</h2>
+    <p>
+        Pour sécuriser la capacité de généralisation sur de futures données médicales hors échantillon, trois stratégies de traitement des extrêmes ont été mises en concurrence :
+    </p>
+    <ul>
+        <li><strong>Scénario 1 (Z-Score) :</strong> Suppression pure et simple des 31 individus identifiés comme aberrants. Rendement de précision optimal mais perte d'observations.</li>
+        <li><strong>Scénario 2 (Écrêtage / Winsorisation) :</strong> Remplacement des valeurs situées au-delà des percentiles critiques par les bornes maximales acceptables.</li>
+        <li><strong>Scénario 3 (Données Brutes) :</strong> Conservation de l'ensemble des anomalies sans filtrage. Ce scénario a généré un coefficient $R^2$ massivement négatif ($-503,68$) lors des phases de test, prouvant l'instabilité extrême induite par les points non corrigés.</li>
+    </ul>
+
+    <div class="code-block">
+# Implémentation de la validation croisée K-Fold pour stabiliser l'écrêtage
+from sklearn.model_selection import KFold, cross_val_score
+from sklearn.linear_model import LinearRegression
+
+kf = KFold(n_splits=5, shuffle=True, random_state=42)
+model = LinearRegression()
+
+# Mesure de la constance des paramètres du Scénario 2
+scores = cross_val_score(model, X_winsorized, y, cv=kf, scoring='r2')
+print(f"Stabilité renforcée - Écart-type des scores : {scores.std():.4f}")
+    </div>
+
+    <p>
+        <strong>Modèle Final Retenu :</strong> Le scénario par <strong>écrêtage (Winsorisation)</strong> a été sélectionné pour la mise en production. À niveau de précision équivalent à celui du Z-score, il affiche un écart-type deux fois plus faible ($0,0009$) au cours des 5 itérations de la validation croisée (K-Fold 5), offrant ainsi une stabilité structurelle maximale tout en conservant l'intégralité du volume de patients initial.
+    </p>
+
+    <h2>Décomposition Théorique de la Variance</h2>
+    <p>
+        Les métriques d'ajustement global obtenues sur l'ensemble d'apprentissage décrivent une modélisation hautement performante :
+    </p>
+
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-value">15 991,00</div>
+            <div class="metric-label">Somme des Carrés Totale (ST)</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value">14 495,13</div>
+            <div class="metric-label">Somme des Carrés du Modèle (SM)</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value">1 495,87</div>
+            <div class="metric-label">Somme des Carrés Résiduelle (SR)</div>
+        </div>
+    </div>
+
+    <p>
+        L'analyse mathématique de la variance montre que la somme des carrés du modèle absorbe environ <strong>91&nbsp;% de la variabilité initiale</strong> des diamètres tumoraux ($R^2 \approx 0,91$). La part d'ombre (résidus, facteurs génétiques non mesurés) est confinée à seulement 9&nbsp;%, avec une variance d'erreur résiduelle ($s^2 = 0,020$) extrêmement basse.
+    </p>
+
+    <h2>Analyse de l'Influence Clinique (Coefficients Beta Standardisés)</h2>
+    <p>
+        La standardisation des variables explicatives a permis d'isoler l'impact biologique réel de chaque test médical sur l'évolution de la tumeur, indépendamment de leurs unités de mesure d'origine :
+    </p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicateur Médical</th>
+                    <th>Coefficient Standardisé ($\beta$)</th>
+                    <th>Impact Clinique Spécifique</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Test X8</strong></td>
+                    <td>+ 0,51</td>
+                    <td>Prédicteur dominant majeur (Corrélation positive forte)</td>
+                </tr>
+                <tr>
+                    <td><strong>Test X9</strong></td>
+                    <td>+ 0,32</td>
+                    <td>Prédicteur secondaire significatif</td>
+                </tr>
+                <tr>
+                    <td><strong>Test X6</strong></td>
+                    <td>- 0,15</td>
+                    <td>Effet inhibiteur inverse le plus marqué</td>
+                </tr>
+                <tr>
+                    <td><strong>Tests X1 / X7</strong></td>
+                    <td>~ 0,00</td>
+                    <td>Aucune influence significative constatée sur le diamètre</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" alt="Analyse des coefficients et résidus médicaux" class="image">
+        <div class="image-caption"><i class="fas fa-diagnoses"></i> Graphique 1 : Sensibilité et poids des variables explicatives standardisées dans la prédiction tumorale</div>
+    </div>
+
+    <h2>Synthèse Globale & Fiabilité Clinique</h2>
+    <p>
+        L'étude démontre que la Régression Linéaire Multiple s'avère être une méthodologie robuste et hautement prédictive pour cette problématique médicale, à la condition stricte d'être associée à une ingénierie de nettoyage transparente. La parfaite convergence entre nos calculs théoriques de variance (ST, SM, SR) et la régularité des résidus valide l'exploitation de ce modèle comme un outil d'aide au diagnostic fiable et performant.
+    </p>
+
+    <br>
+
+    <a href="#" class="btn" target="_blank"><i class="fab fa-python"></i> Explorer le Pipeline de Machine Learning</a>
+    <br><br>
+    <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
+
+</div>
+
+</body>
+</html>
