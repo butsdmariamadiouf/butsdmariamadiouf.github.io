@@ -112,6 +112,17 @@
             margin-top: 0.5rem;
         }
 
+        h4 {
+            font-size: 1.1rem;
+            color: #5C6175;
+            margin: 1.5rem 0 1rem 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         /* --- HERO (ACCUEIL) --- */
         .hero {
             flex-direction: row;
@@ -195,7 +206,7 @@
             margin: 20px 0;
         }
 
-        /* --- SYSTEME D'ONGLETS (PROJETS) --- */
+        /* --- SYSTEME D'ONGLETS (PROJETS & BILANS) --- */
         .tabs-container {
             display: flex;
             justify-content: center;
@@ -240,7 +251,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
-            padding-bottom: 2rem;
+            padding-bottom: 1.5rem;
         }
 
         .project-card {
@@ -253,12 +264,41 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
             border-color: #B57EDC;
             box-shadow: 0 15px 35px rgba(110, 68, 255, 0.08);
+        }
+
+        /* Style Spécifique pour les Coups de Coeur / Favoris */
+        .project-card.featured {
+            border: 1.5px solid #6E44FF;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FAF9FF 100%);
+            box-shadow: 0 10px 25px rgba(110, 68, 255, 0.04);
+        }
+
+        .project-card.featured:hover {
+            box-shadow: 0 15px 35px rgba(110, 68, 255, 0.12);
+            border-color: #8B5CF6;
+        }
+
+        .featured-badge {
+            align-self: flex-start;
+            background: #F3E8FF;
+            color: #6E44FF;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
 
         .project-card h3 {
@@ -286,7 +326,7 @@
             font-weight: 600;
         }
 
-        /* --- FORMATION & COMPÉTENCES --- */
+        /* --- FORMATION & COMPÉTENCES & BILAN --- */
         .competence-list {
             display: flex;
             flex-direction: column;
@@ -299,6 +339,16 @@
             padding: 1.2rem 2rem;
             border-radius: 0 20px 20px 0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.01);
+        }
+
+        .bilan-texte {
+            background-color: #FFFFFF;
+            border-left: 5px solid #B57EDC;
+            padding: 1.5rem 2rem;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.01);
+            line-height: 1.7;
+            color: #2D3142;
         }
 
         /* --- SOCIALS & CONTACT --- */
@@ -339,6 +389,7 @@
                 <li><a href="#" onclick="openPage('formation', event)">Mon Choix</a></li>
                 <li><a href="#" onclick="openPage('projets', event)">Projets</a></li>
                 <li><a href="#" onclick="openPage('competences', event)">Compétences</a></li>
+                <li><a href="#" onclick="openPage('bilan', event)">Bilan</a></li>
                 <li><a href="#" onclick="openPage('contact', event)">Contact</a></li>
             </ul>
         </nav>
