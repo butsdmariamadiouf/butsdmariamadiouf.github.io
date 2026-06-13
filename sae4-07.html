@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 4.07 : Exploration et Valorisation des Données — Croissance Économique Française</title>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFB;
+            color: #2D3142;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 3rem;
+        }
+
+        h1 {
+            color: #6E44FF;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            margin-top: 2.5rem;
+            color: #6E44FF;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            color: #2D3142;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            border-left: 3px solid #B57EDC;
+            padding-left: 0.5rem;
+        }
+        
+        p {
+            line-height: 1.7;
+            color: #5C6175;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            color: #5C6175;
+        }
+
+        strong {
+            color: #2D3142;
+        }
+
+        .highlight-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #6E44FF;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            background: #6E44FF;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(110, 68, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8B5CF6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 68, 255, 0.3);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #6E44FF;
+            margin-bottom: 0.2rem;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #5C6175;
+            font-weight: 500;
+        }
+
+        .table-container {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #FAFAFB;
+            color: #6E44FF;
+            text-align: left;
+            padding: 0.7rem;
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        td {
+            padding: 0.7rem;
+            border-bottom: 1px solid #EEEFF2;
+            color: #5C6175;
+        }
+
+        .section-callout {
+            background-color: #F8F9FA;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .image-container {
+            background-color: #FFFFFF;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin: 1.5rem 0;
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: transparent;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+        }
+
+        .back-link:hover {
+            background: #FAFAFB;
+            color: #6E44FF;
+            border-color: #6E44FF;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SAÉ 4.07 : Exploration et Valorisation des Données</h1>
+
+    <h2>Contexte de l'Étude Économique</h2>
+    <p>
+        Sur le long terme, la dimension économique de la France et son niveau de vie global ont considérablement augmenté, malgré des perturbations conjoncturelles récentes. L'objectif de cette SAÉ est de mener une analyse approfondie de la <strong>croissance économique française depuis 1949</strong> à partir des données officielles de l'<strong>INSEE</strong>.
+    </p>
+    <p>
+        Ce projet met en œuvre les concepts fondamentaux de la macroéconomie en nettoyant, traitant et valorisant une série chronologique de plus de 70 ans. Il s'attache notamment à formaliser les concepts de valeurs réelles et nominales pour isoler l'impact de l'inflation sur les indicateurs de richesse nationale.
+    </p>
+
+    <h2>Fondements Théoriques : Prix Courants vs Prix Constants</h2>
+    <p>
+        Pour analyser rigoureusement la série chronologique, deux approches de calcul de la richesse ont été exploitées et calculées sur l'intégralité de la chronique :
+    </p>
+    <ul>
+        <li><strong>PIB aux prix courants (€ courants) :</strong> Mesure la valeur totale de la production d'une année en utilisant les prix observés au cours de cette même année. Cette évaluation nominale ne filtre pas les mouvements de prix et reste dépendante des variations monétaires.</li>
+        <li><strong>PIB aux prix constants (€ 2020) :</strong> Mesure uniquement l'évolution des volumes physiques produits en fixant les prix de référence à une année de base (2020). Cette approche intègre et corrige l'inflation, révélant ainsi les taux de croissance économique réels.</li>
+    </ul>
+
+    <h2>Analyse Globale de la Richesse (1949 - 2023)</h2>
+    <p>
+        Les calculs d'évolution globale mettent en lumière un décalage massif entre la croissance nominale et la performance productive concrète du pays :
+    </p>
+
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-value">214,77</div>
+            <div class="metric-label">Coeff. Multiplicateur (PIB Courant)</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value">9,01</div>
+            <div class="metric-label">Coeff. Multiplicateur (PIB Réel 2020)</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value">1,33</div>
+            <div class="metric-label">Déflateur Global du PIB</div>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <strong>Analyse du décalage macroéconomique :</strong><br>
+        Le PIB en euros courants est devenu <strong>215 fois plus grand</strong> entre 1949 et 2023, alors que la production réelle (mesurée aux prix constants de 2020) n'a été multipliée que par <strong>9,01</strong>. Le coefficient nominal est ainsi 24 fois plus élevé que le coefficient réel. Cet écart colossal reflète l'augmentation continue et l'impact cumulé de l'inflation au cours de ces 74 dernières années.
+    </div>
+
+    <p>
+        Le calcul du <strong>déflateur global du PIB</strong> ($1,33$, soit une estimation de $113,3\ \text{\%}$ sur la période) confirme que le PIB nominal a évolué à un rythme nettement plus soutenu que la production réelle, validant le rôle prépondérant de l'érosion monétaire historique.
+    </p>
+
+    <h2>Évolution Démographique & Niveau de Vie Individuel</h2>
+    <p>
+        L'analyse globale a été ajustée à l'échelle humaine en intégrant l'évolution démographique de la France sur la même période.
+    </p>
+    <div class="section-callout">
+        <strong>Dynamique de la population :</strong><br>
+        La population française a augmenté de près de <strong>26 millions d'individus</strong> entre 1949 et 2023, représentant une croissance démographique globale de près de <strong>62&nbsp;%</strong>.
+    </div>
+
+    <p>
+        En ramenant la production par tête, les coefficients multiplicateurs du PIB par habitant ont été isolés :
+    </p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicateur par Habitant (1949 - 2023)</th>
+                    <th>Coefficient Multiplicateur</th>
+                    <th>Signification Macroéconomique</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>PIB par habitant en € courants</strong></td>
+                    <td>132,83</td>
+                    <td>Multiplication nominale du revenu moyen par habitant</td>
+                </tr>
+                <tr>
+                    <td><strong>PIB par habitant en € 2020 (Réel)</strong></td>
+                    <td>5,57</td>
+                    <td>Progression réelle du niveau de vie physique individuel</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>
+        À l'instar des agrégats globaux, l'inflation explique la distorsion entre ces deux indicateurs. On observe néanmoins que les écarts sont légèrement plus resserrés sur les indicateurs par habitant que sur le PIB global. L'utilisation du PIB par habitant en volume s'impose comme l'indicateur le plus vertueux et fiable pour comparer l'évolution du niveau de vie réel entre plusieurs puissances économiques.
+    </p>
+
+    <h2>Valorisation : Infographie de la Croissance Française</h2>
+    <p>
+        L'aboutissement de cette SAÉ a consisté à concevoir une infographie de synthèse synthétisant les grandes étapes de la trajectoire économique française depuis 1950 (des Trente Glorieuses aux mutations post-crises).
+    </p>
+
+    <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=900&q=80" alt="Série temporelle macroéconomique INSEE" class="image">
+        <div class="image-caption"><i class="fas fa-chart-area"></i> Vue d'ensemble du tableau de bord d'analyse : Évolution temporelle comparée des trajectoires nominales et réelles du PIB français</div>
+    </div>
+
+    <h2>Compétences Valorisées</h2>
+    <ul>
+        <li><strong>Ingénierie de données financières :</strong> Manipulation et structuration de bases de données historiques massives (INSEE) sous tableur.</li>
+        <li><strong>Modélisation macroéconomique :</strong> Maîtrise des techniques de déflation, calculs d'indices de prix, de taux de variation annuels et de coefficients multiplicateurs cumulés.</li>
+        <li><strong>Dataviz & Vulgarisation :</strong> Capacité à traduire des concepts statistiques complexes en livrables visuels clairs à destination de décideurs.</li>
+    </ul>
+
+    <br>
+
+    <a href="#" class="btn" target="_blank"><i class="fas fa-file-excel"></i> Accéder aux Calculs Macroéconomiques (Excel)</a>
+    <br><br>
+    <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
+
+</div>
+
+</body>
+</html>
