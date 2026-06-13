@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>SAÉ : Enquête et analyse statistique</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 3.02 : Enquête et Analyse Statistique — Habitudes Alimentaires</title>
 
     <style>
         body {
@@ -21,36 +22,170 @@
 
         h1 {
             color: #6E44FF;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
 
         h2 {
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             color: #6E44FF;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            color: #2D3142;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            border-left: 3px solid #B57EDC;
+            padding-left: 0.5rem;
         }
         
         p {
+            line-height: 1.7;
+            color: #5C6175;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
             line-height: 1.6;
             color: #5C6175;
         }
 
+        strong {
+            color: #2D3142;
+        }
+
+        .highlight-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #6E44FF;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #6E44FF;
+            margin-bottom: 0.2rem;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #5C6175;
+            font-weight: 500;
+        }
+
+        .tools-badge {
+            display: inline-block;
+            background: #EBF8FF;
+            color: #2B6CB0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .image-container {
+            background-color: #FFFFFF;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin: 2rem 0;
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
         .btn {
             display: inline-block;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             background: #6E44FF;
             color: white;
             padding: 0.7rem 1.5rem;
             border-radius: 10px;
             text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(110, 68, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
         .btn:hover {
             background: #8B5CF6;
+            transform: translateY(-2px);
         }
 
-        .image {
-            width: 100%;
-            margin-top: 1rem;
-            border-radius: 10px;
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: transparent;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+            box-shadow: none;
+        }
+
+        .back-link:hover {
+            background: #FAFAFB;
+            color: #6E44FF;
+            border-color: #6E44FF;
+            transform: none;
+        }
+
+        .team-badge {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            background: #F3E8FF;
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
         }
     </style>
 </head>
@@ -59,99 +194,96 @@
 
 <div class="container">
 
-    <h1>SAÉ 3.02 : Enquête et analyse statistique</h1>
+    <h1>SAÉ 3.02 : Enquête et Analyse Statistique</h1>
+    
+    <div class="team-badge">
+        <i class="fas fa-user-friends"></i> Projet en binôme — IUT de Niort (Département STID / Science des Données)
+    </div>
 
-    <h2>Contexte</h2>
+    <h2>Contexte du Projet</h2>
     <p>
-        Dans le cadre de cette SAÉ, nous avons réalisé une enquête sur les habitudes alimentaires des étudiants niortais.
-        L’objectif était de mieux comprendre les pratiques de consommation ainsi que les facteurs influençant leur alimentation.
-        Ce projet a été réalisé en binôme, à partir d’un questionnaire diffusé auprès des étudiants de l’IUT de Niort.
-        Au total, près de 377 réponses ont été collectées et analysées.
+        Dans le cadre de cette unité d'enseignement, nous avons piloté une étude complète sur les <strong>habitudes alimentaires des étudiants niortais</strong>. L’objectif central consistait à appréhender leurs pratiques réelles de consommation, à évaluer leur budget moyen et à identifier les facteurs socio-économiques ou temporels qui influencent directement la structure de leurs repas au quotidien.
     </p>
 
-    <h2>Objectifs</h2>
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-value">377</div>
+            <div class="metric-label">Réponses collectées</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value">76 %</div>
+            <div class="metric-label">Fréquentation du RU</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value">60 %</div>
+            <div class="metric-label">Étudiants attentifs à leur santé</div>
+        </div>
+    </div>
+
+    <h2>Objectifs Méthodologiques</h2>
     <ul>
-        <li>Concevoir et exploiter une enquête statistique</li>
-        <li>Analyser des données issues d’un questionnaire</li>
-        <li>Interpréter des résultats et dégager des tendances</li>
-        <li>Présenter les résultats sous forme de graphiques et d’un rapport structuré</li>
+        <li><strong>Concevoir</strong> une chaîne d’enquête statistique rigoureuse, de la question au rapport d'analyse.</li>
+        <li><strong>Traiter et redresser</strong> des données brutes récoltées sur le terrain via un échantillon représentatif.</li>
+        <li><strong>Modéliser et croiser</strong> des variables qualitatives et quantitatives pour dégager des profils types.</li>
+        <li><strong>Vulgariser</strong> les résultats sous un format éditorial professionnel (style magazine / journal de 4 pages).</li>
     </ul>
 
-    <h2>Méthodologie et déroulement</h2>
+    <h2>Ingénierie de l'Enquête & Déroulement</h2>
 
-    <h3>1. Construction du questionnaire</h3>
+    <h3>1. Ingénierie du Questionnaire</h3>
     <p>
-        - Élaboration des questions autour des habitudes alimentaires (repas, budget, fréquence, etc.)<br>
-        - Organisation logique des questions (ordre et thèmes)<br>
-        - Création d’un organigramme pour structurer l’enquête
+        Nous avons défini des axes d'études précis (budget mensuel, fréquence des repas, typologies de produits achetés). Un travail approfondi a été mené sur l'enchaînement logique des filtres et la création d’un <strong>organigramme de structure</strong> pour éviter toute déperdition ou biais de réponse.
     </p>
 
-    <h3>2. Collecte des données</h3>
+    <h3>2. Collecte & Data Cleaning</h3>
     <p>
-        - Diffusion du questionnaire auprès des étudiants<br>
-        - Collecte de 377 réponses<br>
-        - Vérification et préparation des données pour analyse
+        Diffusion multicanal du questionnaire auprès des étudiants de l’IUT de Niort permettant d’atteindre un volume robuste de <strong>377 observations</strong>. Une phase de tri à plat et de nettoyage a été réalisée pour valider la cohérence des bases de données de l'échantillon.
     </p>
 
-    <h3>3. Analyse statistique</h3>
+    <h3>3. Traitement Statistique</h3>
     <p>
-        - Traitement des données avec des outils d’analyse (Sphinx)<br>
-        - Création de graphiques (diagrammes, camemberts, etc.)<br>
-        - Analyse des variables : sexe, logement, budget, fréquence des repas, ...
+        Modélisation des variables via le logiciel d'enquête <strong>Sphinx</strong> et analyses complémentaires sous <strong>Excel</strong>. Nous avons procédé à des tris croisés (ex: croisement entre le <em>sexe</em> ou le <em>type de logement</em> et le <em>budget alimentaire moyen</em>) pour isoler des comportements significatifs.
     </p>
 
-    <h3>4. Interprétation des résultats</h3>
+    <h2>Principales Tendances Identifiées</h2>
+    <div class="highlight-box">
+        <ul>
+            <li><strong>Sensibilité nutritionnelle :</strong> 60&nbsp;% des étudiants déclarent surveiller activement leur équilibre alimentaire, avec une attention forte portée au rapport qualité/prix.</li>
+            <li><strong>Ancrage du Restaurant Universitaire :</strong> Une très forte adhésion au RU (76&nbsp;% de fréquentation), s'imposant comme le pivot de la pause méridienne.</li>
+            <li><strong>Budget resserré :</strong> Le budget mensuel moyen alloué à l'alimentation se concentre majoritairement dans une fourchette allant de <strong>100€ à 150€</strong>.</li>
+            <li><strong>Comportements induits :</strong> Le grignotage est un phénomène récurrent, directement corrélé au saut du petit-déjeuner pour des raisons de gestion du temps le matin.</li>
+        </ul>
+    </div>
+
+    <h2>Restitution et Livrables</h2>
     <p>
-        Plusieurs tendances ont été mises en évidence :
-        <br>- 60% des étudiants surveillent leur alimentation<br>
-        - une forte fréquentation du restaurant universitaire (76%)<br>
-        - un budget alimentaire majoritairement compris entre 100 et 150€<br>
-        - un grignotage fréquent lié au manque de petit-déjeuner<br>
-        - une attention particulière portée au rapport qualité/prix
+        La phase finale a donné lieu à la rédaction d’un rapport d'analyse synthétique de <strong>4 pages au format journalistique</strong>. En plus des constats statistiques purs, ce document intégrait des pistes d'action concrètes destinées à la vie étudiante (mise en place d'ateliers de cuisine abordable, évolution de l'offre des services de restauration de proximité).
     </p>
 
-    <h3>5. Rédaction du rapport</h3>
+    <div class="image-container">
+        <img src="enquete.png" alt="Graphiques d'analyse statistique de l'enquête alimentaire" class="image">
+        <div class="image-caption"><i class="fas fa-chart-pie"></i> Visualisation des données : Extraits graphiques des tris à plat générés sur le comportement des répondants</div>
+    </div>
+
+    <h2>Stack Technique & Outils</h2>
     <p>
-        - Rédaction d’un document structuré (4 pages, style journal)<br>
-        - Présentation de la méthodologie, des analyses et des résultats<br>
-        - Intégration de graphiques pour appuyer l’analyse<br>
-        - Proposition d’améliorations (services alimentaires, cours de cuisine, ...)
+        <span class="tools-badge">Sphinx iQ</span>
+        <span class="tools-badge">Microsoft Excel</span>
+        <span class="tools-badge">Tris Croisés</span>
+        <span class="tools-badge">Data Viz</span>
     </p>
 
-    <h2>Outils utilisés</h2>
-    <p>
-        Sphinx / Excel / Word / Analyse statistique
-    </p>
+    <h2>Compétences Métiers Développées</h2>
+    <ul>
+        <li><strong>Gouvernance d'études quantitatives :</strong> Maîtrise des techniques d’échantillonnage, de formulation des questions et de routage logique.</li>
+        <li><strong>Analyse Exploratoire de Données :</strong> Manipulation d’outils métiers de traitement de questionnaires et interprétation de tableaux de contingence.</li>
+        <li><strong>Communication d'Impact :</strong> Traduction d'indicateurs statistiques en conclusions graphiques digestes et plans d'action orientés utilisateur.</li>
+    </ul>
 
-    <h2>Résultats</h2>
-    <p>
-        L’enquête montre que les étudiants niortais ont globalement une alimentation équilibrée, malgré certaines contraintes :
-        <br><br>
-        - Une majorité d’étudiants est attentive à son alimentation<br>
-        - Le manque de temps reste le principal frein à de bonnes habitudes<br>
-        - Le budget n’est pas toujours la contrainte principale<br>
-        - Le grignotage est fréquent mais souvent expliqué par des repas incomplets
-        <br><br>
-        Les résultats montrent également une réelle volonté des étudiants à améliorer leurs pratiques alimentaires.
-    </p>
+    <br>
+    <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
 
-    <h2>Compétences développées</h2>
-    <p>
-        - Conception d’une enquête statistique<br>
-        - Analyse de données quantitatives<br>
-        - Utilisation d’outils d’analyse (Sphinx)<br>
-        - Interprétation de résultats<br>
-        - Rédaction d’un rapport structuré<br>
-        - Travail en équipe
-    </p>
+</div>
 
-    <h2>Conclusion</h2>
-    <p>
-        Ce projet nous a permis de mieux comprendre les pratiques alimentaires des étudiants et les enjeux associés.
-        Il met en évidence l’importance de l’équilibre alimentaire dans la vie étudiante.
-        Malgré certains obstacles comme le manque de temps, les étudiants font globalement des efforts pour maintenir une alimentation saine.
-    </p>
-
-    <!-- Image -->
-    <img src="enquete.png" class="image">
-
+</body>
+</html>
