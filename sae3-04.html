@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 3.04 : Ingénierie de Données — Projet ETL avec Talend</title>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFB;
+            color: #2D3142;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 3rem;
+        }
+
+        h1 {
+            color: #6E44FF;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            margin-top: 2.5rem;
+            color: #6E44FF;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            color: #2D3142;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            border-left: 3px solid #B57EDC;
+            padding-left: 0.5rem;
+        }
+        
+        p {
+            line-height: 1.7;
+            color: #5C6175;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            color: #5C6175;
+        }
+
+        strong {
+            color: #2D3142;
+        }
+
+        .highlight-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #6E44FF;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: #6E44FF;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(110, 68, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8B5CF6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 68, 255, 0.3);
+        }
+
+        .code-block {
+            background-color: #2D3142;
+            color: #F8F8F2;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .etl-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+        }
+
+        .step-num {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6E44FF;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #2D3142;
+            margin-bottom: 0.5rem;
+        }
+
+        .table-container {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #FAFAFB;
+            color: #6E44FF;
+            text-align: left;
+            padding: 0.7rem;
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        td {
+            padding: 0.7rem;
+            border-bottom: 1px solid #EEEFF2;
+            color: #5C6175;
+        }
+
+        .image-container {
+            background-color: #FFFFFF;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin: 1.5rem 0;
+            border: 1px solid #EEEFF2;
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: transparent;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+        }
+
+        .back-link:hover {
+            background: #FAFAFB;
+            color: #6E44FF;
+            border-color: #6E44FF;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SAÉ 3.04 : Intégration et Automatisation de Flux avec Talend</h1>
+
+    <h2>Contexte & Objectifs du Projet</h2>
+    <p>
+        Dans l'ingénierie des données moderne, la maîtrise des processus <strong>ETL (Extract, Transform, Load)</strong> est fondamentale pour unifier des sources hétérogènes et alimenter des entrepôts décisionnels. L'objectif de cette SAÉ était de prendre en main l'outil industriel <strong>Talend Open Studio</strong> afin de concevoir, paramétrer et automatiser des flux de données structurés.
+    </p>
+    <p>
+        À travers une suite complète d'ateliers et de cas d'usage d'entreprise, j'ai développé des compétences clés allant de la génération de données synthétiques à la mise en place de jointures complexes, de contrôles conditionnels et d'une gestion dynamique des contextes d'exécution.
+    </p>
+
+    <h2>Architecture d'un Flux ETL sous Talend</h2>
+    <p>
+        L'ensemble de mon travail a été structuré autour des trois piliers fondamentaux d'un pipeline de données performant :
+    </p>
+
+    <div class="etl-steps-grid">
+        <div class="step-card">
+            <div class="step-num">E</div>
+            <div class="step-title">Extraction (Extract)</div>
+            <p>Lecture de fichiers délimités (<code>tFileInputDelimited</code>), gestion de métadonnées centralisées (Clients, Départements, Ventes) et vérification d'existence de fichiers avec <code>tFileExist</code>.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">T</div>
+            <div class="step-title">Transformation (Transform)</div>
+            <p>Filtrage multicritère (<code>tFilterRow</code>), calculs d'agrégation et de sommes (<code>tAggregateRow</code>), tri de flux (<code>tSortRow</code>), et interfaçage graphique avancé avec le puissant composant <code>tMap</code>.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">L</div>
+            <div class="step-title">Chargement (Load)</div>
+            <p>Écriture formatée dans des fichiers plats physiques (<code>tFileOutputDelimited</code>), gestion des en-têtes, choix des séparateurs personnalisés (ex: <code>@;@</code>) et empilement des flux sortants.</p>
+        </div>
+    </div>
+
+    <h2>Réalisations Techniques Principales</h2>
+
+    <h3>1. Routage Conditionnel et Orchestration</h3>
+    <p>
+        J'ai implémenté des mécanismes de contrôle de flux stricts. Grâce aux déclencheurs de type <strong>Trigger (OnSubjobOk)</strong> et aux liens logiques <strong>Run If</strong>, j'ai configuré des exécutions conditionnelles basées sur des variables globales du système, notamment sur le volume de lignes traitées en amont :
+    </p>
+    <div class="code-block">
+// Exemple de condition logique "Run If" basée sur les variables globales Talend
+((Integer)globalMap.get("tLogRow_1_NB_LINE")) == 50
+    </div>
+
+    <h3>2. Manipulation Avancée de Données avec tMap</h3>
+    <p>
+        Le composant <code>tMap</code> a été utilisé pour réaliser des transformations applicatives d'entreprise :
+    </p>
+    <ul>
+        <li><strong>Concaténation dynamique :</strong> Fusion des champs <code>prenomGerant</code> et <code>nomGerant</code> avec ajout d'un espace de séparation pour générer un nouvel attribut propre.</li>
+        <li><strong>Nettoyage de chaînes :</strong> Passage systématique en majuscules du champ <code>nomSociété</code> via des routines Java natives de Talend.</li>
+        <li><strong>Routage et Rejets :</strong> Distribution de flux de clients vers des fichiers distincts selon leur département d'origine (Gironde, Pyrénées-Atlantiques), tout en gérant un fichier d'anomalies pour les lignes non conformes.</li>
+    </ul>
+
+    <h3>3. Injection de Code Java et Variables de Contexte</h3>
+    <p>
+        Pour dynamiser les traitements, j'ai exploité le composant <code>tJava</code> couplé aux routines de gestion de dates (<code>TalendDate</code>). J'ai ainsi automatisé le calcul de la date de la veille, encapsulé cette information dans des variables de contexte globales (<code>tSetGlobalVar</code> / <code>tContextLoad</code>) et partagé ces paramètres entre un job lanceur et un job d'affichage via l'option <em>"Transmettre tout le contexte"</em>.
+    </p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Composant Clé</th>
+                    <th>Rôle Technique</th>
+                    <th>Cas d'Usage Réalisé</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>tRowGenerator</code></td>
+                    <td>Génération de données</td>
+                    <td>Création de flux de test (Séquences, chaînes aléatoires, plages d'âges 18-80 ans).</td>
+                </tr>
+                <tr>
+                    <td><code>tReplicate</code></td>
+                    <td>Duplication de flux</td>
+                    <td>Séparation simultanée d'un flux vers un fichier CSV et une console de monitoring.</td>
+                </tr>
+                <tr>
+                    <td><code>tAggregateRow</code></td>
+                    <td>Calcul d'agrégats</td>
+                    <td>Somme des quantités vendues groupée par identifiant de magasin (<code>ID_MAGASIN</code>).</td>
+                </tr>
+                <tr>
+                    <td><code>tContextLoad</code></td>
+                    <td>Dynamisation</td>
+                    <td>Chargement à la volée de paires <code>key / value</code> pour modifier le comportement des jobs.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Restitution Visuelle de l'Architecture des Jobs</h2>
+    <p>
+        Chaque exercice a donné lieu à la validation d'un graphe de composants propre, assurant la transition sans perte des données et le respect strict des types (Integer, String, Date) définis dans les schémas.
+    </p>
+
+    <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=900&q=80" alt="Interface de conception Talend Open Studio" class="image">
+        <div class="image-caption"><i class="fas fa-network-wired"></i> Graphe typique d'un Job Talend : Mapping, jointures et routages de flux de données clients et ventes</div>
+    </div>
+
+    <h2>Compétences Valorises</h2>
+    <div class="highlight-box">
+        <ul>
+            <li><strong>Conception d'Architectures ETL :</strong> Capacité à modéliser des flux d'intégration de données logiques, propres et performants.</li>
+            <li><strong>Programmation Hybride (Talend/Java) :</strong> Utilisation des fonctions natives de Talend et rédaction de scripts Java sur mesure pour étendre les capacités des composants de base.</li>
+            <li><strong>Industrialisation et Robustesse :</strong> Mise en place de contrôles de présence de fichiers, gestion des rejets et paramétrage de contextes pour rendre les chaînes de traitement autonomes.</li>
+        </ul>
+    </div>
+
+    <br>
+
+    <a href="#" class="btn" target="_blank"><i class="fas fa-code-branch"></i> Consulter le Déploiement des Jobs Talend</a>
+    <br><br>
+    <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
+
+</div>
+
+</body>
+</html>
