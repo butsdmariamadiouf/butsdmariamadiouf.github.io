@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAÉ 3.03 : Conformité Réglementaire de Traitement des Données — Gouvernance & RGPD</title>
+    <title>SAÉ 3.03 : Conformité Réglementaire de Traitement des Données</title>
 
     <style>
         body {
@@ -70,21 +70,21 @@
             color: #2D3142;
         }
 
-        .highlight-box {
+        .alert-box {
             background-color: #FFFFFF;
-            border-left: 5px solid #E53E3E; /* Rouge/Orange pour symboliser l'urgence/données interdites */
+            border-left: 5px solid #E53E3E;
             padding: 1.5rem;
             border-radius: 0 15px 15px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
             margin: 1.5rem 0;
         }
 
         .compliance-box {
             background-color: #FFFFFF;
-            border-left: 5px solid #38A169; /* Vert pour la conformité */
+            border-left: 5px solid #38A169;
             padding: 1.5rem;
             border-radius: 0 15px 15px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
             margin: 1.5rem 0;
         }
 
@@ -136,11 +136,15 @@
             color: #5C6175;
         }
 
-        .badge-group {
+        .team-badge {
             font-size: 0.85rem;
             color: #8B5CF6;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            background: #F3E8FF;
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
         }
 
         .back-link {
@@ -149,12 +153,15 @@
             background: transparent;
             color: #5C6175;
             border: 2px solid #E2E8F0;
+            box-shadow: none;
         }
 
         .back-link:hover {
             background: #FAFAFB;
             color: #6E44FF;
             border-color: #6E44FF;
+            box-shadow: none;
+            transform: none;
         }
     </style>
 </head>
@@ -163,117 +170,157 @@
 
 <div class="container">
 
-    <h1>SAÉ 3.03 : Conformité Réglementaire de Traitement des Données</h1>
-    <div class="badge-group">
-        <i class="fas fa-users"></i> Projet en groupe : Mariama DIOUF, Paul CARNOVALI, Alexan RAVONNEAUX, Abderrahman JENFI & Marzouk SABI
+    <h1>SAÉ 3.03 : Conformité Réglementaire & RGPD</h1>
+    
+    <div class="team-badge">
+        <i class="fas fa-users"></i> Université de Poitiers — Groupe : M. DIOUF, P. CARNOVALI, A. RAVONNEAUX, A. JENFI, M. SABI
     </div>
 
-    <h2>Contexte du Projet & Problématique</h2>
+    <h2>Contexte & Problématique</h2>
     <p>
-        Entré en vigueur en mai 2018, le <strong>Règlement Général sur la Protection des Données (RGPD)</strong> impose un cadre juridique strict à toute entité manipulant des données personnelles. Dans le cadre de cette SAÉ, notre groupe s'est positionné en tant que cellule d'experts mandatée par une <strong>entreprise industrielle d'une centaine de salariés</strong>. 
+        Le <strong>Règlement Général sur la Protection des Données (RGPD)</strong> imposes des obligations strictes aux structures manipulant des données citoyennes. Dans le cadre de ce projet, notre équipe s'est positionnée comme consultante auprès d'une <strong>entreprise industrielle d'une centaine de salariés</strong> dont le service des Ressources Humaines n'avait encore initié aucune démarche de mise en conformité.
     </p>
     <p>
-        À notre arrivée, le constat était critique : le service des Ressources Humaines n'avait initié aucune démarche de mise en conformité. Pire encore, la collecte courante intégrait des données hautement superflues, voire formellement interdites par le législateur (données de santé détaillées, opinions syndicales, historique de grèves), exposant l'organisation à des sanctions financières lourdes de la CNIL pouvant atteindre <strong>4&nbsp;% du chiffre d'affaires annuel mondial</strong>.
+        L'urgence d'agir était immédiate : la manipulation non encadrée de données critiques (santé, syndicalisme) expose l'organisation à des risques juridiques majeurs et des amendes de la CNIL pouvant atteindre <strong>4 % du chiffre d'affaires annuel mondial</strong>. Notre mission a consisté à concevoir un plan d'action pragmatique, structuré et transparent pour la direction.
     </p>
 
-    <h2>Évaluation des Traitements et Purge des Données Collectées</h2>
+    <h2>1. Cartographie & Registre des Activités</h2>
     <p>
-        L'analyse du système d'information RH a permis d'isoler deux grandes catégories de données (Identification de l'employé et Suivi de carrière). En vertu du principe RGPD de <strong>minimisation des données</strong>, notre première mesure concrète a consisté à ordonner la suppression immédiate de plusieurs informations non pertinentes ou illégales :
+        La première étape indispensable a été d'initier la création du <strong>registre des activités de traitement</strong>. Ce document opposable doit refléter fidèlement la réalité des processus RH. Pour piloter cette gouvernance, nous avons préconisé la désignation d'un membre formé ou d'un expert externe agissant en tant que <strong>Délégué à la Protection des Données (DPO)</strong>, qui sera l'interlocuteur officiel auprès de la CNIL.
     </p>
 
-    <div class="highlight-box">
-        <strong>Données sensibles et superflues à supprimer impérativement :</strong>
-        <ul>
-            <li><strong>Données relatives à la vie privée :</strong> Profession des parents, nature des études suivies par les enfants, et détails matrimoniaux injustifiés.</li>
-            <li><strong>Données syndicales (Interdit) :</strong> L'appartenance syndicale et l'historique exhaustif du nombre de jours de grève sur les 10 dernières années (variables discriminatoires).</li>
-            <li><strong>Données de santé (Interdit) :</strong> Diagnostics et pathologies détaillés des salariés. Le service RH doit restreindre sa visibilité au seul avis d'aptitude émis par la médecine du travail.</li>
-        </ul>
-    </div>
-
-    <h2>Gouvernance des Données & Cycle de Vie</h2>
+    <h2>2. Identification des Parties Prenantes</h2>
     <p>
-        Pour structurer la transparence des traitements, nous avons formalisé la cartographie des flux et défini une politique stricte de <strong>durée de conservation des données</strong> :
+        Le registre identifie rigoureusement l'ensemble des acteurs internes et externes gravitant autour de la donnée :
+    </p>
+    <ul>
+        <li><strong>Responsable du traitement :</strong> L'entreprise industrielle, qui fixe les finalités et les moyens.</li>
+        <li><strong>Sous-traitants :</strong> Prestataires externes clés (cabinet comptable, éditeur du logiciel de paie, hébergeur Cloud).</li>
+        <li><strong>Destinataires internes :</strong> Services restreints habilités (Ressources Humaines, Comptabilité, Direction).</li>
+        <li><strong>Destinataires externes :</strong> Organismes légaux obligatoires (URSSAF, mutuelles, médecine du travail).</li>
+    </ul>
+
+    <h2>3. Cycle de Vie & Rétention des Données</h2>
+    <p>
+        En application des principes de proportionnalité, les données personnelles ne peuvent être conservées indéfiniment. Nous avons formalisé le calendrier de rétention suivant :
     </p>
 
     <div class="table-container">
         <table>
             <thead>
                 <tr>
-                    <th>Typologie des Données RH</th>
-                    <th>Durée de Conservation Maximale</th>
-                    <th>Destination & Cadre Légal</th>
+                    <th>Catégorie de Données</th>
+                    <th>Durée de Conservation</th>
+                    <th>Règle de Fin de Cycle</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Dossier administratif du salarié</strong></td>
+                    <td><strong>Dossier collaborateur (Administratif)</strong></td>
                     <td>Durée du contrat + 5 ans</td>
-                    <td>Archivage sécurisé pour gestion des contentieux.</td>
+                    <td>Archivage intermédiaire (Contentieux).</td>
                 </tr>
                 <tr>
-                    <td><strong>Bulletins de paie et cotisations</strong></td>
+                    <td><strong>Bulletins de paie & Cotisations</strong></td>
                     <td>5 ans</td>
-                    <td>Obligation légale de l'employeur.</td>
+                    <td>Obligation légale de conservation.</td>
                 </tr>
                 <tr>
-                    <td><strong>Évaluations professionnelles & Formations</strong></td>
+                    <td><strong>Évaluations & Historique de formation</strong></td>
                     <td>Durée du contrat + 5 ans</td>
-                    <td>Suivi de carrière interne.</td>
+                    <td>Suppression définitive.</td>
                 </tr>
                 <tr>
                     <td><strong>Données de santé (Aptitudes, RQTH)</strong></td>
-                    <td>1 ans maximum après le départ</td>
-                    <td>Médecine du travail / Service RH restreint.</td>
+                    <td>1 an maximum après le départ</td>
+                    <td>Destruction sécurisée.</td>
                 </tr>
                 <tr>
-                    <td><strong>Sanctions disciplinaires non amnistiées</strong></td>
+                    <td><strong>Sanctions disciplinaires</strong></td>
                     <td>3 ans maximum</td>
                     <td>Effacement automatique du dossier.</td>
                 </tr>
                 <tr>
                     <td><strong>Candidatures non retenues</strong></td>
                     <td>2 ans après le dernier contact</td>
-                    <td>Sous réserve du consentement du candidat.</td>
+                    <td>Purge (sauf accord explicite).</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <h2>Plan de Sécurisation Technique et Organisationnel</h2>
+    <h2>4. Minimisation : Suppression des Données Hors-Cadre</h2>
     <p>
-        Pour garantir l'intégrité, la confidentialité et la traçabilité des accès aux données des collaborateurs, nous avons préconisé un ensemble de mesures robustes :
-    </p>
-    <ul>
-        <li><strong>Sécurité Technique :</strong> Implémentation d'identifiants individuels uniques, chiffrement des bases de données RH contenant les pièces sensibles (copies de passeports, titres d'autorisation de travail), déploiement d'antivirus/pare-feu à jour, et activation de l'authentification multifacteur (MFA).</li>
-        <li><strong>Sécurité Organisationnelle :</strong> Désignation officielle d'un <strong>Délégué à la Protection des Données (DPO)</strong> enregistré auprès de la CNIL, signature d'engagements de confidentialité par le personnel RH, et mise en place d'une procédure de notification des violations de données sous 72 heures.</li>
-    </ul>
-
-    <h2>Feuille de Route pour la Mise en Conformité Continue</h2>
-    <p>
-        La conformité réglementaire n'est pas un livrable statique mais un processus itératif. Nous avons soumis à la direction générale un plan d'action hiérarchisé :
+        Le RGPD impose de ne collecter que le strict nécessaire. Notre audit a révélé la présence d'informations superflues ou interdites qui ont fait l'objet d'une demande de <strong>suppression immédiate</strong> :
     </p>
 
-    <div class="compliance-box">
-        <strong>Plan d'action prioritaire :</strong>
+    <div class="alert-box">
+        <strong>⚠️ Données identifiées comme illégales ou non pertinentes :</strong>
         <ul>
-            <li><strong>Court Terme (1 mois) :</strong> Désignation du DPO, ouverture du <strong>Registre des activités de traitement</strong> (obligatoire et opposable) et purge des données sensibles interdites.</li>
-            <li><strong>Moyen Terme (3 mois) :</strong> Remplacement des accès partagés par des droits nominatifs restreints, mise en conformité des contrats de sous-traitance (logiciels de paie, hébergeurs cloud).</li>
-            <li><strong>Long Terme (6-12 mois) :</strong> Audit interne annuel, formation continue du management et automatisation de l'exercice des droits des salariés (accès, rectification, effacement).</li>
+            <li><strong>Sphère privée & familiale :</strong> La profession des parents, le détail des études des enfants ou la situation matrimoniale ultra-détaillée (sauf cas unique d'avantages sociaux ciblés).</li>
+            <li><strong>Opinions & Faits de grève :</strong> L'appartenance syndicale et le décompte des jours de grève sur 10 ans sont interdits car discriminatoires.</li>
+            <li><strong>Pathologies médicales :</strong> Le diagnostic exact d'une maladie ne doit jamais être connu des RH. Seule l'aptitude ou l'inaptitude émise par le médecin du travail est conservée.</li>
         </ul>
     </div>
 
-    <h2>Compétences Métiers Développées</h2>
+    <h2>5. Sécurisation Technique & Organisationnelle</h2>
+    <p>
+        Pour garantir la confidentialité et l'intégrité du système d'information, deux axes de chantiers ont été définis :
+    </p>
+    <div class="compliance-box">
+        <strong>🔒 Mesures de sécurité déployées :</strong>
+        <ul>
+            <li><strong>Volet Technique :</strong> Authentification individuelle par mots de passe forts (MFA conseillé), chiffrement des données sensibles en base, serveurs derrière pare-feu et antivirus avec mises à jour automatisées.</li>
+            <li><strong>Volet Organisationnel :</strong> Sensibilisation du personnel RH aux clauses de confidentialité, audits annuels de sécurité et tenue rigoureuse d'un registre des incidents (en cas de fuite, notification à la CNIL sous 72h par le DPO).</li>
+        </ul>
+    </div>
+
+    <h2>6. Plan d'Action & Feuille de Route</h2>
+    <p>
+        La conformité s'inscrit dans une logique d'amélioration continue. Nous avons soumis la feuille de route suivante à la direction générale :
+    </p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Horizon</th>
+                    <th>Actions Clés</th>
+                    <th>Délai</th>
+                    <th>Responsables</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Court terme</strong></td>
+                    <td>Nomination du DPO, ouverture du registre et purge des données sensibles.</td>
+                    <td>1 mois.</td>
+                    <td>Direction / RH.</td>
+                </tr>
+                <tr>
+                    <td><strong>Moyen terme</strong></td>
+                    <td>Sécurisation des accès serveurs, avenants sous-traitants, process droits des salariés.</td>
+                    <td>3 mois.</td>
+                    <td>DPO / Informatique.</td>
+                </tr>
+                <tr>
+                    <td><strong>Long terme</strong></td>
+                    <td>Audit RGPD annuel complet et mise à jour des traitements automatisés.</td>
+                    <td>6-12 mois.</td>
+                    <td>DPO / Direction.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Compétences Métiers Validées</h2>
     <ul>
-        <li><strong>Audit & Analyse de Risques :</strong> Capacité à cartographier des flux de données réels et à identifier les écarts face à une réglementation juridique complexe (RGPD).</li>
-        <li><strong>Gouvernance des Données :</strong> Conception de registres de traitement, d'arbres de droits d'accès et de politiques de cycle de vie de la donnée (retention policy).</li>
-        <li><strong>Communication Managériale :</strong> Traduction de contraintes juridiques techniques en plans d'action pragmatiques, compréhensibles et applicables par des dirigeants d'entreprise.</li>
+        <li><strong>Gouvernance de la Data :</strong> Maîtrise des concepts juridico-techniques liés au cycle de vie de la donnée et à sa sécurité applicative.</li>
+        <li><strong>Audit de Risques :</strong> Analyse d'écarts de conformité sur des volumes de données d'entreprise et propositions correctives concrètes.</li>
+        <li><strong>Esprit d'Équipe & Conseil :</strong> Collaboration en synergie de groupe pour restituer un livrable d'ingénierie clair, accessible et directement exploitable par des décideurs.</li>
     </ul>
 
     <br>
-
-    <!-- Boutons d'action -->
-    <a href="#" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Télécharger le Rapport d'Audit RGPD (PDF)</a>
-    <br><br>
     <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
 
 </div>
