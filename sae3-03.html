@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 3.03 : Conformité Réglementaire de Traitement des Données — Gouvernance & RGPD</title>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFB;
+            color: #2D3142;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 3rem;
+        }
+
+        h1 {
+            color: #6E44FF;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            margin-top: 2.5rem;
+            color: #6E44FF;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        h3 {
+            color: #2D3142;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            border-left: 3px solid #B57EDC;
+            padding-left: 0.5rem;
+        }
+        
+        p {
+            line-height: 1.7;
+            color: #5C6175;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            color: #5C6175;
+        }
+
+        strong {
+            color: #2D3142;
+        }
+
+        .highlight-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #E53E3E; /* Rouge/Orange pour symboliser l'urgence/données interdites */
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .compliance-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #38A169; /* Vert pour la conformité */
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: #6E44FF;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(110, 68, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #8B5CF6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 68, 255, 0.3);
+        }
+
+        .table-container {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #EEEFF2;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #FAFAFB;
+            color: #6E44FF;
+            text-align: left;
+            padding: 0.7rem;
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        td {
+            padding: 0.7rem;
+            border-bottom: 1px solid #EEEFF2;
+            color: #5C6175;
+        }
+
+        .badge-group {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: transparent;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+        }
+
+        .back-link:hover {
+            background: #FAFAFB;
+            color: #6E44FF;
+            border-color: #6E44FF;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SAÉ 3.03 : Conformité Réglementaire de Traitement des Données</h1>
+    <div class="badge-group">
+        <i class="fas fa-users"></i> Projet en groupe : Mariama DIOUF, Paul CARNOVALI, Alexan RAVONNEAUX, Abderrahman JENFI & Marzouk SABI
+    </div>
+
+    <h2>Contexte du Projet & Problématique</h2>
+    <p>
+        Entré en vigueur en mai 2018, le <strong>Règlement Général sur la Protection des Données (RGPD)</strong> impose un cadre juridique strict à toute entité manipulant des données personnelles. Dans le cadre de cette SAÉ, notre groupe s'est positionné en tant que cellule d'experts mandatée par une <strong>entreprise industrielle d'une centaine de salariés</strong>. 
+    </p>
+    <p>
+        À notre arrivée, le constat était critique : le service des Ressources Humaines n'avait initié aucune démarche de mise en conformité. Pire encore, la collecte courante intégrait des données hautement superflues, voire formellement interdites par le législateur (données de santé détaillées, opinions syndicales, historique de grèves), exposant l'organisation à des sanctions financières lourdes de la CNIL pouvant atteindre <strong>4&nbsp;% du chiffre d'affaires annuel mondial</strong>.
+    </p>
+
+    <h2>Évaluation des Traitements et Purge des Données Collectées</h2>
+    <p>
+        L'analyse du système d'information RH a permis d'isoler deux grandes catégories de données (Identification de l'employé et Suivi de carrière). En vertu du principe RGPD de <strong>minimisation des données</strong>, notre première mesure concrète a consisté à ordonner la suppression immédiate de plusieurs informations non pertinentes ou illégales :
+    </p>
+
+    <div class="highlight-box">
+        <strong>Données sensibles et superflues à supprimer impérativement :</strong>
+        <ul>
+            <li><strong>Données relatives à la vie privée :</strong> Profession des parents, nature des études suivies par les enfants, et détails matrimoniaux injustifiés.</li>
+            <li><strong>Données syndicales (Interdit) :</strong> L'appartenance syndicale et l'historique exhaustif du nombre de jours de grève sur les 10 dernières années (variables discriminatoires).</li>
+            <li><strong>Données de santé (Interdit) :</strong> Diagnostics et pathologies détaillés des salariés. Le service RH doit restreindre sa visibilité au seul avis d'aptitude émis par la médecine du travail.</li>
+        </ul>
+    </div>
+
+    <h2>Gouvernance des Données & Cycle de Vie</h2>
+    <p>
+        Pour structurer la transparence des traitements, nous avons formalisé la cartographie des flux et défini une politique stricte de <strong>durée de conservation des données</strong> :
+    </p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Typologie des Données RH</th>
+                    <th>Durée de Conservation Maximale</th>
+                    <th>Destination & Cadre Légal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Dossier administratif du salarié</strong></td>
+                    <td>Durée du contrat + 5 ans</td>
+                    <td>Archivage sécurisé pour gestion des contentieux.</td>
+                </tr>
+                <tr>
+                    <td><strong>Bulletins de paie et cotisations</strong></td>
+                    <td>5 ans</td>
+                    <td>Obligation légale de l'employeur.</td>
+                </tr>
+                <tr>
+                    <td><strong>Évaluations professionnelles & Formations</strong></td>
+                    <td>Durée du contrat + 5 ans</td>
+                    <td>Suivi de carrière interne.</td>
+                </tr>
+                <tr>
+                    <td><strong>Données de santé (Aptitudes, RQTH)</strong></td>
+                    <td>1 ans maximum après le départ</td>
+                    <td>Médecine du travail / Service RH restreint.</td>
+                </tr>
+                <tr>
+                    <td><strong>Sanctions disciplinaires non amnistiées</strong></td>
+                    <td>3 ans maximum</td>
+                    <td>Effacement automatique du dossier.</td>
+                </tr>
+                <tr>
+                    <td><strong>Candidatures non retenues</strong></td>
+                    <td>2 ans après le dernier contact</td>
+                    <td>Sous réserve du consentement du candidat.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Plan de Sécurisation Technique et Organisationnel</h2>
+    <p>
+        Pour garantir l'intégrité, la confidentialité et la traçabilité des accès aux données des collaborateurs, nous avons préconisé un ensemble de mesures robustes :
+    </p>
+    <ul>
+        <li><strong>Sécurité Technique :</strong> Implémentation d'identifiants individuels uniques, chiffrement des bases de données RH contenant les pièces sensibles (copies de passeports, titres d'autorisation de travail), déploiement d'antivirus/pare-feu à jour, et activation de l'authentification multifacteur (MFA).</li>
+        <li><strong>Sécurité Organisationnelle :</strong> Désignation officielle d'un <strong>Délégué à la Protection des Données (DPO)</strong> enregistré auprès de la CNIL, signature d'engagements de confidentialité par le personnel RH, et mise en place d'une procédure de notification des violations de données sous 72 heures.</li>
+    </ul>
+
+    <h2>Feuille de Route pour la Mise en Conformité Continue</h2>
+    <p>
+        La conformité réglementaire n'est pas un livrable statique mais un processus itératif. Nous avons soumis à la direction générale un plan d'action hiérarchisé :
+    </p>
+
+    <div class="compliance-box">
+        <strong>Plan d'action prioritaire :</strong>
+        <ul>
+            <li><strong>Court Terme (1 mois) :</strong> Désignation du DPO, ouverture du <strong>Registre des activités de traitement</strong> (obligatoire et opposable) et purge des données sensibles interdites.</li>
+            <li><strong>Moyen Terme (3 mois) :</strong> Remplacement des accès partagés par des droits nominatifs restreints, mise en conformité des contrats de sous-traitance (logiciels de paie, hébergeurs cloud).</li>
+            <li><strong>Long Terme (6-12 mois) :</strong> Audit interne annuel, formation continue du management et automatisation de l'exercice des droits des salariés (accès, rectification, effacement).</li>
+        </ul>
+    </div>
+
+    <h2>Compétences Métiers Développées</h2>
+    <ul>
+        <li><strong>Audit & Analyse de Risques :</strong> Capacité à cartographier des flux de données réels et à identifier les écarts face à une réglementation juridique complexe (RGPD).</li>
+        <li><strong>Gouvernance des Données :</strong> Conception de registres de traitement, d'arbres de droits d'accès et de politiques de cycle de vie de la donnée (retention policy).</li>
+        <li><strong>Communication Managériale :</strong> Traduction de contraintes juridiques techniques en plans d'action pragmatiques, compréhensibles et applicables par des dirigeants d'entreprise.</li>
+    </ul>
+
+    <br>
+
+    <!-- Boutons d'action -->
+    <a href="#" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> Télécharger le Rapport d'Audit RGPD (PDF)</a>
+    <br><br>
+    <a href="index.html" class="btn back-link">⬅ Retour au portfolio</a>
+
+</div>
+
+</body>
+</html>
