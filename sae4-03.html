@@ -220,28 +220,34 @@
         <div class="table-container">
             <strong>Analyse Temporelle</strong>
             <p style="font-size: 0.85rem; margin-top: 0.5rem;">
-                Le croisement des années d'ouverture par région via des graphiques croisés dynamiques montre une expansion continue depuis les années 1980, avec une accélération marquée en Île-de-France et dans le Sud-Est.
+                Le croisement des années d'ouverture par région via des graphiques croisés dynamiques montre une expansion continue depuis les années 1980, 
+                avec une accélération marquée en Île-de-France et dans le Sud-Est.
             </p>
         </div>
     </div>
 
     <h3>2. Analyse de Densité Départementale</h3>
     <p>
-        Afin de repérer les départements les mieux lotis, nous avons calculé la densité de restaurants ramenée à la population globale. Pour obtenir un indicateur lisible et standardisé, la formule suivante a été appliquée :
-        $$\text{Densité} = \left( \frac{\text{Nombre de McDonald's}}{\text{Population du Département}} \right) \times 100\,000$$
+        Afin de repérer les départements les mieux lotis, nous avons calculé la densité de restaurants ramenée à la population globale. Pour obtenir un indicateur 
+        lisible et standardisé, la formule suivante a été appliquée :
+        Densité = Nombre de McDonald's \Population du Département * 100 000
     </p>
     <p>
-        La table attributaire résultant de la jointure avec le code <code>insee_dep</code> a été représentée via une <strong>symbologie graduée en 8 classes cohérentes</strong> pour cartographier précisément la saturation du marché français.
+        La table attributaire résultant de la jointure avec le code <code>insee_dep</code> a été représentée via une <strong>symbologie graduée en 8 classes 
+            cohérentes</strong> pour cartographier précisément la saturation du marché français.
     </p>
 
     <div class="image-container">
         <img src="Image_Portfolio/SIG/Carte-densite-mcdo.png" class="image"> <br>        
-        <div class="image-caption"><i class="fas fa-map-marked-alt"></i> Carte 1 : Distribution spatiale et densité des franchises McDonald's par 100 000 habitants</div>
+        <div class="image-caption"><i class="fas fa-map-marked-alt"></i> Carte 1 : Distribution spatiale et densité des franchises McDonald's par 100 000 
+            habitants</div>
     </div>
 
     <h3>3. Proximité et Intermodalité Ferroviaire</h3>
     <p>
-        Le critère d'accessibilité étant un pilier de la stratégie de l'enseigne ("célérité et commodité"), nous avons appliqué des <strong>zones tampons (Buffers) de 500 mètres</strong> autour des couches de transport avec regroupement des résultats géométriques superposés. Les requêtes spatiales révèlent :
+        Le critère d'accessibilité étant un pilier de la stratégie de l'enseigne ("célérité et commodité"), nous avons appliqué des <strong>zones 
+        tampons (Buffers) de 500 mètres</strong> autour des couches de transport avec regroupement des résultats géométriques superposés. 
+        Les requêtes spatiales révèlent :
     </p>
     <ul>
         <li><strong>149 restaurants</strong> situés à moins de 500m d'une gare SNCF nationale (ciblage tactique des hubs à fort trafic).</li>
@@ -251,15 +257,19 @@
 
     <h2>Focus Régional : L'Ex Poitou-Charentes (Départements 16, 17, 79, 86)</h2>
     <p>
-        Pour l'étude locale du bassin de consommation des quatre départements cibles, travailler à l'échelon des polygones départementaux bruts aurait faussé l'analyse. Une <strong>zone de chalandise de 15 km</strong> étant une entité infra-départementale, nous avons extrait les <strong>centroïdes des communes</strong> (centres administratifs de population).
+        Pour l'étude locale du bassin de consommation des quatre départements cibles, travailler à l'échelon des polygones départementaux bruts aurait faussé 
+        l'analyse. Une <strong>zone de chalandise de 15 km</strong> étant une entité infra-départementale, nous avons extrait les <strong>centroïdes des communes</strong> (centres administratifs de population).
     </p>
     <p>
-        En générant des tampons de 15 km autour de chaque restaurant et en réalisant une <em>jointure spatiale par localisation résumée</em>, nous avons calculé la somme réelle de la population contenue dans chaque rayon d'action.
+        En générant des tampons de 15 km autour de chaque restaurant et en réalisant une <em>jointure spatiale par localisation résumée</em>, nous avons calculé 
+        la somme réelle de la population contenue dans chaque rayon d'action.
     </p>
 
     <div class="highlight-box">
         <strong>Gestion de la Cannibalisation et Choix Méthodologique :</strong><br>
-        Pour éviter le chevauchement et la double comptabilisation des populations situées entre deux établissements proches, il aurait été possible de modéliser des <strong>Polygones de Voronoï</strong> afin de définir des frontières géométriques d'exclusivité absolue. Cependant, nous avons volontairement conservé les intersections pour évaluer le bassin de vie théorique de chaque point de vente et identifier visuellement les zones de forte concurrence interne.
+        Pour éviter le chevauchement et la double comptabilisation des populations situées entre deux établissements proches, il aurait été possible de modéliser 
+        des <strong>Polygones de Voronoï</strong> afin de définir des frontières géométriques d'exclusivité absolue. Cependant, nous avons volontairement conservé 
+        les intersections pour évaluer le bassin de vie théorique de chaque point de vente et identifier visuellement les zones de forte concurrence interne.
     </div>
 
     <div class="image-container">
@@ -269,11 +279,14 @@
 
     <h2>Perspectives Stratégiques pour la Direction</h2>
     <p>
-        Cette étude démontre la puissance du couplage entre géomatique et décisionnel. Pour optimiser les futures implantations des franchisés, nous suggérons deux axes complémentaires :
+        Cette étude démontre la puissance du couplage entre géomatique et décisionnel. Pour optimiser les futures implantations des franchisés, nous suggérons 
+        deux axes complémentaires :
     </p>
     <ul>
-        <li><strong>Analyse concurrentielle :</strong> Intégrer les couches spatiales de la concurrence directe (Burger King, Quick) pour mesurer les parts de marché capturées au sein des zones d'exclusivité.</li>
-        <li><strong>Géomarketing prédictif :</strong> Croiser ces périmètres avec les flux routiers et de transport en temps réel pour affiner les performances prévisibles des canaux "Drive" et de livraison à domicile.</li>
+        <li><strong>Analyse concurrentielle :</strong> Intégrer les couches spatiales de la concurrence directe (Burger King, Quick) pour mesurer les parts de 
+            marché capturées au sein des zones d'exclusivité.</li>
+        <li><strong>Géomarketing prédictif :</strong> Croiser ces périmètres avec les flux routiers et de transport en temps réel pour affiner les performances 
+            prévisibles des canaux "Drive" et de livraison à domicile.</li>
     </ul>
 
     <br>
