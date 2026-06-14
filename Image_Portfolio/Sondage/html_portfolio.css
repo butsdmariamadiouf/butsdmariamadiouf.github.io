@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Mariama Diouf</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ---- THÈME GLOBAL BLANC & BLEU --- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: #FAFAFB; 
+            height: 100vh;
+            overflow: hidden; /* Désactive complètement le scroll global du site */
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(110, 68, 255, 0.05);
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6E44FF; 
+        }
+
+        .logo span {
+            color: #B57EDC; 
+        }
+
+        .horizontal-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .horizontal-menu li a {
+            text-decoration: none;
+            color: #5C6175;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .horizontal-menu li a:hover,
+        .horizontal-menu li a.active-menu {
+            color: #6E44FF;
+        }
+
+        /* --- SECTIONS (Système de pages fixes) --- */
+        section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            padding: 7rem 8% 2rem;
+            background-color: #FAFAFB;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-sizing: border-box;
+            
+            /* Gestion de l'affichage par défaut : masqué */
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+            overflow-y: auto; /* Permet le scroll UNIQUEMENT à l'intérieur d'une page si son contenu est trop long */
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            z-index: 1;
+        }
+            
+        /* Quand la section reçoit la classe .active, elle apparaît */
+        section.active {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+            z-index: 10;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: #2D3142;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        /* --- HERO (ACCUEIL) --- */
+        .hero {
+            flex-direction: row;
+            align-items: center;
+            gap: 4rem;
+            justify-content: center;
+        }
+
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #2D3142;
+        }
+
+        .hero-content span {
+            background: linear-gradient(45deg, #6E44FF, #B57EDC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #5C6175;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* --- BOUTONS --- */
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #6E44FF, #8B5CF6);
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(110, 68, 255, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(110, 68, 255, 0.3);
+        }
+
+        /* --- MON PARCOURS --- */
+        .parcours-item {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            gap: 40px;
+        }
+
+        .parcours-texte {
+            background-color: #FFFFFF;
+            color: #2D3142;
+            padding: 25px;
+            border-radius: 20px;
+            flex: 1;
+            line-height: 1.7;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            border: 1px solid #EEEFF2;
+        }
+
+        .parcours-item-double {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        /* --- SYSTEME D'ONGLETS (PROJETS) --- */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            padding: 0.6rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 2px solid #E2E8F0;
+            background-color: #FFFFFF;
+            color: #5C6175;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: #6E44FF;
+            color: #6E44FF;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #6E44FF, #8B5CF6);
+            color: #FFFFFF;
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(110, 68, 255, 0.15);
+        }
+
+        .tab-content {
+            display: none; 
+        }
+
+        .tab-content.active {
+            display: block;  
+        }
+
+        /* --- GRILLE DES PROJETS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding-bottom: 2rem;
+        }
+
+        .project-card {
+            background-color: #FFFFFF;
+            border: 1px solid #EEEFF2;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #B57EDC;
+            box-shadow: 0 15px 35px rgba(110, 68, 255, 0.08);
+        }
+
+        .project-card h3 {
+            color: #6E44FF;
+            margin-top: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .project-card p {
+            color: #5C6175;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-visual-placeholder {
+            margin-top: 1rem;
+            background-color: #FAFAFB;
+            border: 1px dashed #B57EDC;
+            padding: 0.8rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            font-weight: 600;
+        }
+
+        /* --- FORMATION & COMPÉTENCES --- */
+        .competence-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .competence-item {
+            background-color: #FFFFFF;
+            border-left: 5px solid #6E44FF;
+            padding: 1.2rem 2rem;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.01);
+        }
+
+        /* --- SOCIALS & CONTACT --- */
+        .socials {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .socials a {
+            color: #6E44FF;
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .socials a:hover {
+            color: #B57EDC;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media screen and (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; }
+            .horizontal-menu { display: none; } 
+            .parcours-item, .parcours-item-double { flex-direction: column; text-align: center; }
+            .tabs-container { flex-direction: column; gap: 0.5rem; }
+            section { padding-top: 6rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Port<span>folio</span></div>
+            <ul class="horizontal-menu">
+                <li><a href="#" class="active-menu" onclick="openPage('home', event)">Accueil</a></li>
+                <li><a href="#" onclick="openPage('parcours', event)">À propos</a></li>
+                <li><a href="#" onclick="openPage('formation', event)">Mon Choix</a></li>
+                <li><a href="#" onclick="openPage('projets', event)">Projets</a></li>
+                <li><a href="#" onclick="openPage('competences', event)">Compétences</a></li>
+                <li><a href="#" onclick="openPage('contact', event)">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!------------------ ACCUEIL --------------->
+    <section id="home" class="active">
+        <div class="hero-content">
+            <h1>Bonjour, moi c'est <br><span>MARIAMA DIOUF</span></h1>
+            <p class="intro-text">Étudiante en BUT Science des Données, passionnée par les maths, la data et l’analyse.</p>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-----------------------   A propos de moi ---------------->
+    <section id="parcours">
+        <h2>Mon Parcours</h2>
+        <div class="parcours-item">
+            <!--<img src="Tof2.jpg" alt="Miss Mathématiques" class="parcours-img">-->
+            <div class="parcours-texte">
+                <p>J'ai effectué ma scolarité au Sénégal, où j'ai développé très tôt un goût pour les sciences et les défis intellectuels. En classe de 4<sup>e</sup>, j'ai eu l'honneur de participer au <strong>concours Miss Mathématiques</strong>, une expérience qui a renforcé ma passion pour les mathématiques.</p>
+            </div>
+        </div>
+
+        <div class="parcours-item-double">
+            <!--<img src="Tof4.jpg" alt="Image gauche" class="parcours-img-double">-->
+            <div class="parcours-texte">
+                <p>En classe de Première, j'ai participé au <strong>Concours Général</strong> dans six matières. J’ai eu l’honneur d’obtenir le <strong>3<sup>e</sup> prix national en Éducation Physique et Sportive</strong>, une reconnaissance de mon engagement à la fois intellectuel et physique.</p>
+            </div>
+            <!--<img src="Tof3.jpg" alt="Image droite" class="parcours-img-double">-->
+        </div>
+
+        <div class="parcours-item">
+            <!--<img src="TofNiort.png" alt="Baccalauréat" class="parcours-img">-->
+            <div class="parcours-texte">
+                <p>C'est après l'obtention de mon baccalauréat que j'ai décidé de poursuivre mes études en France, où je suis actuellement étudiante en <strong>BUT Science des Données à Niort</strong>. Ce parcours m’a permis de renforcer mon autonomie, ma capacité d’adaptation et ma rigueur.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-----------------------   Formation ---------------->
+    <section id="formation">
+        <h2> Pourquoi cette formation ? </h2>
+        <div class="competence-list">
+            <div class="competence-item">
+                <p>À l’issue de mon parcours scolaire, j’ai ressenti le besoin de m’orienter vers une formation qui valorise la réflexion, l’analyse rigoureuse et la résolution de problèmes concrets.</p>
+            </div>
+            <div class="competence-item">
+                <p>Animée par cette passion, j’ai fait le choix d’intégrer le BUT Science des Données. Cette formation m’a séduite par son approche pluridisciplinaire combinant mathématiques et informatique.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-----------------------   Projets ---------------->
+    <section id="projets">
+        <h2>Mes Projets (SAÉ : situation d'apprentissage et d'évaluation, Stage, Alternance)</h2>
+        <p style="color: #5C6175; margin-bottom: 2rem;">Découvrez les projets et travaux pratiques réalisés tout au long de mon cursus en Science des Données.</p>
+
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="openYear(event, 'year1')">1ere Année</button>
+            <button class="tab-btn" onclick="openYear(event, 'year2')">2e Année</button>
+            <button class="tab-btn" onclick="openYear(event, 'year3')">3e Année</button>
+        </div>
+
+        <!------- 1ere année -------->
+        <div id="year1" class="tab-content active">
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                  <a href="sae1-01.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 1.01 : Création d’un reporting</h3>
+                      <p>Conception d’une application Excel de gestion des notes pour le BUT SD1. Outil intégrant un tableau de bord dynamique avec graphiques et calcul automatique des passages via VBA.</p>
+                    </div>
+                
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+
+                <div class="project-card">
+                    <a href="sae1-02.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                        <h3>SAÉ 1.02 : Fichiers de données</h3>
+                        <p>Développement d'un script Python pour transformer et nettoyer un fichier JSON "Que faire à Paris" en un fichier CSV structuré et nettoyé.</p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                        <i class="fab fa-python"></i> Script et Data Cleaned
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <a href="sae2-01.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                        <h3>SAÉ 2.01 : Base de données</h3>
+                        <p>Conception et implémentation d’une base de données MySQL pour une coopérative de sel marin avec automatisation des imports via Python.</p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                        <i class="fas fa-database"></i> Modèle SQL & Graphique
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <a href="sae2-04.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                        <h3>SAÉ 2.04 : Indicateurs de performance</h3>
+                        <p>Analyse économique et financière du groupe Fleury Michon. Calcul et interprétation d'indicateurs clés (CA, VA, EBE, CAF).</p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                        <i class="fas fa-chart-line"></i> Rapport Financier
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <a href="sae2-05.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                        <h3>SAÉ 2.05 : Datavisualisation</h3>
+                        <p>Analyse des accidents de la vie courante avec Calyxis. Nettoyage de données sous Python et création d'un dashboard interactif sur Looker Studio.</p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                        <i class="fas fa-eye"></i> Dashboard Interactif
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!------- 2e année -------->
+        <div id="year2" class="tab-content">
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                  <a href="sae3-01.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 3.01 : Site web dynamique en PHP – MySQL - Javascript </h3>
+                      <p>Conception et développement d’un outil web interactif permettant la gestion, 
+                          la visualisation et l’analyse de données OpenData via une base MySQL, avec une interface dynamique en PHP, HTML/CSS et JavaScript.</p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>      
+
+                <div class="project-card">
+                  <a href="sae3-02.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 3.02 : Mise en oeuvre d'une enquête et analyse approfondie  </h3>
+                      <p>Analyse des habitudes alimentaires des étudiants niortais à travers une enquête statistique 
+                          et un traitement des données par outils d’analyse</p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae3-03.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 3.03 : Conformité réglementaire de traitement des données </h3>
+                      <p>Mise en conformité RGPD des données de ressources humaines d’une entreprise : analyse, sécurisation et recommandations</p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae3-04.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 3.04 : Projet ETL avec Talend </h3>
+                      <p> A remplir </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae3-05.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 3.05 : Sondage </h3>
+                      <p> Étude par sondage d’une offre d’assurance : échantillonnage, analyse et estimation des résultats. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae3-06.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 3.06 : Plan d'expérience </h3>
+                      <p>Conception et optimisation d’un procédé expérimental par plans d’expériences, 
+                          visant à analyser l’influence de plusieurs facteurs et à modéliser une réponse optimale. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae3-07.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 3.07 : Plan d'expérience </h3>
+                      <p>Conception et optimisation d’un procédé expérimental par plans d’expériences, 
+                          visant à analyser l’influence de plusieurs facteurs et à modéliser une réponse optimale. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae4-01.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 4.01 : Progammation objet - Automatisation </h3>
+                      <p> Développement d’un pipeline ETL automatisé pour le traitement et l’analyse de données de jeux vidéo avec Docker et MySQL. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae4-02.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 4.02 : Intégration de données dans un Datawarehouse (Talend, SQL, python, power BI) </h3>
+                      <p> Développement d’une solution décisionnelle complète intégrant l’alimentation d’un Data Warehouse, 
+                          le traitement de données hétérogènes et la visualisation des indicateurs clés avec Power BI. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae4-03.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 4.03 : SIG (Système d'information géographique) </h3>
+                      <p> Étude géomatique de l’implantation des restaurants fast-food en France, 
+                          intégrant l’analyse de la densité, de la population et de la proximité des infrastructures de transport. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card"> <!-----SAE FAVORITE ------>
+                  <a href="sae4-04.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 4.04 : Régression logistique (Stratégie de scoring) </h3>
+                      <p> Conception d’un modèle prédictif de souscription client basé sur la régression logistique, 
+                          afin d’optimiser le ciblage et la performance des campagnes marketing. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae4-05.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 4.05 : Séries temporelles </h3>
+                      <p> Étude économétrique du cours de l’or par séries temporelles, intégrant la décomposition multiplicative, 
+                          la modélisation de la tendance et la construction de prévisions robustes. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae4-06.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 4.06 : Prédiction - Régression linéaire multiple </h3>
+                      <p> Mise en œuvre d’un modèle de régression en Machine Learning pour la prédiction d’une variable médicale, 
+                          intégrant le prétraitement des données et l’analyse de l’impact des valeurs extrêmes. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae4-07.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 4.07 : Exploration et valorisation des données </h3>
+                      <p> Étude de l’évolution économique de la France à long terme à travers l’analyse du PIB, 
+                          du PIB par habitant et des indicateurs de croissance en termes réels et courants. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae4-08.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 4.08 : Optimisation des tournées de prélèvement - Module gestion des véhicules </h3>
+                      <p> Conception d’un système d’optimisation des affectations de véhicules et de personnel, 
+                          incluant le développement d’une API, la gestion des contraintes métier et la création d’une interface utilisateur ergonomique. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+                <div class="project-card">
+                  <a href="sae4-09.html" style="text-decoration: none; color: inherit;"> 
+                    <div>
+                      <h3>SAÉ 4.09 : Reporting d'une analyse multivariée via Rshiny (Flexdashboard) </h3>
+                      <p> Développement d’une solution décisionnelle basée sur l’analyse multivariée des indicateurs de pauvreté, 
+                          intégrant des techniques statistiques (ACP, clustering) et des dashboards interactifs sous R.. </p>
+                    </div>
+                    <div class="project-visual-placeholder">
+                      <i class="fas fa-chart-bar"></i> Voir le projet
+                    </div>
+                  </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!------- 3e année -------->
+        <div id="year3" class="tab-content">
+            <div style="text-align: center; padding: 3rem; color: #5C6175; border: 2px dashed #E2E8F0; border-radius: 20px; background-color: #FFF;">
+                <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #B57EDC; margin-bottom: 1rem;"></i>
+                <p>Contenu à venir lors de la 3e année (Projets, stage de fin d'étude, alternance, ...).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-----------------------   Compétences ---------------->
+    <section id="competences">
+        <h2>Mes Apprentissages Critiques</h2>
+        <div class="competence-list">
+            <div class="competence-item">
+                <strong>Analyse Rigoureuse :</strong> Analyse de jeux de données complexes en mobilisant les bons outils (Python, SQL, R, Power BI, Excel).
+            </div>
+            <div class="competence-item">
+                <strong>Échantillonnage & Incertitude :</strong> Sensibilisation aux notions d’incertitude et calcul des marges d’erreur dans les estimations.
+            </div>
+            <div class="competence-item">
+                <strong>Data Visualisation :</strong> Choix pertinent des graphiques, clarté des présentations et communication des résultats pour des publics non-experts.
+            </div>
+        </div>
+    </section>
+
+    <!-----------------------   Bilan ---------------->
+    <section id="bilan">
+         <div class="tabs-container">
+            <button class="tab-btn active" onclick="openYear(event, 'year_1')">1ere Année</button>
+            <button class="tab-btn" onclick="openYear(event, 'year_2')">2e Année</button>
+            <button class="tab-btn" onclick="openYear(event, 'year_3')">3e Année</button>
+        </div>
+
+        <!------- 1ere année -------->
+        <div id="year_1" class="tab-content">
+            <h2>Mon Bilan de l'année 1 </h2>
+            <div class="bilan-texte">
+                <p>Mon arrivée à Niort pour débuter cette formation a marqué le début d’une nouvelle étape, aussi enrichissante que stimulante. Malgré les défis initiaux en informatique, ma régularité m'a permis de progresser. Je reste très fière des projets pratiques menés à bien, qui donnent tout leur sens à mes compétences théoriques en statistiques et traitement de la donnée.</p>
+            </div>
+        </div>
+
+        <!------- 2e année -------->
+        <div id="year_2" class="tab-content">
+            <h2>Mon Bilan de l'année 2 </h2>
+            <div class="bilan-texte">
+                <p></p>
+            </div>
+        </div>
+
+         <!------- 3e année -------->
+         <div id="year_3" class="tab-content">
+            <h2>Mon Bilan de l'année 3 </h2>
+            <div class="bilan-texte">
+                <p></p>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-----------------------   Contact  ---------------->
+    <section id="contact" style="min-height: auto; padding-bottom: 5rem;">
+        <h2>Mes Réseaux & Contact</h2>
+        <!--<p>N'hésitez pas à me contacter pour échanger sur une opportunité de stage ou d'alternance :</p>-->
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/mariama-diouf-35015b304" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:marimadiouf22006@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <br><br>
+        <a href="CV.pdf" class="btn" download>Télécharger mon CV</a>
+    </section>
+
+    <footer style="text-align:center; padding:2rem 1rem; background-color: #FFFFFF; color:#5C6175; border-top: 1px solid #EEEFF2;">
+        <p>© 2026 Mariama Diouf — Portfolio personnel BUT Science des Données</p>
+    </footer>
+    
+
+    <script>
+        // Fonction pour changer de page principale (onglets du menu)
+        function openPage(pageId, event) {
+            event.preventDefault(); // Empêche le comportement par défaut des liens '#'
+
+            // 1. Cacher toutes les sections principales
+            var sections = document.querySelectorAll("section");
+            sections.forEach(function(sec) {
+                sec.classList.remove("active");
+            });
+
+            // 2. Désactiver le style "actif" sur les liens du menu
+            var menuLinks = document.querySelectorAll(".horizontal-menu li a");
+            menuLinks.forEach(function(link) {
+                link.classList.remove("active-menu");
+            });
+
+            // 3. Afficher la section demandée et colorer le lien du menu cliqué
+            document.getElementById(pageId).classList.add("active");
+            event.currentTarget.classList.add("active-menu");
+        }
+
+        // Fonction secondaire pour changer d'année à l'intérieur de la page Projets
+        function openYear(evt, yearName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(yearName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
