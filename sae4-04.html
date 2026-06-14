@@ -185,7 +185,9 @@
 
     <h2>Contexte & Enjeux Business</h2>
     <p>
-        Au sein d'une assurance de la branche crédit et épargne, les campagnes d'appels téléphoniques destinées à proposer des produits financiers se heurtent à de fortes <strong>contraintes opérationnelles</strong> : capacité d'appel limitée des forces de vente, coût humain horaire élevé et risque de saturation ou d'irritation de la base clientèle en cas de sollicitations excessives.
+        Au sein d'une assurance de la branche crédit et épargne, les campagnes d'appels téléphoniques destinées à proposer des produits financiers se 
+        heurtent à de fortes <strong>contraintes opérationnelles</strong> : capacité d'appel limitée des forces de vente, coût humain horaire élevé et risque 
+        de saturation ou d'irritation de la base clientèle en cas de sollicitations excessives.
     </p>
     <p>
         Notre mission en tant que Data Scientists a été de basculer d'une logique de volume (contacter l'ensemble de la base au hasard) à une <strong>logique de valeur</strong>. Pour cela, nous avons développé un modèle prédictif capable de calculer la probabilité d'appétence de chaque client afin de prioriser le ciblage commercial et maximiser le retour sur investissement (ROI).
@@ -199,13 +201,16 @@
     </p>
     <ul>
         <li><strong>Normalisation :</strong> Harmonisation des genres et imputation sémantique des valeurs manquantes (les labels <code>unknown</code> ont été convertis de façon transparente en <code>inconnu</code>).</li>
-        <li><strong>Correction sémantique et numérique :</strong> Conversion des encodages de variables macro-économiques (remplacement des virgules par des points) pour stabiliser le traitement de l'Indice des Prix à la Consommation (IPC) ou du taux de croissance de l'emploi.</li>
-        <li><strong>Gestion des Outliers (Clipping) :</strong> Bornage de la variable âge entre 15 et 80 ans. Ce choix stratégique permet d'englober tous les cycles de vie financière (du premier livret jeune à l'épargne de fin de carrière) sans que les profils extrêmes ne biaisent les coefficients.</li>
+        <li><strong>Correction sémantique et numérique :</strong> Conversion des encodages de variables macro-économiques (remplacement des virgules par des points) pour 
+        stabiliser le traitement de l'Indice des Prix à la Consommation (IPC) ou du taux de croissance de l'emploi.</li>
+        <li><strong>Gestion des Outliers (Clipping) :</strong> Bornage de la variable âge entre 15 et 80 ans. Ce choix stratégique permet d'englober tous les cycles de 
+        vie financière (du premier livret jeune à l'épargne de fin de carrière) sans que les profils extrêmes ne biaisent les coefficients.</li>
     </ul>
 
     <h3>2. Traitement des Corrélations et Discrétisation (Binning)</h3>
     <p>
-        Le comportement des épargnants étant intrinsèquement non linéaire, nous avons segmenté les variables numériques en classes métiers (tranches d'âge de vie active, paliers de pression commerciale basés sur le nombre de contacts passés, et cycles économiques positifs/négatifs).
+        Le comportement des épargnants étant intrinsèquement non linéaire, nous avons segmenté les variables numériques en classes métiers 
+        (tranches d'âge de vie active, paliers de pression commerciale basés sur le nombre de contacts passés, et cycles économiques positifs/négatifs).
     </p>
     <div class="code-block">
     <div class="image-wrapper">
@@ -213,31 +218,40 @@
     </div>
     </div>
     <p>
-        Ce seuil de 0.85 élimine le bruit mathématique induit par la multi-colinéarité (les variables redondantes), tout en protégeant les indicateurs clés développés à la main pour l'expertise métier.
+        Ce seuil de 0.85 élimine le bruit mathématique induit par la multi-colinéarité (les variables redondantes), tout en protégeant les indicateurs clés 
+        développés à la main pour l'expertise métier.
     </p>
 
     <h3>3. Feature Engineering : La création de « Pépites » Métier</h3>
     <p>
-        En l'absence de données géographiques fines impossibilitant une jointure externe sécurisée, nous avons valorisé notre compréhension du domaine bancaire en synthétisant quatre nouvelles variables hautement discriminantes :
+        En l'absence de données géographiques fines impossibilitant une jointure externe sécurisée, nous avons valorisé notre compréhension du domaine bancaire 
+        en synthétisant quatre nouvelles variables hautement discriminantes :
     </p>
     <ul>
-        <li><code>zero_dette_total</code> : Isole les profils n'ayant aucun crédit immobilier, aucun crédit à la consommation, ni aucun historique de défaut. Il s'agit du cœur de cible disposant de la meilleure capacité d'épargne.</li>
+        <li><code>zero_dette_total</code> : Isole les profils n'ayant aucun crédit immobilier, aucun crédit à la consommation, ni aucun historique de défaut. 
+            Il s'agit du cœur de cible disposant de la meilleure capacité d'épargne.</li>
         <li><code>potentiel_geo_financier</code> : Score pondéré croisant le niveau socio-professionnel (type d'emploi) et l'écosystème d'habitation (Urbain / Rural).</li>
         <li><code>potentiel_neuf</code> : Identifie les prospects jamais contactés, détectés au sein d'un contexte macro-économique de croissance d'emploi positive.</li>
         <li><code>client_gold_moment</code> : Repère les clients historiques ayant déjà souscrit par le passé, ciblés lors des mois affichant les plus forts taux de transformation saisonniers (Juin, Juillet, Octobre).</li>
     </ul>
 
     <div class="highlight-box">
-        <strong>Garantie d'Éthique et de Robustesse :</strong> Toutes les variables dites "Post-Appel", telles que la durée des conversations téléphoniques, ont été systématiquement exclues en amont de l'apprentissage. Intégrer une donnée connue uniquement après la finalisation de l'appel aurait généré un modèle "tricheur" (Data Leakage) et totalement inutilisable en conditions réelles de production.
+        <strong>Garantie d'Éthique et de Robustesse :</strong> Toutes les variables dites "Post-Appel", telles que la durée des conversations téléphoniques, ont été 
+        systématiquement exclues en amont de l'apprentissage. Intégrer une donnée connue uniquement après la finalisation de l'appel aurait généré un modèle 
+        "tricheur" (Data Leakage) et totalement inutilisable en conditions réelles de production.
     </div>
 
     <h2>Analyse des Facteurs Clés d'Appétence</h2>
     <p>
-        Pour compenser le fort déséquilibre de la base initiale (contenant plus de 70 % de non-souscriptions), nous avons appliqué le paramètre <code>class_weight='balanced'</code>. L'interprétation des coefficients de notre régression logistique met en évidence les leviers de souscription :
+        Pour compenser le fort déséquilibre de la base initiale (contenant plus de 70 % de non-souscriptions), nous avons appliqué le paramètre 
+        <code>class_weight='balanced'</code>. L'interprétation des coefficients de notre régression logistique met en évidence les leviers de souscription :
     </p>
     <ul>
-        <li><strong>Leviers Positifs :</strong> Le modèle révèle un fort comportement d'<em>épargne de précaution</em>. Lorsque le marché de l'emploi montre des signes d'incertitude ou de décroissance, les clients cherchent à sécuriser leur avenir financier. Les périodes de milieu d'année (Juin/Juillet) et le statut urbain agissent également comme des catalyseurs de conversion.</li>
-        <li><strong>Freins Majeurs :</strong> Un pessimisme économique marqué (Indice de confiance des consommateurs inférieur à -40) ainsi que la pression commerciale excessive (le harcèlement téléphonique au-delà de 15 contacts) coupent net toute intention d'achat.</li>
+        <li><strong>Leviers Positifs :</strong> Le modèle révèle un fort comportement d'<em>épargne de précaution</em>. Lorsque le marché de l'emploi montre 
+            des signes d'incertitude ou de décroissance, les clients cherchent à sécuriser leur avenir financier. Les périodes de milieu d'année (Juin/Juillet) 
+            et le statut urbain agissent également comme des catalyseurs de conversion.</li>
+        <li><strong>Freins Majeurs :</strong> Un pessimisme économique marqué (Indice de confiance des consommateurs inférieur à -40) ainsi que la pression 
+            commerciale excessive (le harcèlement téléphonique au-delà de 15 contacts) coupent net toute intention d'achat.</li>
     </ul>
 
     <h2>Performances et Stratégie de Ciblage Commercial</h2>
@@ -263,7 +277,8 @@
 
     <h3>L'Arbitrage Précision / Recall au service du ROI</h3>
     <p>
-        Pour répondre aux contraintes budgétaires serrées des directions d'appels, nous avons volontairement calibré le curseur de décision sur un **seuil de probabilité élevé (0.9)**, favorisant la <strong>Précision (0.62)</strong> au détriment du Recall (0.23) :
+        Pour répondre aux contraintes budgétaires serrées des directions d'appels, nous avons volontairement calibré le curseur de décision sur un **seuil de 
+        probabilité élevé (0.9)**, favorisant la <strong>Précision (0.62)</strong> au détriment du Recall (0.23) :
     </p>
     <ul>
         <li><strong>Une rentabilité chirurgicale :</strong> 6 appels sur 10 passés se soldent désormais par une souscription effective, limitant les coûts d'appels inutiles et réduisant la fatigue des équipes commerciales de terrain.</li>
@@ -283,7 +298,8 @@
         Le modèle mathématique est immédiatement industrialisable en conditions réelles. Avant chaque lancement de campagne, la direction marketing peut exécuter le script de scoring sur l'ensemble de sa base de données client. 
     </p>
     <p>
-        Nous recommandons de concentrer exclusivement l'effort de prospection sur le premier tiers qualifié (les profils urbains, actifs, sans dettes actuelles), tout en gelant les appels sur les segments saturés afin de préserver l'image de marque et la relation client de l'assurance.
+        Nous recommandons de concentrer exclusivement l'effort de prospection sur le premier tiers qualifié (les profils urbains, actifs, sans dettes actuelles), 
+        tout en gelant les appels sur les segments saturés afin de préserver l'image de marque et la relation client de l'assurance.
     </p>
 
     <br>
