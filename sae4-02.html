@@ -186,11 +186,16 @@
         <li><strong>FAIT_Ventes :</strong> Centralisation des mesures quantitatives (quantités, prix unitaires, remises) à partir de la liaison croisée entre commandes et lignes de paniers.</li>
     </ul>
 
+    <div class="image-container">
+        <img src="Image_Portfolio/Datawarehouse/Schema_talend.png" class="image"> <br>
+        <img src="Image_Portfolio/Datawarehouse/Schema2_talend.png" class="image"> <br>
+    </div>   
     <h3>2. Scripting Python et Ingestion Oracle SQL</h3>
     <p>
         Les données nettoyées exportées par Talend ne pouvaient pas être digérées directement par le serveur Oracle universitaire. Pour contourner les limites d'importation graphique et les coupures de connexion (timeouts) dues à la forte volumétrie de la table de faits, nous avons développé une suite d'automatisation en <strong>Python</strong> :
     </p>
-    
+
+    <!--
     <div class="code-block">
 # Extrait conceptuel de la moulinette de segmentation Python
 import pandas as pd
@@ -203,7 +208,8 @@ def segmenter_et_generer_sql(csv_path, table_name, chunk_size=50000):
                 f.write(f"INSERT INTO {table_name} VALUES ({row['id']}, ...);\n")
     print(f"Segmentation de {table_name} terminée avec succès.")
     </div>
-
+    -->
+    
     <p>
         Le script découpait automatiquement le bloc monolithique en fichiers plus légers et générait dynamiquement un script maître d'orchestration baptisé <code>LANCER_TOUT.sql</code>. 
     </p>
@@ -243,7 +249,11 @@ def segmenter_et_generer_sql(csv_path, table_name, chunk_size=50000):
 
     <!-- Remplacement par le conteneur d'image réel du projet -->
     <div class="image-container">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Dashboard Décisionnel Power BI" class="image">
+        <img src="Image_Portfolio/Datawarehouse/Graphe1.png" class="image"> <br>
+        <img src="Image_Portfolio/Datawarehouse/Graphe2.png" class="image"> <br>
+        <img src="Image_Portfolio/Datawarehouse/Graphe3.png" class="image"> <br>
+        <img src="Image_Portfolio/Datawarehouse/Graphe4.png" class="image"> <br>
+        <img src="Image_Portfolio/Datawarehouse/Graphe5.png" class="image"> <br>
         <div class="image-caption"><i class="fas fa-chart-line"></i> Figure 1 : Modélisation des performances mondiales et prévisions de ventes SportOne sous Power BI</div>
     </div>
 
