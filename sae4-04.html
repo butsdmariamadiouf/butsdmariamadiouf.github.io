@@ -208,15 +208,7 @@
         Le comportement des épargnants étant intrinsèquement non linéaire, nous avons segmenté les variables numériques en classes métiers (tranches d'âge de vie active, paliers de pression commerciale basés sur le nombre de contacts passés, et cycles économiques positifs/négatifs).
     </p>
     <div class="code-block">
-# Extrait du protocole de filtrage et de protection des variables métiers
-import pandas as pd
-
-# Élimination des doublons à l'aide d'un seuil de corrélation strict
-corr_matrix = df.corr().abs()
-seuil_correlation = 0.85
-
-# Liste de protection des variables "Pépites" construites manuellement
-pepites_a_garder = ['score_eco_social_1', 'zero_dette_total', 'client_gold_moment']
+        <img src="Image_Portfolio/Reg_Logistique/Graph_top15.png" class="image"> <br>
     </div>
     <p>
         Ce seuil de 0.85 élimine le bruit mathématique induit par la multi-colinéarité (les variables redondantes), tout en protégeant les indicateurs clés développés à la main pour l'expertise métier.
