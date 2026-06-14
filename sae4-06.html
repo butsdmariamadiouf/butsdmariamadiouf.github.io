@@ -246,16 +246,8 @@
     </ul>
 
     <div class="code-block">
-# Implémentation de la validation croisée K-Fold pour stabiliser l'écrêtage
-from sklearn.model_selection import KFold, cross_val_score
-from sklearn.linear_model import LinearRegression
-
-kf = KFold(n_splits=5, shuffle=True, random_state=42)
-model = LinearRegression()
-
-# Mesure de la constance des paramètres du Scénario 2
-scores = cross_val_score(model, X_winsorized, y, cv=kf, scoring='r2')
-print(f"Stabilité renforcée - Écart-type des scores : {scores.std():.4f}")
+        <img src="Image_Portfolio/Prediction/Resultat1.png" class="image"> <br> 
+        <img src="Image_Portfolio/Prediction/Resultat2.png" class="image"> <br>
     </div>
 
     <p>
@@ -326,7 +318,8 @@ print(f"Stabilité renforcée - Écart-type des scores : {scores.std():.4f}")
     </div>
 
     <div class="image-container">
-        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" alt="Analyse des coefficients et résidus médicaux" class="image">
+        <img src="Image_Portfolio/Prediction/Graph.png" class="image"> <br>    
+        <img src="Image_Portfolio/Prediction/Graph_final.png" class="image"> <br>
         <div class="image-caption"><i class="fas fa-diagnoses"></i> Graphique 1 : Sensibilité et poids des variables explicatives standardisées dans la prédiction tumorale</div>
     </div>
 
