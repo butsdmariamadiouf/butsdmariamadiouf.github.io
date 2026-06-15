@@ -214,25 +214,36 @@
 
     <h2>Contexte & Démarche Machine Learning</h2>
     <p>
-        À l'ère du Big Data et de l'intelligence artificielle inductive, le rôle du statisticien a profondément évolué : nous ne nous contentons plus d'ajuster un modèle préconçu à des données restreintes, mais nous entraînons des algorithmes adaptatifs sur de grands volumes d'informations pour maximiser le pouvoir prédictif par généralisation.
+        À l'ère du Big Data et de l'intelligence artificielle inductive, le rôle du statisticien a profondément évolué : nous ne nous contentons plus d'ajuster 
+        un modèle préconçu à des données restreintes, mais nous entraînons des algorithmes adaptatifs sur de grands volumes d'informations pour maximiser 
+        le pouvoir prédictif par généralisation.
     </p>
     <p>
-        Dans le cadre de cette SAÉ, l'objectif est d'implémenter un pipeline complet de <strong>Machine Learning (Scikit-Learn)</strong> afin de prédire une variable clinique continue : le <strong>diamètre d'une tumeur ($Y$)</strong>, à l'aide de 10 indicateurs et tests médicaux ($X_1$ à $X_{10}$). L'enjeu majeur de cette modélisation réside dans la transition réussie d'une base de données brute de 20&nbsp;000 observations vers une procédure décisionnelle stable, capable d'éviter le sous-ajustement (<em>underfitting</em>) et le surapprentissage (<em>overfitting</em>).
+        Dans le cadre de cette SAÉ, l'objectif est d'implémenter un pipeline complet de <strong>Machine Learning (Scikit-Learn)</strong> afin de prédire une 
+        variable clinique continue : le <strong>diamètre d'une tumeur (Y)</strong>, à l'aide de 10 indicateurs et tests médicaux (X_1 à X_10). L'enjeu 
+        majeur de cette modélisation réside dans la transition réussie d'une base de données brute de 20&nbsp;000 observations vers une procédure décisionnelle 
+        stable, capable d'éviter le sous-ajustement (<em>underfitting</em>) et le surapprentissage (<em>overfitting</em>).
     </p>
 
     <h2>Nettoyage des Données & Analyse des Valeurs Atypiques</h2>
 
     <h3>1. Gestion des Valeurs Manquantes</h3>
     <p>
-        La base initiale présentait de rares valeurs manquantes localisées sur les variables $X_1$, $X_3$ et $X_7$. Face à un volume conséquent de 20&nbsp;000 lignes, ces anomalies ne représentaient que 0,02&nbsp;% de l'échantillon. Plutôt que d'introduire un biais artificiel via une imputation arbitraire (médiane ou moyenne), le choix d'une exclusion stricte a été privilégié, garantissant que le modèle n'apprenne que sur des mesures cliniques réelles.
+        La base initiale présentait de rares valeurs manquantes localisées sur les variables X_1, X_3 et X_7. Face à un volume conséquent de 20000 lignes, ces anomalies ne 
+        représentaient que 0,02% de l'échantillon. Plutôt que d'introduire un biais artificiel via une imputation arbitraire (médiane ou moyenne), le choix d'une 
+        exclusion stricte a été privilégié, garantissant que le modèle n'apprenne que sur des mesures cliniques réelles.
     </p>
 
     <h3>2. Le Protocole Statistique d'Élimination des Points Aberrants</h3>
     <p>
-        Pour assainir le jeu de données, un filtrage par le <strong>Z-score</strong> a été configuré avec un seuil critique fixé à $3\sigma$ (trois écarts-types). En vertu du <strong>Théorème Central Limite (TCL)</strong> appliqué à notre grand échantillon, la distribution des moyennes tend naturellement vers une Loi Normale, selon laquelle $99,7\ \text{\%}$ des observations doivent être confinées dans cet intervalle. 
+        Pour assainir le jeu de données, un filtrage par le <strong>Z-score</strong> a été configuré avec un seuil critique fixé à 3 sigma (trois écarts-types). En 
+        vertu du <strong>Théorème Central Limite (TCL)</strong> appliqué à notre grand échantillon, la distribution des moyennes tend naturellement vers une Loi Normale,
+        selon laquelle 99,7% des observations doivent être confinées dans cet intervalle. 
     </p>
     <p>
-        Toute mesure affichant un score supérieur à 3 possède une probabilité mathématique d'occurrence marginale ($< 0,3\ \text{\%}$). Identifier et traiter ces points extrêmes élimine les "effets de levier" néfastes, qui ont tendance à dévier la ligne de régression et à dégrader la justesse globale du modèle pour la majorité des patients.
+        Toute mesure affichant un score supérieur à 3 possède une probabilité mathématique d'occurrence marginale (< 0,3%). Identifier et traiter ces points 
+        extrêmes élimine les "effets de levier" néfastes, qui ont tendance à dévier la ligne de régression et à dégrader la justesse globale du modèle pour la 
+        majorité des patients.
     </p>
 
     <h2>Benchmark des Scénarios & Validation Croisée</h2>
@@ -242,12 +253,16 @@
     <ul>
         <li><strong>Scénario 1 (Z-Score) :</strong> Suppression pure et simple des 31 individus identifiés comme aberrants. Rendement de précision optimal mais perte d'observations.</li>
         <li><strong>Scénario 2 (Écrêtage / Winsorisation) :</strong> Remplacement des valeurs situées au-delà des percentiles critiques par les bornes maximales acceptables.</li>
-        <li><strong>Scénario 3 (Données Brutes) :</strong> Conservation de l'ensemble des anomalies sans filtrage. Ce scénario a généré un coefficient $R^2$ massivement négatif ($-503,68$) lors des phases de test, prouvant l'instabilité extrême induite par les points non corrigés.</li>
+        <li><strong>Scénario 3 (Données Brutes) :</strong> Conservation de l'ensemble des anomalies sans filtrage. Ce scénario a généré un coefficient R^2 massivement 
+            négatif (-503,68) lors des phases de test, prouvant l'instabilité extrême induite par les points non corrigés.</li>
     </ul>
 
     <div class="code-block">
-        <img src="Image_Portfolio/Prediction/Resultat1.png" class="image"> <br> 
-        <img src="Image_Portfolio/Prediction/Resultat2.png" class="image"> <br>
+        <img src="Image_Portfolio/Prediction/Resultat2.png" class="image"> 
+    </div>
+
+    <div class="code-block">
+        <img src="Image_Portfolio/Prediction/Resultat2.png" class="image"> 
     </div>
 
     <p>
@@ -275,12 +290,15 @@
     </div>
 
     <p>
-        L'analyse mathématique de la variance montre que la somme des carrés du modèle absorbe environ <strong>91&nbsp;% de la variabilité initiale</strong> des diamètres tumoraux ($R^2 \approx 0,91$). La part d'ombre (résidus, facteurs génétiques non mesurés) est confinée à seulement 9&nbsp;%, avec une variance d'erreur résiduelle ($s^2 = 0,020$) extrêmement basse.
+        L'analyse mathématique de la variance montre que la somme des carrés du modèle absorbe environ <strong> 91% de la variabilité initiale 
+        </strong> des diamètres tumoraux (R^2 = 0,91). La part d'ombre (résidus, facteurs génétiques non mesurés) est confinée à seulement 9%, 
+        avec une variance d'erreur résiduelle (s^2 = 0,020) extrêmement basse.
     </p>
 
     <h2>Analyse de l'Influence Clinique (Coefficients Beta Standardisés)</h2>
     <p>
-        La standardisation des variables explicatives a permis d'isoler l'impact biologique réel de chaque test médical sur l'évolution de la tumeur, indépendamment de leurs unités de mesure d'origine :
+        La standardisation des variables explicatives a permis d'isoler l'impact biologique réel de chaque test médical sur l'évolution de la tumeur, 
+        indépendamment de leurs unités de mesure d'origine :
     </p>
 
     <div class="table-container">
@@ -319,6 +337,9 @@
 
     <div class="image-container">
         <img src="Image_Portfolio/Prediction/Graph.png" class="image"> <br>    
+    </div>
+
+    <div class="image-container">
         <img src="Image_Portfolio/Prediction/Graph_final.png" class="image"> <br>
         <div class="image-caption"><i class="fas fa-diagnoses"></i> Graphique 1 : Sensibilité et poids des variables explicatives standardisées dans la prédiction tumorale</div>
     </div>
