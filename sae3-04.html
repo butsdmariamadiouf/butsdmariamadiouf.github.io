@@ -79,6 +79,49 @@
             margin: 1.5rem 0;
         }
 
+        /* ---- APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FAFAFB;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .ac-icon {
+            background-color: #FFFFFF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+
         .btn {
             display: inline-block;
             margin-top: 1.5rem;
@@ -313,6 +356,35 @@
     <div class="image-container">
         <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=900&q=80" alt="Interface de conception Talend Open Studio" class="image">
         <div class="image-caption"><i class="fas fa-network-wired"></i> Graphe typique d'un Job Talend : Mapping, jointures et routages de flux de données clients et ventes</div>
+    </div>
+
+    <h2><i class="fas fa-award"></i> Apprentissages Critiques Validés</h2>
+    <p>Cette SAÉ technique d'intégration de données m'a permis de valider les jalons d'apprentissage critiques suivants :</p>
+    
+    <div class="ac-container">
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-database"></i></div>
+            <div class="ac-content">
+                <h4>AC 1401 | Concevoir et modéliser des flux d'intégration de données (ETL)</h4>
+                <p>Capacité à mapper des structures hétérogènes, à transformer des types de variables et à unifier des données sources dans des formats exploitables cibles à l'aide de l'outil industriel Talend Open Studio.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-filter"></i></div>
+            <div class="ac-content">
+                <h4>AC 1402 | Appliquer des règles de nettoyage, de filtrage et d'agrégation avancées</h4>
+                <p>Mise en œuvre de filtres métiers stricts (<code>tFilterRow</code>), de calculs d'indicateurs de synthèse de ventes (<code>tAggregateRow</code>) et de mécanismes d'isolation et de rejet de lignes corrompues.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-cogs"></i></div>
+            <div class="ac-content">
+                <h4>AC 1403 | Automatiser et industrialiser l'exécution de pipelines de données</h4>
+                <p>Orchestration conditionnelle complète (Triggers logiques, <code>Run If</code>), injection dynamique de variables d'environnement (Contextes) et intégration de briques de code sur mesure (Java natives) pour fiabiliser le système.</p>
+            </div>
+        </div>
     </div>
 
     <h2>Compétences Valorises</h2>
