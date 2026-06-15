@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 4.01 : Programmation Objet &amp; Automatisation — GameTracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* ---- CONFIGURATION THÈME GLOBAL ---- */
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFB;
+            color: #2D3142;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background-color: #FFFFFF;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(110, 68, 255, 0.03);
+            border: 1px solid #EEEFF2;
+            box-sizing: border-box;
+        }
+
+        /* ---- TITRES ---- */
+        h1 {
+            font-size: 2.5rem;
+            color: #2D3142;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+
+        h1 span {
+            background: linear-gradient(45deg, #6E44FF, #B57EDC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: #2D3142;
+            margin-top: 3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, #6E44FF, #B57EDC);
+            border-radius: 2px;
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: #6E44FF;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            line-height: 1.7;
+            color: #5C6175;
+            font-size: 1.05rem;
+        }
+
+        strong {
+            color: #2D3142;
+        }
+
+        .badge-group {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            background: #F3E8FF;
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        /* ---- GRILLES & ENCADRÉS ---- */
+        .grid-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .result-box {
+            background-color: #FFFFFF;
+            border: 1px solid #EEEFF2;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+        }
+
+        .result-box h4 {
+            margin-top: 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .result-box h4 i {
+            color: #B57EDC;
+        }
+
+        .result-box ul {
+            padding-left: 1.2rem;
+            margin: 0;
+            color: #5C6175;
+        }
+
+        .result-box li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .highlight-box {
+            background-color: #FAFAFB;
+            border-left: 5px solid #6E44FF;
+            padding: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin: 1.5rem 0;
+        }
+
+        /* ---- ÉTAPES CHRONOLOGIQUES ---- */
+        .step-card {
+            background-color: #FAFAFB;
+            border-left: 4px solid #6E44FF;
+            padding: 1.5rem;
+            border-radius: 0 16px 16px 0;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .step-number {
+            background: #F3E8FF;
+            color: #6E44FF;
+            font-weight: 700;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .step-card h3 {
+            margin: 0;
+        }
+
+        .step-card ul {
+            margin: 0.8rem 0 0 0;
+            padding-left: 1.2rem;
+            color: #5C6175;
+            line-height: 1.6;
+        }
+
+        .step-card li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* ---- BLOCS DE CODE DE SYNTHÈSE (RAPPORT) ---- */
+        .code-block {
+            background-color: #2D3142;
+            color: #F8F8F2;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            line-height: 1.5;
+        }
+
+        /* ---- APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FAFAFB;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .ac-icon {
+            background-color: #FFFFFF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+
+        /* ---- TECHNOLOGIES BADGES ---- */
+        .tech-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            background-color: #FAFAFB;
+            border: 1px solid #E2E8F0;
+            color: #5C6175;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tech-badge i {
+            color: #6E44FF;
+        }
+
+        /* ---- ACTION FLEX & BOUTONS ---- */
+        .action-flex {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #6E44FF, #8B5CF6);
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(110, 68, 255, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(110, 68, 255, 0.25);
+        }
+
+        .btn-secondary {
+            background: #FFFFFF;
+            color: #5C6175;
+            border: 2px solid #E2E8F0;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #FAFAFB;
+            border-color: #6E44FF;
+            color: #6E44FF;
+            box-shadow: none;
+            transform: none;
+        }
+
+        /* ---- ENCADRÉ IMAGES AVEC SÉCURITÉ CONFINEMENT ---- */
+        .image-container {
+            background-color: #FFFFFF;
+            border: 1px solid #EEEFF2;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            box-sizing: border-box;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .image-container .image {
+            width: 100%;
+            display: block;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: #8B5CF6;
+            margin-top: 0.8rem;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container { margin: 1rem; padding: 1.5rem; }
+            h1 { font-size: 2rem; }
+            .action-flex { flex-direction: column; align-items: stretch; }
+            .btn { justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1><span>SAÉ 4.01 : Automatisation &amp; Programmation Objet</span></h1>
+    <div class="badge-group">
+        <i class="fas fa-user"></i> Projet Individuel — GameTracker
+    </div>
+    
+    <h2><i class="fas fa-info-circle"></i> Contexte</h2>
+    <p>
+        Dans le cadre de cette SAÉ individuelle de 6 heures, j'ai développé de bout en bout l'application <strong>GameTracker</strong> pour une startup spécialisée dans l'analyse de performances des joueurs de jeux vidéo. L'enjeu technique résidait dans l'infrastructure, la modélisation et la conteneurisation d'un pipeline complet.
+    </p>
+    <p>
+        Face à deux jeux de données brutes corrompus (<code>Players.csv</code> et <code>Scores.csv</code>), ma mission consistait à configurer une infrastructure multi-services virtualisée permettant d'extraire, nettoyer, structurer et charger automatiquement ces flux d'informations dans une base relationnelle sécurisée.
+    </p>
+
+    <h2><i class="fas fa-bullseye"></i> Objectifs du projet</h2>
+    <p>Afin de valider cette situation d'évaluation, le projet s'est articulé autour de 3 axes fondamentaux :</p>
+    <div class="grid-results" style="margin-top: 0;">
+        <div class="result-box">
+            <h4><i class="fab fa-docker"></i> Conteneurisation</h4>
+            <p style="font-size:0.95rem; margin:0;">Orchestrer une infrastructure isolée multi-services (Python 3.11 et MySQL 8.0) via Docker Compose.</p>
+        </div>
+        <div class="result-box">
+            <h4><i class="fas fa-sync-alt"></i> Pipeline ETL Robuste</h4>
+            <p style="font-size:0.95rem; margin:0;">Développer en programmation orientée objet un script Python exploitant Pandas pour assainir et charger les flux.</p>
+        </div>
+        <div class="result-box">
+            <h4><i class="fas fa-terminal"></i> Automatisation</h4>
+            <p style="font-size:0.95rem; margin:0;">Concevoir des scripts Bash pour coordonner l'initialisation SQL, les verrous d'attente et le lancement global.</p>
+        </div>
+    </div>
+
+    <h2><i class="fas fa-tasks"></i> Résolution des 7 Problèmes de Qualité des Données</h2>
+    <p>Le cœur algorithmique du pipeline Python (Pandas) a été codé pour détecter et neutraliser de manière hermétique les anomalies suivantes :</p>
+    <div class="highlight-box">
+        <ul>
+            <li><strong>Doublons :</strong> Suppression des redondances ID clés sur les joueurs et les sessions.</li>
+            <li><strong>Emails invalides :</strong> Filtrage de conformité textuelle par absence du caractère obligatoire <code>@</code> (remplacé par <code>None</code>).</li>
+            <li><strong>Dates incohérentes :</strong> Normalisation syntaxique des formats hétérogènes (ISO, FR, chaînes corrompues) via <code>pd.to_datetime(errors='coerce')</code>.</li>
+            <li><strong>Espaces parasites :</strong> Nettoyage systématique (strip) des chaînes textuelles des pseudonymes.</li>
+            <li><strong>Scores aberrants :</strong> Exclusion logique stricte de tous les scores négatifs ou nuls.</li>
+            <li><strong>Valeurs manquantes :</strong> Conversion et typage propre des cellules vides de Pandas (NaN/NaT) vers le format natif <code>None</code> accepté par MySQL.</li>
+            <li><strong>Références orphelines :</strong> Résolution de l'intégrité référentielle en éliminant les scores liés à un identifiant joueur inexistant dans la table parent.</li>
+        </ul>
+    </div>
+
+    <h2><i class="fas fa-cogs"></i> Architecture de la Méthodologie ETL</h2>
+    <p>Le déploiement respecte une structure modulaire stricte, jalonnée par les étapes de production suivantes :</p>
+
+    <div class="step-card">
+        <div class="step-header">
+            <span class="step-number">1</span>
+            <h3>Infrastructure Multi-Services (Docker &amp; Compose)</h3>
+        </div>
+        <ul>
+            <li>Configuration d'une image applicative optimisée <code>python:3.11-slim</code> embarquant les dépendances métiers.</li>
+            <li>Paramétrage du service de base de données sous MySQL 8.0 doté d'un processus de <em>healthcheck</em> et de volumes persistants.</li>
+        </ul>
+    </div>
+
+    <div class="step-card">
+        <div class="step-header">
+            <span class="step-number">2</span>
+            <h3>Sécurisation de Connexion &amp; Scripts d'Attente</h3>
+        </div>
+        <ul>
+            <li>Implémentation du script Bash <code>wait-for-db.sh</code> bloquant l'application tant que le serveur SQL n'est pas opérationnel (30 tentatives max, intervalle de 2s).</li>
+            <li>Développement d'un <em>Context Manager</em> en Python gérant de façon transparente les Commits, les Rollbacks en cas d'échec et la fermeture des sessions.</li>
+        </ul>
+    </div>
+
+    <div class="step-card">
+        <div class="step-header">
+            <span class="step-number">3</span>
+            <h3>Développement Algorithmique du Pipeline Python</h3>
+        </div>
+        <ul>
+            <li><strong>Extract :</strong> Extraction des fichiers plats CSV sécurisée par vérification d'existence des chemins d'accès.</li>
+            <li><strong>Transform :</strong> Application séquentielle des règles d'assainissement de données et transmission des clés valides parentes au sous-module des scores.</li>
+            <li><strong>Load :</strong> Injection SQL optimisée par requêtes préparées couplées à l'instruction <code>ON DUPLICATE KEY UPDATE</code> pour prévenir les collisions d'index.</li>
+        </ul>
+    </div>
+
+    <h2><i class="fas fa-tools"></i> Technologies Déployées</h2>
+    <div class="tech-container">
+        <div class="tech-badge"><i class="fab fa-python"></i> Python 3.11 (Pandas)</div>
+        <div class="tech-badge"><i class="fab fa-docker"></i> Docker / Docker Compose</div>
+        <div class="tech-badge"><i class="fas fa-database"></i> MySQL 8.0 / SQL</div>
+        <div class="tech-badge"><i class="fas fa-terminal"></i> Scripting Bash</div>
+        <div class="tech-badge"><i class="fab fa-git-alt"></i> Git / GitHub</div>
+    </div>
+
+    <h2><i class="fas fa-award"></i> Apprentissages Critiques Validés</h2>
+    <p>Cette réalisation en autonomie complète a permis de valider les compétences et jalons critiques suivants :</p>
+    
+    <div class="ac-container">
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-cubes"></i></div>
+            <div class="ac-content">
+                <h4>AC | Virtualisation et Isolation d'environnements de Data Science</h4>
+                <p>Conteneurisation complète d'une pile applicative. Maîtrise des concepts de variables d'environnement, de cycle de vie de conteneur imbriqué (healthcheck) et de persistance des bases par montage de volumes.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-code"></i></div>
+            <div class="ac-content">
+                <h4>AC | Conception de Pipelines de Données Structurés et Robustes</h4>
+                <p>Création d'un code Python orienté objet hautement modulaire (séparation stricte Extract/Transform/Load). Résolution mathématique des anomalies et intégrités de BDD.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-terminal"></i></div>
+            <div class="ac-content">
+                <h4>AC | Automatisation Industrielle et Intégration Continue</h4>
+                <p>Écriture de scripts shell Bash pour orchestrer l'intégralité d'un processus sans intervention humaine, assurant une reproductibilité parfaite et une gestion saine des codes d'erreur de sortie.</p>
+            </div>
+        </div>
+    </div>
+    
+    <h2><i class="fas fa-file-alt"></i> Rapport de Synthèse Automatique Généré</h2>
+    <p>Le module de reporting interroge de manière autonome la base nettoyée via des requêtes SQL complexes combinant <code>JOIN</code>, <code>GROUP BY</code>, et fonctions d'agrégations (<code>COUNT</code>, <code>AVG</code>). Voici le format du livrable généré automatiquement dans <code>output/rapport.txt</code> :</p>
+
+<pre class="code-block">
+====================================================
+GAMETRACKER - Rapport de synthese
+Genere le : 2026-06-15 18:00:00
+====================================================
+--- Statistiques generales --
+Nombre de joueurs : 22
+Nombre de scores : 35
+Nombre de jeux : 3
+
+--- Top 5 des meilleurs scores --
+1. DarkPhoenix    | SpaceInvaders | 22500
+2. DragonSlayer99 | SpaceInvaders | 21000
+3. QuantumLeap    | SpaceInvaders | 20200
+4. FrostBite      | SpaceInvaders | 19400
+5. CyberNinja     | SpaceInvaders | 18500
+
+--- Score moyen par jeu --
+SpaceInvaders : 15850.5
+TetrisUltra   : 7980.3
+MarioKart     : 8540.0
+
+--- Joueurs par pays --
+France   : 14
+Belgique : 4
+Suisse   : 3
+
+--- Sessions par plateforme --
+PC      : 20
+Console : 12
+Mobile  : 5
+====================================================
+</pre>
+
+    <div class="image-container">
+        <img src="Image_Portfolio/SAE4-01/Architecture_Docker.png" alt="Architecture de l'infrastructure Docker Compose" class="image">
+        <p class="image-caption"><i class="fas fa-network-wired"></i> Figure 1 : Schéma d'isolation des services et montage des volumes applicatifs</p>
+    </div>
+
+    <div class="image-container">
+        <img src="Image_Portfolio/SAE4-01/Terminal_Execution.png" alt="Terminal d'exécution du script d'automatisation" class="image">
+        <p class="image-caption"><i class="fas fa-terminal"></i> Figure 2 : Sortie d'exécution complète du script d'automatisation run_pipeline.sh</p>
+    </div>
+
+    <h2><i class="fas fa-graduation-cap"></i> Compétences et Rigueur Acquises</h2> 
+    <p>
+        Cette SAÉ a éprouvé mon autonomie technique en m'imposant de livrer un projet fonctionnel "from scratch" sous contraintes temporelles strictes. Le respect des exigences de livraison (reproductibilité en deux commandes cibles) a ancré ma rigueur dans le versionnement de code Git ainsi que dans la structuration d'une documentation claire et orientée production.
+    </p>
+
+    <div class="action-flex">
+        <a href="index.html" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Retour au portfolio
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
