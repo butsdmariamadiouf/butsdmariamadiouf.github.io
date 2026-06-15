@@ -79,6 +79,49 @@
             margin: 1.5rem 0;
         }
 
+        /* ---- APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FAFAFB;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .ac-icon {
+            background-color: #FFFFFF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+        
         .btn {
             display: inline-block;
             margin-top: 2rem;
@@ -262,6 +305,35 @@
         L'écart-type des paramètres calculé est de <strong>0,5</strong>, soit une variance résiduelle de <strong>0,25</strong>.
     </div>
 
+    <h2><i class="fas fa-award"></i> Apprentissages Critiques Validés</h2>
+    <p>Cette SAÉ de modélisation statistique avancée m'a permis de valider les jalons d'apprentissage critiques suivants :</p>
+    
+    <div class="ac-container">
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-drafting-compass"></i></div>
+            <div class="ac-content">
+                <h4>AC 1601 | Concevoir et structurer des plans d'expériences optimisés</h4>
+                <p>Aptitude à définir un espace de recherche, à générer des plans factoriels fractionnaires $2^{k-p}$ via générateurs d'alias et à en valider l'orthogonalité rigoureuse par les structures d'Hadamard.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-vector-square"></i></div>
+            <div class="ac-content">
+                <h4>AC 1602 | Modéliser mathématiquement des surfaces de réponses</h4>
+                <p>Calcul des coefficients de régression, isolation des effets d'interactions multidimensionnelles et cartographie géométrique 2D/3D (courbes d'iso-niveaux) pour l'aide à la décision.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-percentage"></i></div>
+            <div class="ac-content">
+                <h4>AC 1603 | Sélectionner et valider la significativité d'un modèle statistique</h4>
+                <p>Capacité à traiter la saturation de plans de recherche, à mettre en œuvre des algorithmes de sélection pas à pas (Stepwise) et à évaluer la significativité des variables (Test t de Student, p-value).</p>
+            </div>
+        </div>
+    </div>
+    
     <h2>Conclusion et Valeur Ajoutée (Bonus)</h2>
     <p>
         Cette démarche rigoureuse par plans d'expériences a permis de décoder précisément le comportement du jury d'évaluation. Grâce à l'équation prédictive finale, 
