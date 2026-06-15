@@ -236,21 +236,27 @@
     </div>
 
     <p>
-        Le coefficient de variation étant nettement inférieur à 0,5 ($0,32 \ll 0,5$), la série présente une dispersion modérée autour de sa moyenne. Sur l'ensemble de la période, le cours a connu une croissance majeure, se voyant <strong>multiplié par 2,1</strong> entre son point le plus bas en 2015 et son sommet historique atteint en 2025.
+        Le coefficient de variation étant nettement inférieur à 0,5 ($0,32 \ll 0,5$), la série présente une dispersion modérée autour de sa moyenne. 
+        Sur l'ensemble de la période, le cours a connu une croissance majeure, se voyant <strong>multiplié par 2,1</strong> entre son point le plus bas en 2015 
+        et son sommet historique atteint en 2025.
     </p>
 
     <h2>Justification du Modèle Multiplicatif</h2>
     <p>
-        L'analyse structurelle de la chronique a permis de valider l'orientation vers une <strong>décomposition de type multiplicative</strong> ($Y_t = T_t \times S_t \times I_t$) s'appuyant sur deux preuves méthodologiques majeures :
+        L'analyse structurelle de la chronique a permis de valider l'orientation vers une <strong>décomposition de type multiplicative</strong> 
+        (Y_t = T_t * S_t * I_t) s'appuyant sur deux preuves méthodologiques majeures :
     </p>
     <ul>
-        <li><strong>Relation Moyenne / Écart-type :</strong> Le graphique croisant les écart-types annuels en fonction des moyennes fait ressortir un coefficient de détermination élevé ($R^2 = 0,7217$). Cette corrélation directe prouve que la variabilité de la série s'accroît proportionnellement à la hausse de son niveau moyen.</li>
-        <li><strong>Stabilité de la saisonnalité :</strong> L'étude des boîtes à moustaches mensuelles indique la présence de fluctuations saisonnières légères mais très régulières (creux récurrents en avril-mai/juin et pics en septembre/octobre), modulant la tendance globale sans en perturber la dynamique de fond.</li>
+        <li><strong>Relation Moyenne / Écart-type :</strong> Le graphique croisant les écart-types annuels en fonction des moyennes fait ressortir un coefficient 
+            de détermination élevé (R^2 = 0,7217$). Cette corrélation directe prouve que la variabilité de la série s'accroît proportionnellement à la hausse de son niveau moyen.</li>
+        <li><strong>Stabilité de la saisonnalité :</strong> L'étude des boîtes à moustaches mensuelles indique la présence de fluctuations saisonnières légères 
+            mais très régulières (creux récurrents en avril-mai/juin et pics en septembre/octobre), modulant la tendance globale sans en perturber la dynamique de fond.</li>
     </ul>
 
     <h2>Modélisation de la Tendance : Sélection de la Forme Fonctionnelle</h2>
     <p>
-        Pour isoler la composante de long terme ($T_t$), trois spécifications fonctionnelles ont été testées et comparées à l'aide du critère de la <strong>Somme des Résidus au Carré (SR)</strong> :
+        Pour isoler la composante de long terme (T_t), trois spécifications fonctionnelles ont été testées et comparées à l'aide du critère de la 
+        <strong>Somme des Résidus au Carré (SR)</strong> :
     </p>
 
     <div class="table-container">
@@ -287,34 +293,53 @@
     </div>
 
     <p>
-        Le <strong>modèle quadratique</strong> s'impose nettement en affichant le résidu standard le plus faible du benchmark. Sa formulation mathématique intègre un terme en $t^2$ qui restitue avec une grande fidélité la courbure non linéaire de la trajectoire de l'or, invalidant de fait les trajectoires strictement rectilignes ou purement exponentielles.
+        Le <strong>modèle quadratique</strong> s'impose nettement en affichant le résidu standard le plus faible du benchmark. Sa formulation mathématique 
+        intègre un terme en $t^2$ qui restitue avec une grande fidélité la courbure non linéaire de la trajectoire de l'or, invalidant de fait les trajectoires 
+        strictement rectilignes ou purement exponentielles.
     </p>
 
     <h2>Recomposition et Prévisions pour 2026</h2>
     <p>
-        Une fois la tendance quadratique validée, les coefficients saisonniers ont été extraits puis normalisés (leur moyenne s'établissant à un niveau très stable de 1,01). La phase de prévision a été opérée en projetant la tendance extrapolée et en y appliquant ces coefficients harmonisés.
+        Une fois la tendance quadratique validée, les coefficients saisonniers ont été extraits puis normalisés (leur moyenne s'établissant à un niveau très 
+        stable de 1,01). La phase de prévision a été opérée en projetant la tendance extrapolée et en y appliquant ces coefficients harmonisés.
     </p>
 
     <div class="highlight-box">
         <strong>Performance Prédictive :</strong><br>
-        L'évaluation de la qualité d'ajustement sur l'historique valide la robustesse du modèle avec une somme des erreurs au carré finale de **17 174 946,94**. Ce calibrage a permis de générer les prévisions mensuelles complètes pour l'année 2026, capturant de manière synchrone la poussée de fond et les effets saisonniers propres à chaque mois.
+        L'évaluation de la qualité d'ajustement sur l'historique valide la robustesse du modèle avec une somme des erreurs au carré finale de **17 174 946,94**. 
+        Ce calibrage a permis de générer les prévisions mensuelles complètes pour l'année 2026, capturant de manière synchrone la poussée de fond et les effets 
+        saisonniers propres à chaque mois.
     </div>
 
     <div class="image-container">
         <img src="Image_Portfolio/Series-Temp/Graphe1.png" class="image"> <br>
-        <img src="Image_Portfolio/Series-Temp/Graphe2.png" class="image"> <br>
-        <img src="Image_Portfolio/Series-Temp/Graphe3.png" class="image"> <br>
-        <img src="Image_Portfolio/Series-Temp/Graphe4.png" class="image"> <br>
-        <img src="Image_Portfolio/Series-Temp/Graphe5.png" class="image"> <br>
         <!--<div class="image-caption"><i class="fas fa-chart-line"></i> Graphique : Confrontation du cours réel de l'or et des projections du modèle quadratique ajusté (2011 - 2026)</div>-->
     </div>
 
+    <div class="image-container">
+        <img src="Image_Portfolio/Series-Temp/Graphe2.png" class="image"> <br>
+    </div>
+
+    <div class="image-container">
+        <img src="Image_Portfolio/Series-Temp/Graphe3.png" class="image"> <br>
+    </div>
+
+    <div class="image-container">
+        <img src="Image_Portfolio/Series-Temp/Graphe4.png" class="image"> <br>
+    </div>
+
+        <div class="image-container">
+        <img src="Image_Portfolio/Series-Temp/Graphe5.png" class="image"> <br>
+    </div>
     <h2>Limites du Modèle & Recommandations Économétriques</h2>
     <p>
-        Si le modèle quadratique s'avère hautement performant à court terme, sa projection à long terme reste dépendante d'une évolution régulière. Il ne peut anticiper les ruptures structurelles ou les chocs de marché (crises géopolitiques majeures, pivots des taux d'intérêt des banques centrales). 
+        Si le modèle quadratique s'avère hautement performant à court terme, sa projection à long terme reste dépendante d'une évolution régulière. Il ne peut 
+        anticiper les ruptures structurelles ou les chocs de marché (crises géopolitiques majeures, pivots des taux d'intérêt des banques centrales). 
     </p>
     <p>
-        Afin de renforcer ces travaux, la confrontation des échelles mensuelles et trimestrielles a validé la cohérence macro-économique des conclusions. Pour aller plus loin, nous recommandons l'exploration de <strong>modèles multivariés (ARIMAX ou VAR)</strong> incluant des variables exogènes explicatives fortes telles que l'indice d'inflation ou les rendements des obligations d'État.
+        Afin de renforcer ces travaux, la confrontation des échelles mensuelles et trimestrielles a validé la cohérence macro-économique des conclusions. 
+        Pour aller plus loin, nous recommandons l'exploration de <strong>modèles multivariés (ARIMAX ou VAR)</strong> incluant des variables exogènes explicatives 
+        fortes telles que l'indice d'inflation ou les rendements des obligations d'État.
     </p>
 
     <br>
