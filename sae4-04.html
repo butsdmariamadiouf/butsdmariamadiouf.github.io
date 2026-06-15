@@ -79,6 +79,49 @@
             margin: 1.5rem 0;
         }
 
+        /* ---- APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FAFAFB;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .ac-icon {
+            background-color: #FFFFFF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+
         .btn {
             display: inline-block;
             margin-top: 2rem;
@@ -321,6 +364,35 @@
         Figure 1 : Analyse des gains cumulés (Lift Chart) et concentration du ROI sur les déciles supérieurs</div>
     </div>
 
+    <h2><i class="fas fa-award"></i> Apprentissages Critiques Validés</h2>
+    <p>Ce projet avancé d'analyse de données prédictives m'a permis de valider les compétences et jalons d'apprentissage suivants :</p>
+    
+    <div class="ac-container">
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-filter"></i></div>
+            <div class="ac-content">
+                <h4>AC 2201 | Préparer et nettoyer des jeux de données complexes pour l'apprentissage</h4>
+                <p>Maîtrise de l'imputation de valeurs, de la standardisation de données hétérogènes (Pandas, Numpy) et de la gestion avancée des outliers par clipping ciblé.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-lightbulb"></i></div>
+            <div class="ac-content">
+                <h4>AC 2202 | Concevoir et évaluer des variables synthétiques basées sur l'expertise métier</h4>
+                <p>Mise en œuvre du *Feature Engineering* avancé (croisement de profils, segmentation macro-économique) et maîtrise de la multi-colinéarité pour accroître le pouvoir explicatif du modèle.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-bullseye"></i></div>
+            <div class="ac-content">
+                <h4>AC 2203 | Calibrer et piloter un modèle de classification pour répondre à un enjeu ROI</h4>
+                <p>Capacité à interpréter les coefficients d'une régression logistique, à optimiser le compromis Précision/Recall selon les contraintes métier et à valider la rentabilité d'une campagne via des outils de gains cumulés.</p>
+            </div>
+        </div>
+    </div>
+    
     <h2>Recommandations Opérationnelles pour le Déploiement</h2>
     <p>
         Le modèle mathématique est immédiatement industrialisable en conditions réelles. Avant chaque lancement de campagne, la direction marketing peut exécuter le script de scoring sur l'ensemble de sa base de données client. 
