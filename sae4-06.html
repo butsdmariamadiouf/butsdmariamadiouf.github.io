@@ -79,6 +79,49 @@
             margin: 1.5rem 0;
         }
 
+        /* ---- BLOC APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+        }
+
+        .ac-icon {
+            background-color: #F3E8FF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+
         .btn {
             display: inline-block;
             margin-top: 2rem;
@@ -344,6 +387,35 @@
 
     <div class="image-container">
         <img src="Image_Portfolio/Prediction/Graph-final.png" class="image"> <br>
+    </div>
+
+    <h2><i class="fas fa-graduation-cap"></i> Apprentissages Critiques Validés</h2>
+    <p>Cette étude de cas de modélisation par régression supervisée m'a permis de valider les compétences suivantes :</p>
+    
+    <div class="ac-container">
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-broom"></i></div>
+            <div class="ac-content">
+                <h4>AC 2201 | Concevoir une phase de traitement de données robuste</h4>
+                <p>Capacité à traiter les valeurs manquantes et aberrantes de manière raisonnée via les techniques de filtrage statistique (Z-score, Winsorisation).</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="ac-content">
+                <h4>AC 2202 | Garantir la généralisation d'un algorithme inductif</h4>
+                <p>Mise en place d'un protocole d'évaluation par validation croisée ($K$-Fold) pour prémunir le modèle contre le surapprentissage ou le sous-ajustement.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-stethoscope"></i></div>
+            <div class="ac-content">
+                <h4>AC 2203 | Interpréter les paramètres statistiques en contexte métier</h4>
+                <p>Interprétation clinique des coefficients $\beta$ standardisés et décomposition explicite des sources de variance théorique ($ST, SM, SR$).</p>
+            </div>
+        </div>
     </div>
 
     <h2>Synthèse Globale & Fiabilité Clinique</h2>
