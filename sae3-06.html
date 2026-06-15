@@ -141,7 +141,10 @@
 <div class="container">
 
     <h1>SAÉ 3.06 : Plan d'Expérience</h1>
-
+    <div class="badge-group">
+        <i class="fas fa-users"></i> Projet réalisé en binôme
+    </div>
+    
     <h2>Contexte</h2>
     <p>
         L’expérimentation statistique permet de modéliser et de comprendre un phénomène complexe en limitant le nombre d'essais. Dans le cadre de cette SAÉ, 
@@ -170,9 +173,11 @@
 
     <h2>Méthodologie et Analyse</h2>
 
-    <h3>Phase 1 : Plan complet à 2 facteurs ($2^2$) — Entraînement du Jury</h3>
+    <h3>Phase 1 : Plan complet à 2 facteurs (2^2) — Entraînement du Jury</h3>
     <p>
-        Pour initier l'étude, nous nous sommes d'abord focalisés sur deux facteurs : la température (A) et le temps (B). Les résultats collectés ont mis en évidence une forte **interaction négative**. En effet, lorsque la température est basse ($160^\circ\text{C}$), le rendement augmente de 20 points avec le temps, tandis qu'à température haute ($200^\circ\text{C}$), il s'effondre de 26 points. Les courbes de réponses non parallèles confirment cette dépendance.
+        Pour initier l'étude, nous nous sommes d'abord focalisés sur deux facteurs : la température (A) et le temps (B). Les résultats collectés ont mis en 
+        évidence une forte **interaction négative**. En effet, lorsque la température est basse (160^C), le rendement augmente de 20 points avec le temps, 
+        tandis qu'à température haute (200^C), il s'effondre de 26 points. Les courbes de réponses non parallèles confirment cette dépendance.
     </p>
     <div class="image-placeholder">
         <i class="fas fa-cube fa-2x"></i><br>
@@ -183,13 +188,13 @@
         <strong>Modélisation mathématique du domaine d'étude :</strong><br>
         En appliquant les formules de changement de variable pour coder les niveaux réels de [-1; +1], nous avons établi l'équation de prédiction suivante :
         f(x, y) = -510 + 3,15x + 51y - 0,2875xy
-        <em>Où $x$ représente la température réelle et y le temps de cuisson en minutes.</em>
+        <em>Où x représente la température réelle et y le temps de cuisson en minutes.</em>
     </div>
 
     <p><strong>Prédictions issues du modèle :</strong></p>
     <ul>
-        <li>Pour 190^\circ\text{C} et 10\text{ min} : Note estimée de <strong>52,25/100</strong>.</li>
-        <li>Pour 185^\circ\text{C} et 12\text{ min} : Note estimée de <strong>46,50/100</strong>.</li>
+        <li>Pour 190^C et 10min : Note estimée de <strong>52,25/100</strong>.</li>
+        <li>Pour 185^C et 12min : Note estimée de <strong>46,50/100</strong>.</li>
         <li><strong>Ciblage de la note 80 :</strong> Atteignable avec les couples (214C ; 8 min) ou (205C ; 7min).</li>
     </ul>
 
@@ -249,11 +254,11 @@
 
     <h2>Résultats et Modèle Final</h2>
     <p>
-        À l'issue de la sélection pas à pas, tous les paramètres restants affichent une $p\text{-value} < 0,06, validant leur forte contribution. L'équation finale 
+        À l'issue de la sélection pas à pas, tous les paramètres restants affichent une p-value < 0,06, validant leur forte contribution. L'équation finale 
             estimée du modèle optimal est :
     </p>
     <div class="highlight-box">
-        $$\hat{Y} = 53,50 - 16,50A + 12,25B - 6C - 10,25D - 12,75(AB) - 7,75(AD)
+        Y = 53,50 - 16,50A + 12,25B - 6C - 10,25D - 12,75(AB) - 7,75(AD)
         L'écart-type des paramètres calculé est de <strong>0,5</strong>, soit une variance résiduelle de <strong>0,25</strong>.
     </div>
 
