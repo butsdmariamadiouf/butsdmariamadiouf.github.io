@@ -138,7 +138,7 @@
             font-weight: 500;
         }
 
-        .image-container {
+        /*.image-container {
             background-color: #FFFFFF;
             padding: 1rem;
             border-radius: 15px;
@@ -152,13 +152,33 @@
             width: 100%;
             height: auto;
             border-radius: 10px;
-        }
+        }*/
 
         .image-caption {
             font-size: 0.85rem;
             color: #8B5CF6;
             margin-top: 0.5rem;
             font-weight: 600;
+        }
+
+        /* Style du petit cadre individuel pour chaque graphique */
+        .image-container {
+            background-color: #FFFFFF;     /* Fond blanc pour le cadre */
+            border: 1px solid #EEEFF2;     /* Petite bordure grise claire */
+            border-radius: 16px;           /* Bords arrondis élégants */
+            padding: 1.5rem;               /* Espace entre l'image et le bord du cadre */
+            margin-bottom: 2rem;           /* Espace vertical entre chaque cadre */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); /* Ombre très légère sous le cadre */
+            box-sizing: border-box;
+            width: 100%;                   /* S'adapte à la largeur de la page */
+        }
+        
+        /* Style de l'image à l'intérieur de son cadre */
+        .image-container .image {
+            width: 100%;
+            display: block;
+            height: auto;
+            border-radius: 8px;            /* Arrondi aussi les coins de l'image */
         }
 
         .back-link {
