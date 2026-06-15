@@ -79,6 +79,49 @@
             margin: 1.5rem 0;
         }
 
+        /* ---- APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FAFAFB;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .ac-icon {
+            background-color: #FFFFFF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+
         .btn {
             display: inline-block;
             margin-top: 2rem;
@@ -273,6 +316,35 @@ def segmenter_et_generer_sql(csv_path, table_name, chunk_size=50000):
         <img src="Image_Portfolio/Datawarehouse/Graphe5.png" class="image"> <br>
     </div>
 
+    <h2><i class="fas fa-award"></i> Apprentissages Critiques Validés</h2>
+    <p>Cette SAÉ décisionnelle avancée m'a permis de valider les jalons d'apprentissage critiques suivants :</p>
+    
+    <div class="ac-container">
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-database"></i></div>
+            <div class="ac-content">
+                <h4>AC 2401 | Concevoir l'architecture d'un entrepôt de données (Data Warehouse)</h4>
+                <p>Maîtrise de la modélisation multidimensionnelle (schéma en étoile), définition des dimensions d'analyse et de la granularité des tables de faits métier.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-sync-alt"></i></div>
+            <div class="ac-content">
+                <h4>AC 2402 | Développer et orchestrer des flux d'intégration ETL robustes</h4>
+                <p>Capacité à extraire des données hétérogènes (Access, Excel, CSV), à appliquer des règles de nettoyage complexes (tMap, variables) et à automatiser les scripts d'injection.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-chart-pie"></i></div>
+            <div class="ac-content">
+                <h4>AC 2403 | Restituer des indicateurs clés via des tableaux de bord interactifs</h4>
+                <p>Conception de dashboards décisionnels complets (Power BI, DAX), structuration de scénarios de cross-selling et intégration de briques d'intelligence artificielle analytique.</p>
+            </div>
+        </div>
+    </div>
+    
     <h2>Conclusion et Perspectives Stratégiques</h2>
     <p>
         Ce projet démontre qu'une intégration de données rigoureuse est le socle indispensable à tout déploiement de Business Intelligence fiable. 
