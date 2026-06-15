@@ -159,6 +159,49 @@
             font-size: 1.1rem;
         }
 
+        /* ---- BLOC APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+        }
+
+        .ac-icon {
+            background-color: #F3E8FF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+        
         .image-container {
             background-color: #FFFFFF;
             padding: 1rem;
@@ -312,6 +355,35 @@
 
     <div class="image-container">
         <img src="Image_Portfolio/Flexdashbaord/Cartographie-Cluster-K-means.png" class="image"> <br>
+    </div>
+
+    <h2><i class="fas fa-graduation-cap"></i> Apprentissages Critiques Validés</h2>
+    <p>Ce projet d'analyse temporelle et de valorisation des données m'a permis de valider les compétences suivantes :</p>
+    
+    <div class="ac-container">
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-database"></i></div>
+            <div class="ac-content">
+                <h4>AC 2401 | Exploiter des sources de données publiques complexes</h4>
+                <p>Capacité à extraire, nettoyer et restructurer des séries temporelles historiques de long terme issues des bases de données de l'INSEE.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-calculator"></i></div>
+            <div class="ac-content">
+                <h4>AC 2402 | Appliquer des modélisations macroéconomiques standardisées</h4>
+                <p>Maîtrise complète des outils de déflation statistique pour neutraliser l'effet de l'inflation et isoler les indicateurs en volume (PIB réel vs PIB nominal).</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-eye"></i></div>
+            <div class="ac-content">
+                <h4>AC 2403 | Concevoir des tableaux de bord de restitution décisionnelle</h4>
+                <p>Création de visualisations graphiques avancées pour vulgariser l'évolution historique des agrégats économiques auprès d'un public non expert.</p>
+            </div>
+        </div>
     </div>
     
     <h2>Compétences Techniques Démontrées</h2>
