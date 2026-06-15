@@ -77,6 +77,49 @@
             margin: 1.5rem 0;
         }
 
+        /* ---- APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FAFAFB;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .ac-icon {
+            background-color: #FFFFFF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+
         .btn {
             display: inline-block;
             margin-top: 2rem;
@@ -249,6 +292,38 @@
         <li><strong>Profils croisés :</strong> Identification des marques de véhicules les plus représentées (Peugeot en tête avec $38,49\%$) et segmentation par 
             tranches d'âge des conducteurs pour affiner le ciblage marketing de l'offre.</li>
     </ul>
+
+    <h2><i class="fas fa-award"></i> Apprentissages Critiques Validés</h2>
+    <p>Cette SAÉ de statistiques appliquées et de traitement d'enquêtes m'a permis de valider les jalons d'apprentissage critiques suivants :</p>
+    
+    <div class="ac-container">
+        <!-- AC 1 -->
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-vial"></i></div>
+            <div class="ac-content">
+                <h4>AC 1501 | Définir et implémenter un plan d'échantillonnage rigoureux</h4>
+                <p>Capacité à concevoir des protocoles de sélection (aléatoire simple via fonctions de randomisation et empirique), à en évaluer la faisabilité et à quantifier l'impact de la taille d'un échantillon sur la variance.</p>
+            </div>
+        </div>
+
+        <!-- AC 2 -->
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="ac-content">
+                <h4>AC 1502 | Estimer des paramètres de population et évaluer leur précision</h4>
+                <p>Maîtrise du calcul d'intervalles de confiance, de la modélisation des marges d'erreur maximales (cas pénalisant $p=0,5$) et de la formalisation mathématique d'indicateurs de dispersion.</p>
+            </div>
+        </div>
+
+        <!-- AC 3 -->
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-weight"></i></div>
+            <div class="ac-content">
+                <h4>AC 1503 | Identifier les biais de représentativité et redresser les données</h4>
+                <p>Aptitude à confronter la structure d'un échantillon empirique à sa population parente, à détecter les phénomènes de sur/sous-représentation et à appliquer une post-stratification par coefficients de pondération.</p>
+            </div>
+        </div>
+    </div>
 
     <h2>Compétences développées</h2> 
     <ul>
