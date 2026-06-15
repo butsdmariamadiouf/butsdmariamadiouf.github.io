@@ -79,6 +79,49 @@
             margin: 1.5rem 0;
         }
 
+        /* ---- BLOC APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+        }
+
+        .ac-icon {
+            background-color: #F3E8FF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+        
         .btn {
             display: inline-block;
             margin-top: 2rem;
@@ -337,6 +380,36 @@
         <div class="image-container">
         <img src="Image_Portfolio/Series-Temp/Graphe5.png" class="image"> <br>
     </div>
+
+    <h2><i class="fas fa-graduation-cap"></i> Apprentissages Critiques Validés</h2>
+    <p>Ce projet avancé d'analyse de données chronologiques m'a permis de valider les jalons de compétences suivants :</p>
+    
+    <div class="ac-container">
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-eye"></i></div>
+            <div class="ac-content">
+                <h4>AC 2204 | Identifier visuellement et statistiquement les composantes d'une série</h4>
+                <p>Capacité à isoler les comportements structurels d'une chronique (tendance de long terme, variations saisonnières régulières et résidus accidentels).</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-calculator"></i></div>
+            <div class="ac-content">
+                <h4>AC 2205 | Justifier et appliquer les méthodes mathématiques de décomposition</h4>
+                <p>Modélisation de la relation moyenne/écart-type pour valider le modèle multiplicatif et calcul rigoureux de la normalisation des coefficients saisonniers.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-search-dollar"></i></div>
+            <div class="ac-content">
+                <h4>AC 2206 | Évaluer la qualité prédictive d'un modèle économétrique</h4>
+                <p>Sélection de modèles par minimisation de la somme des résidus carrés ($SR$) et maîtrise du protocole de projection de tendances extrapolées.</p>
+            </div>
+        </div>
+    </div>
+    
     <h2>Limites du Modèle & Recommandations Économétriques</h2>
     <p>
         Si le modèle quadratique s'avère hautement performant à court terme, sa projection à long terme reste dépendante d'une évolution régulière. Il ne peut 
