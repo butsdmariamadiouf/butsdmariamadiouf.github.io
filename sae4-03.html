@@ -79,6 +79,49 @@
             margin: 1.5rem 0;
         }
 
+        /* ---- APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FAFAFB;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .ac-icon {
+            background-color: #FFFFFF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+
         .btn {
             display: inline-block;
             margin-top: 2rem;
@@ -280,6 +323,35 @@
         <div class="image-caption"><i class="fas fa-bullseye"></i> Carte 2 : Analyse des zones de chalandise par cercles proportionnels en ex Poitou-Charentes</div>
     </div>
 
+    <h2><i class="fas fa-award"></i> Apprentissages Critiques Validés</h2>
+    <p>Cette SAÉ de géomatique décisionnelle m'a permis de valider les jalons d'apprentissage critiques suivants :</p>
+    
+    <div class="ac-container">
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-globe-europe"></i></div>
+            <div class="ac-content">
+                <h4>AC 2501 | Gérer et manipuler des données spatiales géoréférencées</h4>
+                <p>Maîtrise de l'importation de couches vectorielles, conversion de formats sources hétérogènes (Geopackage, Shapefiles, WGS84) et gestion rigoureuse des projections géométriques ($\text{Lambert 93}$).</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-tools"></i></div>
+            <div class="ac-content">
+                <h4>AC 2502 | Effectuer des géo-traitements et des requêtes topologiques complexes</h4>
+                <p>Mise en œuvre d'algorithmes spatiaux avancés : création de zones tampons (Buffers), extraction de centroïdes de population, calculs d'intersections et de jointures spatiales résumées.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-map"></i></div>
+            <div class="ac-content">
+                <h4>AC 2503 | Concevoir des représentations cartographiques thématiques décisionnelles</h4>
+                <p>Sémiologie graphique avancée (discrétisation en classes, cartes de chaleur, cercles proportionnels) pour transformer des indicateurs statistiques complexes en livrables d'aide à la décision.</p>
+            </div>
+        </div>
+    </div>
+    
     <h2>Perspectives Stratégiques pour la Direction</h2>
     <p>
         Cette étude démontre la puissance du couplage entre géomatique et décisionnel. Pour optimiser les futures implantations des franchisés, nous suggérons 
