@@ -108,6 +108,49 @@
             font-weight: 500;
         }
 
+        /* ---- APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FAFAFB;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .ac-icon {
+            background-color: #FFFFFF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+        
         .tools-badge {
             display: inline-block;
             background: #EBF8FF;
@@ -296,6 +339,35 @@
         <img src="Image_Portfolio/Enquete/Graphe8.png" class="image"> <br>
     </div>
 
+    <h2><i class="fas fa-award"></i> Apprentissages Critiques Validés</h2>
+    <p>Cette étude d'opinion m'a permis de valider des jalons précis du référentiel de compétences de notre BUT :</p>
+    
+    <div class="ac-container">
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div class="ac-content">
+                <h4>AC 1201 | Concevoir un outil de collecte de données rigoureux</h4>
+                <p>Définition d'un plan d'enquête cohérent, formulation neutre et ciblée des questions, et construction d'une arborescence logique (conditions d'affichage et filtres) pour éviter tout biais de réponse.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-filter"></i></div>
+            <div class="ac-content">
+                <h4>AC 1202 | Nettoyer et valider la cohérence des bases de données</h4>
+                <p>Identification et traitement des réponses incomplètes, repérage des valeurs aberrantes ou extrêmes (outliers sur les budgets déclarés) et harmonisation des données textuelles brutes.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-chart-bar"></i></div>
+            <div class="ac-content">
+                <h4>AC 1203 | Analyser les liaisons entre variables et croiser les données</h4>
+                <p>Mise en œuvre de tris à plat et de tableaux de contingence croisés (via Sphinx et Excel) pour isoler les facteurs explicatifs statistiquement significatifs (ex: impact du type de logement sur le budget réel).</p>
+            </div>
+        </div>
+    </div>
+    
     <h2>Stack Technique & Outils</h2>
     <p>
         <span class="tools-badge">Sphinx iQ</span>
