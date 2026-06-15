@@ -163,6 +163,49 @@
             font-size: 0.95rem;
         }
 
+        /* ---- APPRENTISSAGES CRITIQUES ---- */
+        .ac-container {
+            margin-top: 1.5rem;
+        }
+
+        .ac-box {
+            background-color: #FAFAFB;
+            border: 1px solid #E2E8F0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .ac-icon {
+            background-color: #FFFFFF;
+            color: #6E44FF;
+            border: 1px solid #E2E8F0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .ac-content h4 {
+            margin: 0 0 0.3rem 0;
+            color: #2D3142;
+            font-size: 1.1rem;
+        }
+
+        .ac-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5C6175;
+        }
+        
         /* ---- TECHNOLOGIES BADGES ---- */
         .tech-container {
             display: flex;
@@ -359,6 +402,35 @@
         <div class="tech-badge"><i class="fab fa-js"></i> JavaScript / jQuery</div>
     </div>
 
+    <h2><i class="fas fa-award"></i> Apprentissages Critiques Validés</h2>
+    <p>Dans le cadre de l'évaluation de cette SAÉ, j'ai validé de manière concrète les apprentissages critiques suivants :</p>
+    
+    <div class="ac-container">
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-code-branch"></i></div>
+            <div class="ac-content">
+                <h4>AC 2101 | Rédiger un code propre, lisible et structuré</h4>
+                <p>Implémentation d'une architecture claire séparant l'affichage Front-end (HTML/CSS) des traitements algorithmiques Back-end (PHP) pour faciliter la maintenance future de l'application.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-vial"></i></div>
+            <div class="ac-content">
+                <h4>AC 2104 | Concevoir des bases de données relationnelles optimales</h4>
+                <p>Passage d'un fichier plat (CSV OpenData) à un schéma entité-association normalisé (3NF). Structuration optimale pour éliminer les redondances et garantir l'intégrité des clés étrangères.</p>
+            </div>
+        </div>
+
+        <div class="ac-box">
+            <div class="ac-icon"><i class="fas fa-eye"></i></div>
+            <div class="ac-content">
+                <h4>AC 2106 | Restituer des analyses de façon claire et grand public</h4>
+                <p>Création d’un tableau de bord moderne traduisant des métriques écologiques brutes en graphiques interactifs (évolutions, camemberts), rendant la donnée accessible à un public non-expert.</p>
+            </div>
+        </div>
+    </div>
+    
     <h2><i class="fas fa-chart-line"></i> Résultats et livrables</h2>
     <div class="grid-results">
         <div class="result-box">
